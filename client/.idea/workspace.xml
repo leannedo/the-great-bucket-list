@@ -20,23 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfe81da2-5587-443c-928f-7f5037409fc5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/CategoryList/CategoryList.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CategoryList/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/FilterBar/FilterBar.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/FilterBar/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Input/Input.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Input/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ProgressBar/ProgressBar.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ProgressBar/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ToDoList/ToDoList.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ToDoList/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/icons/check-solid.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/icons/plus-solid.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/icons/trash-solid.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Button/Button.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Button/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Icon/Icon.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Icon/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PageTitle/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PageTitle/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layout/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/variables.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/Dashboard/Dashboard.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard/Dashboard.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +60,7 @@
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/icons" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -78,14 +72,16 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2020.1.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\leanne\React_App\Assignment\client\src\assets" />
-      <recent name="C:\leanne\React_App\Assignment\client\src\components\PageTitle" />
-      <recent name="C:\leanne\React_App\Assignment\client\src" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\leanne\React_App\Assignment\client\src\components" />
       <recent name="C:\leanne\React_App\Assignment\client\src\components\Body" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\leanne\React_App\Assignment\client\src\assets\icons" />
+      <recent name="C:\leanne\React_App\Assignment\client\src\components" />
+      <recent name="C:\leanne\React_App\Assignment\client\src\assets" />
+      <recent name="C:\leanne\React_App\Assignment\client\src\components\PageTitle" />
+      <recent name="C:\leanne\React_App\Assignment\client\src" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -115,6 +111,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="592" y="223" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1597776795707">
@@ -129,10 +126,10 @@
       <screen x="0" y="0" width="1855" height="1080" />
     </state>
     <state width="623" height="498" key="SwitcherDM/0.0.1855.1080@0.0.1855.1080" timestamp="1597780578530" />
-    <state x="381" y="43" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1597781943518">
+    <state x="381" y="43" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1597784582129">
       <screen x="0" y="0" width="1855" height="1080" />
     </state>
-    <state x="381" y="43" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1855.1080@0.0.1855.1080" timestamp="1597781943518" />
+    <state x="381" y="43" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1855.1080@0.0.1855.1080" timestamp="1597784582129" />
     <state x="569" y="186" width="716" height="708" key="find.popup" timestamp="1597777164168">
       <screen x="0" y="0" width="1855" height="1080" />
     </state>

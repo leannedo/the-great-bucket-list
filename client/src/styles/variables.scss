@@ -3,7 +3,8 @@
   --td-primary-color: #f77062;
   --td-secondary-color: #000;
   --td-tertiary-color: #ccc;
-  --td-background-color: #fff;
+  --td-white-color: #fff;
+  --td-background-color: var(--td-white-color);
   --td-accent-blue: #38c9ff;
   --td-accent-yellow: #ffab38;
   --td-accent-red: #ff3838;
