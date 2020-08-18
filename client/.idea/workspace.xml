@@ -20,29 +20,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfe81da2-5587-443c-928f-7f5037409fc5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/PageTitle/PageTitle.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/PageTitle/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/layout/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/Dashboard/Dashboard.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/Dashboard/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CategoryList/CategoryList.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CategoryList/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/FilterBar/FilterBar.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/FilterBar/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Input/Input.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Input/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ProgressBar/ProgressBar.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ProgressBar/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ToDoList/ToDoList.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ToDoList/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/git" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layout/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layout/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/react-app-env.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/serviceWorker.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setupTests.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/variables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PageTitle/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PageTitle/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layout/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/Dashboard.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard/Dashboard.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +74,7 @@
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\Jeremy\AppData\Roaming\npm\node_modules\prettier" />
     <property name="run.prettier.on.save" value="true" />
-    <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2020.1.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
@@ -127,13 +121,29 @@
       <screen x="0" y="0" width="1855" height="1080" />
     </state>
     <state x="592" y="223" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1855.1080@0.0.1855.1080" timestamp="1597776795707" />
-    <state x="304" y="97" key="SettingsEditor" timestamp="1597777238496">
+    <state x="304" y="97" key="SettingsEditor" timestamp="1597780595967">
       <screen x="0" y="0" width="1855" height="1080" />
     </state>
-    <state x="304" y="97" key="SettingsEditor/0.0.1855.1080@0.0.1855.1080" timestamp="1597777238496" />
+    <state x="304" y="97" key="SettingsEditor/0.0.1855.1080@0.0.1855.1080" timestamp="1597780595967" />
+    <state width="623" height="498" key="SwitcherDM" timestamp="1597780578530">
+      <screen x="0" y="0" width="1855" height="1080" />
+    </state>
+    <state width="623" height="498" key="SwitcherDM/0.0.1855.1080@0.0.1855.1080" timestamp="1597780578530" />
+    <state x="381" y="43" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1597781943518">
+      <screen x="0" y="0" width="1855" height="1080" />
+    </state>
+    <state x="381" y="43" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1855.1080@0.0.1855.1080" timestamp="1597781943518" />
     <state x="569" y="186" width="716" height="708" key="find.popup" timestamp="1597777164168">
       <screen x="0" y="0" width="1855" height="1080" />
     </state>
     <state x="569" y="186" width="716" height="708" key="find.popup/0.0.1855.1080@0.0.1855.1080" timestamp="1597777164168" />
+    <state x="500" y="247" key="run.anything.popup" timestamp="1597778802164">
+      <screen x="0" y="0" width="1855" height="1080" />
+    </state>
+    <state x="500" y="247" key="run.anything.popup/0.0.1855.1080@0.0.1855.1080" timestamp="1597778802164" />
+    <state x="506" y="45" key="search.everywhere.popup" timestamp="1597778943050">
+      <screen x="0" y="0" width="1855" height="1080" />
+    </state>
+    <state x="506" y="45" key="search.everywhere.popup/0.0.1855.1080@0.0.1855.1080" timestamp="1597778943050" />
   </component>
 </project>

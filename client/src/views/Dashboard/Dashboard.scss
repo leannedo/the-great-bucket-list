@@ -1,6 +1,80 @@
 .td-dashboard {
   width: 100%;
+  position: relative;
+}
+
+.td-header {
   max-width: var(--td-app-max-width);
   margin: auto;
-  background-color: aliceblue;
+
+  > * {
+    width: 100%;
+  }
+
+  > *:not(:first-child) {
+    background-color: aliceblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.td-body,
+.td-bottom-bar {
+  max-width: var(--td-app-max-width);
+  margin: auto;
+
+  > * {
+    width: 100%;
+    background-color: aliceblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.td-header {
+  padding-top: 56px;
+}
+
+.td-page-title {
+  margin-bottom: 35px;
+}
+
+.td-category-list {
+  height: 38px;
+  margin-bottom: 40px;
+}
+
+.td-progress-bar {
+  height: 50px;
+}
+
+.td-input-wrapper {
+  height: 43px;
+  margin-top: 38px;
+  margin-bottom: 46px;
+}
+
+.td-todo-list {
+  height: 800px;
+}
+
+.td-header-wrapper {
+  box-shadow: 0px 5px 20px #00000029;
+}
+
+.td-bottom-bar {
+  left: 0;
+  right: 0;
+  position: absolute;
+}
+
+.td-filter-bar {
+  background-color: var(--td-background-color);
+  max-width: var(--td-app-max-width);
+  position: fixed;
+  bottom: 0;
+  height: 50px;
+  box-shadow: 0px 0px 20px #00000029;
 }
