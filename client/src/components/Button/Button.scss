@@ -5,10 +5,13 @@
  */
 
 .td-btn {
-  padding: 16px 58px;
+  padding: 16px;
   color: var(--td-white-color);
-  font-size: 1rem;
-  border-radius: 27px;
+  font-family: var(--td-font-family);
+  font-weight: var(--td-btn-font-weight);
+  font-size: var(--td-btn-font-size);
+  border-radius: var(--td-btn-border-radius);
+  min-width: var(--td-btn-min-width);
   appearance: none;
   outline: none;
   border-style: initial;
@@ -33,10 +36,10 @@
   }
 
   &icon {
-    width: 35px;
-    height: 35px;
+    width: var(--td-btn-icon-width);
+    height: var(--td-btn-icon-height);
     padding: 0;
-    border-radius: 50%;
+    border-radius: var(--td-btn-icon-border-radius);
     background-color: var(--td-primary-color);
     border: var(--td-primary-color);
   }

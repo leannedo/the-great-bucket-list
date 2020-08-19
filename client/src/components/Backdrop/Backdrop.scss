@@ -1,0 +1,9 @@
+.td-backdrop {
+  width: var(--td-backdrop-width);
+  height: var(--td-backdrop-height);
+  position: absolute;
+  left: var(--td-backdrop-left);
+  top: var(--td-backdrop-top);
+  background: var(--td-backdrop-background);
+  backdrop-filter: blur(10px);
+}

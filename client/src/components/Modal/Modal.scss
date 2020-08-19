@@ -1,0 +1,22 @@
+.td-modal-wrapper {
+  width: var(--td-modal-wrapper-width);
+  height: var(--td-modal-wrapper-height);
+  position: fixed;
+  z-index: 999;
+  left: var(--td-modal-wrapper-left);
+  top: var(--td-modal-wrapper-top);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.td-modal {
+  position: relative;
+  z-index: 1000;
+  border-radius: var(--td-modal-border-radius);
+  background-color: var(--td-white-color);
+  min-width: var(--td-modal-min-width);
+  min-height: var(--td-modal-min-height);
+  padding: 45px;
+  opacity: 1;
+}

@@ -15,4 +15,32 @@
 
   /* #LAYOUT */
   --td-app-max-width: 768px;
+
+  /* #BUTTON */
+  --td-btn-font-weight: 600;
+  --td-btn-font-size: 1rem;
+  --td-btn-min-width: 254px;
+  --td-btn-border-radius: 27px;
+  --td-btn-icon-width: 35px;
+  --td-btn-icon-height: 35px;
+  --td-btn-icon-border-radius: 50%;
+
+  /* #MODAL-WRAPPER */
+  --td-modal-wrapper-width: 100%;
+  --td-modal-wrapper-height: 100%;
+  --td-modal-wrapper-left: 0;
+  --td-modal-wrapper-top: 0;
+
+  /* #MODAL-BACKDROP */
+  --td-backdrop-width: 100%;
+  --td-backdrop-height: 100%;
+  --td-backdrop-left: 0;
+  --td-backdrop-top: 0;
+  --td-backdrop-background: rgba(0, 0, 0, 0.15);
+
+  /* #MODAL */
+  --td-modal-min-width: 325px;
+  --td-modal-min-height: 325px;
+  --td-modal-border-radius: 40px;
+  --td-modal-min-height: 325px;
 }

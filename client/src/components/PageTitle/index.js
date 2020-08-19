@@ -8,7 +8,7 @@ import Logo from "./../../assets/logo.svg";
 // Styling
 import "./PageTitle.scss";
 
-const PageTitle = ({ title, className = "" }) => {
+const PageTitle = ({ title, className }) => {
   return (
     <div className={className}>
       <img src={Logo} />

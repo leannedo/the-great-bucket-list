@@ -8,7 +8,7 @@ import "./Button.scss";
 const Button = ({ className, block, type, onClick, children }) => {
   return (
     <button
-      className={`${className} td-btn btn-${type} ${block ? "btn-block" : ""}`}
+      className={`td-btn ${className} btn-${type} ${block ? "btn-block" : ""}`}
       onClick={onClick}
     >
       {children}

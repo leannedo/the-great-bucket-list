@@ -19,18 +19,21 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfe81da2-5587-443c-928f-7f5037409fc5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/check-solid.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/plus-solid.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/trash-solid.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Button/Button.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Button/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Icon/Icon.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Icon/index.js" afterDir="false" />
+    <list default="true" id="cfe81da2-5587-443c-928f-7f5037409fc5" name="Default Changelist" comment="Implement button and icon component">
+      <change afterPath="$PROJECT_DIR$/src/components/Backdrop/Backdrop.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Backdrop/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Modal/ConfirmModal/ConfirmModal.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Modal/ConfirmModal/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Modal/Modal.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Modal/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Button/Button.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Button/Button.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Button/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Button/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PageTitle/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PageTitle/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/variables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/Dashboard.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard/Dashboard.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +63,7 @@
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/icons" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../burger-builder" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -96,6 +99,14 @@
       <updated>1597775813944</updated>
       <workItem from="1597775815160" duration="1691000" />
     </task>
+    <task id="LOCAL-00001" summary="Implement button and icon component">
+      <created>1597789237608</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1597789237608</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,11 +124,19 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Implement button and icon component" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement button and icon component" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="592" y="223" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1597776795707">
       <screen x="0" y="0" width="1855" height="1080" />
     </state>
     <state x="592" y="223" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1855.1080@0.0.1855.1080" timestamp="1597776795707" />
+    <state x="654" y="234" key="FileChooserDialogImpl" timestamp="1597821908444">
+      <screen x="0" y="0" width="1855" height="1080" />
+    </state>
+    <state x="654" y="234" key="FileChooserDialogImpl/0.0.1855.1080@0.0.1855.1080" timestamp="1597821908444" />
     <state x="304" y="97" key="SettingsEditor" timestamp="1597780595967">
       <screen x="0" y="0" width="1855" height="1080" />
     </state>
@@ -134,13 +153,13 @@
       <screen x="0" y="0" width="1855" height="1080" />
     </state>
     <state x="569" y="186" width="716" height="708" key="find.popup/0.0.1855.1080@0.0.1855.1080" timestamp="1597777164168" />
-    <state x="500" y="247" key="run.anything.popup" timestamp="1597778802164">
+    <state x="500" y="247" key="run.anything.popup" timestamp="1597833761787">
       <screen x="0" y="0" width="1855" height="1080" />
     </state>
-    <state x="500" y="247" key="run.anything.popup/0.0.1855.1080@0.0.1855.1080" timestamp="1597778802164" />
-    <state x="506" y="45" key="search.everywhere.popup" timestamp="1597778943050">
+    <state x="500" y="247" key="run.anything.popup/0.0.1855.1080@0.0.1855.1080" timestamp="1597833761786" />
+    <state x="506" y="45" width="840" height="1034" key="search.everywhere.popup" timestamp="1597829242988">
       <screen x="0" y="0" width="1855" height="1080" />
     </state>
-    <state x="506" y="45" key="search.everywhere.popup/0.0.1855.1080@0.0.1855.1080" timestamp="1597778943050" />
+    <state x="506" y="45" width="840" height="1034" key="search.everywhere.popup/0.0.1855.1080@0.0.1855.1080" timestamp="1597829242988" />
   </component>
 </project>
