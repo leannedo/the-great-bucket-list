@@ -8,8 +8,8 @@ import Backdrop from "../Backdrop";
 
 const Modal = ({ className, children }) => {
   return (
-    <div className={`td-modal-wrapper ${className}`}>
-      <div className="td-modal">{children}</div>
+    <div className="td-modal-wrapper">
+      <div className={`td-modal ${className}`}>{children}</div>
       <Backdrop />
     </div>
   );

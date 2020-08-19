@@ -1,16 +1,17 @@
 import React from "react";
 import Layout from "./layout/index";
 import Dashboard from "./views/Dashboard";
-import Icon from "./components/Icon/index";
-import Button from "./components/Button";
-import ConfirmModal from "./components/Modal/ConfirmModal/index";
+import CategorySelectionModal from "./components/Modal/CategorySelectionModal";
+import Input from "./components/Input";
+import CategoryCreationModal from "./components/Modal/CategoryEditingModal";
+import ConfirmModal from "./components/Modal/ConfirmModal";
 
 function App() {
   return (
-    <div className="App">
+    <Layout>
       <Dashboard />
       <ConfirmModal okText="Delete this category?" cancelText="Cancel" />
-    </div>
+    </Layout>
   );
 }
 

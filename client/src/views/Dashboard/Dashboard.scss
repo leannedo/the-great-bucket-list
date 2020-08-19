@@ -17,12 +17,12 @@
     width: 100%;
   }
 
-  > *:not(:first-child) {
-    background-color: aliceblue;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  //> *:not(:first-child) {
+  //  background-color: aliceblue;
+  //  display: flex;
+  //  //align-items: center;
+  //  //justify-content: center;
+  //}
 }
 
 .td-body,
@@ -32,7 +32,7 @@
 
   > * {
     width: 100%;
-    background-color: aliceblue;
+    //background-color: aliceblue;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -47,8 +47,7 @@
   margin-bottom: 35px;
 }
 
-.td-category-list {
-  height: 38px;
+.td-category-list-wrapper {
   margin-bottom: 40px;
 }
 
@@ -60,6 +59,9 @@
   height: 43px;
   margin-top: 38px;
   margin-bottom: 46px;
+  display: flex;
+  flex-direction: column;
+  align-items: initial;
 }
 
 .td-todo-list {

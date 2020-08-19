@@ -1,3 +1,9 @@
+/**
+ * Backdrop
+ *
+ * Basic styling for backdrop's component
+ */
+
 .td-backdrop {
   width: var(--td-backdrop-width);
   height: var(--td-backdrop-height);
@@ -7,3 +13,4 @@
   background: var(--td-backdrop-background);
   backdrop-filter: blur(10px);
 }
+

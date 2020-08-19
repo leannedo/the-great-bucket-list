@@ -1,0 +1,32 @@
+/**
+ * Category Selection Modal
+ *
+ * Basic styling for category selection modal
+ */
+
+.td-category-selection-modal {
+  display: flex;
+  flex-direction: column;
+}
+
+.td-category-selection-modal {
+  .td-category-list-wrapper {
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+
+  .td-category-list {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .td-category {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .td-category-add-btn {
+    margin-top: 61px;
+    margin-left: 0;
+  }
+}

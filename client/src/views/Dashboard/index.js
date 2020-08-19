@@ -17,12 +17,16 @@ const Dashboard = () => (
     <div className="td-header-wrapper">
       <div className="td-header">
         <PageTitle title="To-do list" className="td-page-title" />
-        <CategoryList className="td-category-list" />
+        <CategoryList />
         <ProgressBar className="td-progress-bar" />
       </div>
     </div>
     <div className="td-body">
-      <Input className="td-input-wrapper" />
+      <Input
+        className="td-input-wrapper"
+        placeholder="What's needed to be done?"
+        name="text"
+      />
       <ToDoList className="td-todo-list" />
     </div>
     <div className="td-bottom-bar">

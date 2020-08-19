@@ -1,0 +1,37 @@
+/**
+ * Input
+ *
+ * Basic styling for input's component
+ */
+.td-input {
+  font-family: var(--td-font-family);
+  font-size: var(--td-page-content-font-size);
+  color: var(--td-secondary-color);
+  font-weight: var(--td-font-weight-700);
+  border: 0;
+  border-bottom: 2px solid var(--td-tertiary-color);
+  outline: 0;
+  padding: 0 0 7px;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+
+  &::placeholder {
+    color: var(--td-tertiary-color);
+    font-weight: 400;
+  }
+
+  &:focus::placeholder {
+    color: transparent;
+  }
+}
+
+.td-input:focus {
+  border-bottom: 2px solid var(--td-secondary-color)
+}
+
+.td-label {
+  font-size: 8px;
+  font-weight: var(--td-font-weight-700);
+  color: var(--td-tertiary-color);
+}

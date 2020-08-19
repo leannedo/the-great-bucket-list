@@ -36,8 +36,8 @@
   }
 
   &icon {
-    width: var(--td-btn-icon-width);
-    height: var(--td-btn-icon-height);
+    min-width: var(--td-btn-icon-width);
+    min-height: var(--td-btn-icon-height);
     padding: 0;
     border-radius: var(--td-btn-icon-border-radius);
     background-color: var(--td-primary-color);

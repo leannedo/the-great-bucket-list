@@ -12,13 +12,16 @@
   /* #TYPOGRAPHY */
   --td-font-family: Montserrat;
   --td-page-title-font-size: 50px;
+  --td-page-content-font-size: 1rem;
+  --td-font-weight-600: 600;
+  --td-font-weight-700: 700;
 
   /* #LAYOUT */
   --td-app-max-width: 768px;
 
   /* #BUTTON */
-  --td-btn-font-weight: 600;
-  --td-btn-font-size: 1rem;
+  --td-btn-font-weight: var(--td-font-weight-600);
+  --td-btn-font-size: var(--td-page-content-font-size);
   --td-btn-min-width: 254px;
   --td-btn-border-radius: 27px;
   --td-btn-icon-width: 35px;
