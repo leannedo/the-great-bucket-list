@@ -9,9 +9,9 @@ import Modal from "../index";
 // Styling
 import "./CategorySelectionModal.scss";
 
-const CategorySelectionModal = ({}) => {
+const CategorySelectionModal = ({ className }) => {
   return (
-    <Modal className="td-category-selection-modal">
+    <Modal className={`td-category-selection-modal ${className}`}>
       <CategoryList />
     </Modal>
   );

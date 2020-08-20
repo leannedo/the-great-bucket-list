@@ -9,6 +9,7 @@
   font-size: var(--td-page-content-font-size);
   font-weight: var(--td-font-weight-700);
   padding: 10px 17px;
-  height: 38px;
   cursor: pointer;
+  user-select: none;
 }
+

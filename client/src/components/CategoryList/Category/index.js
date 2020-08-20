@@ -7,7 +7,9 @@ import "./Category.scss";
 
 const Category = ({ className, name, colorIndicator }) => {
   const [isHover, setIsHover] = useState(false);
+
   const style = { boxShadow: `inset 7px 0 0 ${colorIndicator}` };
+
   const hoverStyle = {
     backgroundColor: `${colorIndicator}`,
     color: "var(--td-white-color)",

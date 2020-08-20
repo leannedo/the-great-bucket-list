@@ -9,9 +9,15 @@ import Button from "../../Button";
 // Styling
 import "./ConfirmModal.scss";
 
-const ConfirmModal = ({ okHandler, cancelHander, okText, cancelText }) => {
+const ConfirmModal = ({
+  className,
+  okHandler,
+  cancelHander,
+  okText,
+  cancelText,
+}) => {
   return (
-    <Modal>
+    <Modal className={className}>
       <div className="td-confirm-modal">
         <Button onClick={okHandler} type="danger">
           {okText}

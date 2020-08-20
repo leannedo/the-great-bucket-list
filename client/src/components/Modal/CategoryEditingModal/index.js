@@ -16,7 +16,7 @@ import CategoryData from "./../../CategoryList/data";
 
 const CategoryEditingModal = ({ className }) => {
   return (
-    <Modal className="td-category-creation-modal">
+    <Modal className={`td-category-creation-modal ${className}`}>
       <Input label="category name" value="Homework" name="text" />
       <div className="td-color-display-wrapper">
         <div className="td-color-display-label">CATEGORY COLOR</div>

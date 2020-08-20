@@ -31,7 +31,6 @@ Input.defaultProps = {
   onChange: () => {},
   name: "",
   label: "",
-  value: "",
 };
 
 Input.propTypes = {
