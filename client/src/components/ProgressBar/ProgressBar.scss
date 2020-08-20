@@ -1,0 +1,35 @@
+/**
+ * ProgressBar
+ *
+ * Basic styling for ProgressBar's component
+ */
+
+.td-progress-bar-wrapper {
+  height: 50px;
+  display: flex;
+  position: relative;
+
+
+  .td-progress-fill {
+    height: 100%;
+    background-color: var(--td-primary-color);
+  }
+
+  .td-progress-text-wrapper {
+    position: relative;
+    width: 180px;
+    padding-left: 15px;
+
+    .td-progress-text {
+      height: 100%;
+      font-family: var(--td-font-family);
+      font-weight: var(--td-font-weight-600);
+      font-size: 20px;
+      color: var(--td-tertiary-color);
+      padding-top: 13px;
+      padding-bottom: 13px;
+    }
+  }
+
+
+}

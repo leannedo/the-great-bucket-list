@@ -1,0 +1,40 @@
+/**
+ * FilterBar
+ *
+ * Basic styling for FilterBar's component
+ */
+
+.td-filter-bar-wrapper {
+  display: flex;
+  padding-left: 45px;
+  padding-right: 45px;
+  justify-content: space-between;
+
+  .td-filter-bar-count {
+    font-family: var(--td-font-family);
+    font-size: 20px;
+    font-weight: var(--td-font-weight-600);
+    color: var(--td-primary-color);
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .td-filter-bar-filter-wrapper {
+    display: flex;
+    flex-direction: row;
+
+    .filter {
+      font-family: var(--td-font-family);
+      font-weight: 700;
+      color: var(--td-primary-color);
+      font-size: 15px;
+      padding: 15px;
+      user-select: none;
+    }
+
+    .filter.active {
+      background-color: var(--td-primary-color);
+      color: var(--td-white-color);
+    }
+  }
+}
