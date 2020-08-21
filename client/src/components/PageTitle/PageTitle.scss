@@ -1,9 +1,29 @@
+/**
+ * PageTitle
+ *
+ * Basic styling for PageTitle's component
+ */
+
 .td-page-title {
     h1 {
-      font-size: var(--td-page-title-font-size);
+      font-size: var(--td-page-title-font-size-default);
       font-weight: bold;
       color: var(--td-secondary-color);
       margin-top: 0;
       margin-bottom: 0;
     }
+}
+
+/* RESPONSIVE STYLING FOR PAGE TITLE */
+
+@media screen and (max-width: 768px) {
+  .td-page-title {
+    h1 {
+      font-size: var(--td-page-title-font-size-responsive);
+      font-weight: bold;
+      color: var(--td-secondary-color);
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
 }

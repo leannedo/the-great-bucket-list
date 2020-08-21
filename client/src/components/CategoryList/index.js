@@ -16,14 +16,14 @@ const CategoryList = ({ className }) => {
   const [initialData, setInitialData] = useState(CategoryData);
 
   return (
-    <div className={`td-category-list-wrapper ${className}`}>
+    <div className={className}>
       <div className="td-category-list">
         {initialData.map((el, id) => (
           <Category key={id} {...el} />
         ))}
-      </div>
-      <div className="td-category-add-btn">
-        <Icon name="plus-solid" />
+        <div className="td-category-add-btn">
+          <Icon name="plus-solid" />
+        </div>
       </div>
     </div>
   );
@@ -34,6 +34,7 @@ CategoryList.defaultProps = {
 };
 
 CategoryList.propTypes = {
+  /** component's classname */
   className: PropTypes.string,
 };
 

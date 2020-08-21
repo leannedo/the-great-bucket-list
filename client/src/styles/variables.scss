@@ -11,7 +11,8 @@
 
   /* #TYPOGRAPHY */
   --td-font-family: Montserrat;
-  --td-page-title-font-size: 50px;
+  --td-page-title-font-size-default: 50px;
+  --td-page-title-font-size-responsive: 30px;
   --td-page-content-font-size: 1rem;
   --td-font-weight-600: 600;
   --td-font-weight-700: 700;
@@ -46,4 +47,6 @@
   --td-modal-min-height: 325px;
   --td-modal-border-radius: 40px;
   --td-modal-min-height: 325px;
+
+
 }

@@ -23,8 +23,11 @@ PageTitle.defaultProps = {
 };
 
 PageTitle.propTypes = {
-  title: PropTypes.string,
+  /** component's classname */
   className: PropTypes.string,
+
+  /** page's title */
+  title: PropTypes.string,
 };
 
 export default PageTitle;

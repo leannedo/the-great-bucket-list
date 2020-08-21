@@ -29,7 +29,10 @@ ProgressBar.defaultProps = {
 };
 
 ProgressBar.propTypes = {
+  /** component's classname */
   className: PropTypes.string,
+
+  /** percent of completion */
   progress: PropTypes.number,
 };
 

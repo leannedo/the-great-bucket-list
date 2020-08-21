@@ -17,7 +17,7 @@ const Dashboard = () => (
     <div className="td-header-wrapper">
       <div className="td-header">
         <PageTitle title="To-do list" className="td-page-title" />
-        <CategoryList />
+        <CategoryList className="td-category-list-wrapper" />
         <ProgressBar className="td-progress-bar" progress={40} />
       </div>
     </div>

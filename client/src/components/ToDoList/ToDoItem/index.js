@@ -2,6 +2,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
+// Component
+import Icon from "../../Icon";
+
 // Styling
 import "./ToDoItem.scss";
 
@@ -24,6 +27,7 @@ const ToDoItem = ({ className, content, id, colorIndicator }) => {
       <label htmlFor={id} className="td-todo-item-text">
         {content}
       </label>
+      <Icon className="td-todo-icon" name="trash-solid" />
     </div>
   );
 };

@@ -12,42 +12,42 @@
 .td-color-display-wrapper {
   margin-top: 40px;
   margin-bottom: 20px;
+}
 
-  .td-color-display-label {
-    font-size: 8px;
-    color: var(--td-tertiary-color);
-    font-weight: var(--td-font-weight-700);
-    margin-bottom: 8px;
-  }
+.td-color-display-label {
+  font-size: 8px;
+  color: var(--td-tertiary-color);
+  font-weight: var(--td-font-weight-700);
+  margin-bottom: 8px;
+}
 
-  .td-color-display {
-    background-color: var(--td-accent-blue);
-    width: 111px;
-    height: 25px;
-  }
+.td-color-display {
+  background-color: var(--td-accent-blue);
+  width: 111px;
+  height: 25px;
 }
 
 .td-color-selector {
   display: flex;
   flex-direction: row;
+}
 
-  .td-color-block-wrapper {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
+.td-color-block-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 
-    .td-color-block {
-      width: 25px;
-      height: 25px;
-      margin-right: 18px;
-    }
+  .td-color-block {
+    width: 25px;
+    height: 25px;
+    margin-right: 18px;
   }
+}
 
-  .td-input-wrapper-modal-context {
-    position: relative;
-  }
+.td-input-wrapper-modal-context {
+  position: relative;
 
-  .td-input-wrapper-modal-context::before {
+  &:before {
     content: "#";
     position: absolute;
     font-size: var(--td-page-content-font-size);
@@ -57,11 +57,9 @@
 
   .td-input {
     width: 78px;
-    padding-left: 15px
+    padding-left: 15px;
   }
 }
-
-
 
 .td-action-icon-wrapper {
   margin-top: 43px;
@@ -69,3 +67,5 @@
   align-items: flex-end;
   justify-content: space-between;
 }
+
+

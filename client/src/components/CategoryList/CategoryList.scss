@@ -4,24 +4,32 @@
  * Basic styling for category list's component
  */
 
-.td-category-list-wrapper {
-  display: flex;
-  flex-direction: row;
-}
-
 .td-category-list {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 
-  .td-category {
-    margin-right: 13px;
+  > * {
+    margin-bottom: 15px;
   }
+}
+
+.td-category {
+  margin-right: 13px;
 }
 
 .td-category-add-btn {
   cursor: pointer;
-  margin-left: 18px;
+  margin-left: 5px;
   display: flex;
   align-items: center;
 }
 
+/* RESPONSIVE STYLING FOR CATEGORY LIST */
+
+@media screen and (max-width: 768px) {
+  .td-category-add-btn {
+    cursor: pointer;
+    margin-left: 0;
+  }
+}

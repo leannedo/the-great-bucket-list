@@ -9,14 +9,48 @@
   padding-left: 45px;
   padding-right: 45px;
   justify-content: space-between;
+}
+
+.td-filter-bar-count {
+  font-family: var(--td-font-family);
+  font-size: 20px;
+  font-weight: var(--td-font-weight-600);
+  color: var(--td-primary-color);
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.td-filter-bar-filter-wrapper {
+  display: flex;
+  flex-direction: row;
+
+  .filter {
+    font-family: var(--td-font-family);
+    font-weight: 700;
+    color: var(--td-primary-color);
+    font-size: 15px;
+    padding: 15px;
+    user-select: none;
+  }
+
+  .filter.active {
+    background-color: var(--td-primary-color);
+    color: var(--td-white-color);
+  }
+}
+
+/* RESPONSIVE STYLING FOR FILTER BAR */
+
+@media screen and (max-width: 768px) {
+  .td-filter-bar-wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 
   .td-filter-bar-count {
-    font-family: var(--td-font-family);
-    font-size: 20px;
-    font-weight: var(--td-font-weight-600);
-    color: var(--td-primary-color);
-    padding-top: 12px;
-    padding-bottom: 12px;
+    font-size: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
   }
 
   .td-filter-bar-filter-wrapper {
@@ -24,17 +58,9 @@
     flex-direction: row;
 
     .filter {
-      font-family: var(--td-font-family);
-      font-weight: 700;
-      color: var(--td-primary-color);
-      font-size: 15px;
-      padding: 15px;
+      font-size: 8px;
+      padding: 10px;
       user-select: none;
-    }
-
-    .filter.active {
-      background-color: var(--td-primary-color);
-      color: var(--td-white-color);
     }
   }
 }

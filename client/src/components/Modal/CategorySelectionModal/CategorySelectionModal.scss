@@ -7,13 +7,6 @@
 .td-category-selection-modal {
   display: flex;
   flex-direction: column;
-}
-
-.td-category-selection-modal {
-  .td-category-list-wrapper {
-    flex-direction: column;
-    margin-bottom: 0;
-  }
 
   .td-category-list {
     flex-direction: column;
@@ -30,3 +23,5 @@
     margin-left: 0;
   }
 }
+
+

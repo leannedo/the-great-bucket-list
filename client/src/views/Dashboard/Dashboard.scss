@@ -9,9 +9,14 @@
   position: relative;
 }
 
+.td-header-wrapper {
+  box-shadow: 0px 5px 20px #00000029;
+}
+
 .td-header {
   max-width: var(--td-app-max-width);
   margin: auto;
+  padding-top: 56px;
 
   > * {
     width: 100%;
@@ -22,10 +27,6 @@
 .td-bottom-bar {
   max-width: var(--td-app-max-width);
   margin: auto;
-}
-
-.td-header {
-  padding-top: 56px;
 }
 
 .td-page-title {
@@ -50,10 +51,6 @@
   }
 }
 
-.td-header-wrapper {
-  box-shadow: 0px 5px 20px #00000029;
-}
-
 .td-bottom-bar {
   left: 0;
   right: 0;
@@ -69,4 +66,28 @@
   height: 50px;
   box-shadow: 0px 0px 20px #00000029;
   width: 100%;
+}
+
+/* RESPONSIVE STYLING FOR DASHBOARD */
+
+@media screen and (max-width: 768px) {
+  .td-header {
+    padding-top: 40px;
+  }
+
+  .td-page-title,
+  .td-category-list-wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 20px;
+  }
+
+  .td-body {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .td-filter-bar {
+    height: 30px;
+  }
 }
