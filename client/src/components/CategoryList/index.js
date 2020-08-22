@@ -9,20 +9,25 @@ import "./CategoryList.scss";
 import Category from "./Category";
 import Icon from "./../Icon/index";
 
-// Initial Data
-import CategoryData from "./data";
+// Hooks
+import { useModal } from "../../modules/modal/contexts/ModalContext";
+import { useCategory } from "../../modules/category/contexts/CategoryContext";
 
 const CategoryList = ({ className }) => {
-  const [initialData, setInitialData] = useState(CategoryData);
+  const { showModal, categoryEditingModal } = useModal();
+  const { initialCategoryData } = useCategory();
 
   return (
     <div className={className}>
       <div className="td-category-list">
-        {initialData.map((el, id) => (
+        {initialCategoryData.map((el, id) => (
           <Category key={id} {...el} />
         ))}
         <div className="td-category-add-btn">
-          <Icon name="plus-solid" />
+          <Icon
+            onClick={() => showModal({ key: categoryEditingModal.key })}
+            name="plus-solid"
+          />
         </div>
       </div>
     </div>

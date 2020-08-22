@@ -41,6 +41,10 @@
   height: 50px;
 }
 
+.input-container {
+  position: relative;
+}
+
 .td-input-wrapper {
   margin-top: 50px;
   margin-bottom: 46px;
@@ -48,6 +52,7 @@
 
   .td-input {
     width: 100%;
+    padding-left: 70px;
   }
 }
 

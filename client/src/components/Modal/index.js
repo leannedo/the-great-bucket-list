@@ -6,11 +6,20 @@ import PropTypes from "prop-types";
 import "./Modal.scss";
 import Backdrop from "../Backdrop";
 
-const Modal = ({ className, children }) => {
+// Hooks
+import { useModal } from "../../modules/modal/contexts/ModalContext";
+
+const Modal = ({ className, children, modalKey, visible }) => {
+  const { closeModal } = useModal();
+
+  const closeModalHandler = () => {
+    closeModal({ key: modalKey });
+  };
+
   return (
-    <div className="td-modal-wrapper">
+    <div className={`td-modal-wrapper ${visible ? "show" : "hide"}`}>
       <div className={`td-modal ${className}`}>{children}</div>
-      <Backdrop />
+      <Backdrop closeModalHandler={closeModalHandler} modalVisible={visible} />
     </div>
   );
 };

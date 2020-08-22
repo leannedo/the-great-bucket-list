@@ -9,25 +9,28 @@ import Button from "../../Button";
 // Styling
 import "./ConfirmModal.scss";
 
-const ConfirmModal = ({
-  className,
-  okHandler,
-  cancelHander,
-  okText,
-  cancelText,
-}) => {
+// Hooks
+import { useModal } from "../../../modules/modal/contexts/ModalContext";
+
+const ConfirmModal = ({ className, okHandler, cancelHandler }) => {
+  const { confirmModal, closeModal } = useModal();
+
   return (
-    <Modal className={className}>
+    <Modal
+      className={className}
+      visible={confirmModal.isVisible}
+      modalKey={confirmModal.key}
+    >
       <div className="td-confirm-modal">
         <Button onClick={okHandler} type="danger">
-          {okText}
+          {confirmModal.props.okText}
         </Button>
         <Button
-          onClick={cancelHander}
+          onClick={() => closeModal({ key: confirmModal.key })}
           className="confirm-modal-cancel-btn"
           type="text"
         >
-          {cancelText}
+          {confirmModal.props.cancelText}
         </Button>
       </div>
     </Modal>

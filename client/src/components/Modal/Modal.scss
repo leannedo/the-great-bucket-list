@@ -14,9 +14,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  &.hide {
+    display: none;
+  }
+
+  &.show {
+    display: flex;
+
+    /** Avoid stacked backdrops leading to bad UI in case of stacked modals */
+    + .td-modal-wrapper.show {
+      .td-backdrop {
+        backdrop-filter: blur(0);
+      }
+    }
+  }
 }
 
-.td-modal {
+.td-modal-wrapper.show .td-modal {
   position: relative;
   z-index: 1000;
   border-radius: var(--td-modal-border-radius);

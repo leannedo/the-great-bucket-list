@@ -14,9 +14,31 @@ import "./CategoryEditingModal.scss";
 // Data
 import CategoryData from "./../../CategoryList/data";
 
+// Context
+import { useModal } from "../../../modules/modal/contexts/ModalContext";
+
 const CategoryEditingModal = ({ className }) => {
+  const {
+    categoryEditingModal,
+    closeModal,
+    showModal,
+    confirmModal,
+  } = useModal();
+
+  const toggleModalHandler = () => {
+    // stack modal
+    showModal({
+      key: confirmModal.key,
+      props: { okText: "Delete this category?", cancelText: "Cancel" },
+    });
+  };
+
   return (
-    <Modal className={`td-category-creation-modal ${className}`}>
+    <Modal
+      modalKey={categoryEditingModal.key}
+      visible={categoryEditingModal.isVisible}
+      className={`td-category-creation-modal ${className}`}
+    >
       <Input label="category name" value="Homework" name="text" />
       <div className="td-color-display-wrapper">
         <div className="td-color-display-label">CATEGORY COLOR</div>
@@ -39,7 +61,7 @@ const CategoryEditingModal = ({ className }) => {
         </div>
       </div>
       <div className="td-action-icon-wrapper">
-        <Icon name="trash-solid" />
+        <Icon onClick={toggleModalHandler} name="trash-solid" />
         <Button type="icon">
           <Icon name="check-solid" />
         </Button>

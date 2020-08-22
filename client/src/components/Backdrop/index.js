@@ -5,8 +5,10 @@ import PropTypes from "prop-types";
 // Styling
 import "./Backdrop.scss";
 
-const Backdrop = ({ className, onClick }) => {
-  return <div onClick={onClick} className={`td-backdrop ${className}`} />;
+const Backdrop = ({ className, closeModalHandler }) => {
+  return (
+    <div onClick={closeModalHandler} className={`td-backdrop ${className}`} />
+  );
 };
 
 Backdrop.defaultProps = {

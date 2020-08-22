@@ -1,15 +1,17 @@
 import React from "react";
 import Layout from "./layout/index";
 import Dashboard from "./views/Dashboard";
-import CategorySelectionModal from "./components/Modal/CategorySelectionModal";
-import Input from "./components/Input";
-import CategoryEditingModal from "./components/Modal/CategoryEditingModal";
-import ConfirmModal from "./components/Modal/ConfirmModal";
+import ModalProvider from "./modules/modal/contexts/ModalContext";
+import CategoryProvider from "./modules/category/contexts/CategoryContext";
 
 function App() {
   return (
     <Layout>
-      <Dashboard />
+      <ModalProvider>
+        <CategoryProvider>
+          <Dashboard />
+        </CategoryProvider>
+      </ModalProvider>
     </Layout>
   );
 }

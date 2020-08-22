@@ -73,7 +73,6 @@ $left: 15px;
   font-family: var(--td-font-family);
   font-weight: 500;
   font-size: var(--td-page-content-font-size);
-  cursor: pointer;
   position: relative;
   margin-right: $right;
 
@@ -88,4 +87,8 @@ $left: 15px;
     transform-origin: 0 0;
     transform: scaleX(0);
   }
+}
+
+.td-todo-icon {
+  cursor: pointer;
 }

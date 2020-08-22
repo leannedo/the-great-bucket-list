@@ -1,0 +1,14 @@
+/**
+ * Dashboard
+ *
+ * Basic styling for dashboard's view
+ */
+
+.input-checkbox {
+  min-width: 20px;
+  min-height: 20px;
+  border: solid 3px var(--td-tertiary-color);
+  position: absolute;
+  left: 35px;
+  cursor: pointer;
+}

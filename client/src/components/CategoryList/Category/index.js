@@ -2,10 +2,15 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
+// Hooks
+import { useModal } from "../../../modules/modal/contexts/ModalContext";
+
 // Styling
 import "./Category.scss";
 
 const Category = ({ className, name, colorIndicator }) => {
+  const { categoryEditingModal, showModal } = useModal();
+
   const [isHover, setIsHover] = useState(false);
 
   const style = { boxShadow: `inset 7px 0 0 ${colorIndicator}` };
@@ -20,14 +25,15 @@ const Category = ({ className, name, colorIndicator }) => {
   };
 
   return (
-    <div
+    <a
       className={`td-category ${className}`}
       onMouseEnter={toggleHoverHandler}
       onMouseLeave={toggleHoverHandler}
+      onClick={() => showModal({ key: categoryEditingModal.key })}
       style={isHover ? hoverStyle : style}
     >
       {name}
-    </div>
+    </a>
   );
 };
 

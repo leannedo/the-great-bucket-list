@@ -5,13 +5,13 @@ import PropTypes from "prop-types";
 // Styling
 import "./FilterBar.scss";
 
-const FilterBar = ({ className }) => {
+const FilterBar = ({ count, className }) => {
   const [active, setActive] = useState("ALL");
   const filterAction = ["ALL", "ONGOING", "COMPLETED"];
 
   return (
     <div className={`td-filter-bar-wrapper ${className}`}>
-      <div className="td-filter-bar-count">8 tasks left</div>
+      <div className="td-filter-bar-count">{count} tasks left</div>
       <div className="td-filter-bar-filter-wrapper">
         {filterAction.map((action, id) => (
           <div
