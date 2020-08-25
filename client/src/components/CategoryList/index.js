@@ -13,19 +13,28 @@ import Icon from "./../Icon/index";
 import { useModal } from "../../modules/modal/contexts/ModalContext";
 import { useCategory } from "../../modules/category/contexts/CategoryContext";
 
-const CategoryList = ({ className }) => {
+const CategoryList = ({ className, onCategoryClick }) => {
   const { showModal, categoryEditingModal } = useModal();
-  const { initialCategoryData } = useCategory();
+  const { categories } = useCategory();
 
   return (
     <div className={className}>
       <div className="td-category-list">
-        {initialCategoryData.map((el, id) => (
-          <Category key={id} {...el} />
+        {categories.map((el, id) => (
+          <Category
+            key={id}
+            category={el}
+            onClick={(category) => onCategoryClick(category)}
+          />
         ))}
         <div className="td-category-add-btn">
           <Icon
-            onClick={() => showModal({ key: categoryEditingModal.key })}
+            onClick={() =>
+              showModal({
+                key: categoryEditingModal.key,
+                props: { category: { name: "", colorIndicator: "" } },
+              })
+            }
             name="plus-solid"
           />
         </div>
@@ -41,6 +50,9 @@ CategoryList.defaultProps = {
 CategoryList.propTypes = {
   /** component's classname */
   className: PropTypes.string,
+
+  /** function triggered by category click */
+  onCategoryClick: PropTypes.func,
 };
 
 export default CategoryList;

@@ -2,21 +2,16 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-// Hooks
-import { useModal } from "../../../modules/modal/contexts/ModalContext";
-
 // Styling
 import "./Category.scss";
 
-const Category = ({ className, name, colorIndicator }) => {
-  const { categoryEditingModal, showModal } = useModal();
-
+const Category = ({ className, category, onClick }) => {
   const [isHover, setIsHover] = useState(false);
 
-  const style = { boxShadow: `inset 7px 0 0 ${colorIndicator}` };
+  const style = { boxShadow: `inset 7px 0 0 ${category.colorIndicator}` };
 
   const hoverStyle = {
-    backgroundColor: `${colorIndicator}`,
+    backgroundColor: `${category.colorIndicator}`,
     color: "var(--td-white-color)",
   };
 
@@ -29,10 +24,10 @@ const Category = ({ className, name, colorIndicator }) => {
       className={`td-category ${className}`}
       onMouseEnter={toggleHoverHandler}
       onMouseLeave={toggleHoverHandler}
-      onClick={() => showModal({ key: categoryEditingModal.key })}
       style={isHover ? hoverStyle : style}
+      onClick={() => onClick(category)}
     >
-      {name}
+      {category.name}
     </a>
   );
 };
