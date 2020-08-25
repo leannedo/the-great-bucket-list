@@ -25,10 +25,14 @@
   &:focus::placeholder {
     color: transparent;
   }
-}
 
-.td-input:focus {
-  border-bottom: 2px solid var(--td-secondary-color)
+  :focus {
+    border-color: var(--td-secondary-color)
+  }
+
+  &.invalid {
+    border-color: var(--td-accent-red);
+  }
 }
 
 .td-label {

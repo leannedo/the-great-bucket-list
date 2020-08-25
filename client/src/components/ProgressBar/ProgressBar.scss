@@ -17,13 +17,12 @@
 
 .td-progress-text-wrapper {
   position: relative;
-  width: 180px;
+  min-width: 180px;
   padding-left: 15px;
 }
 
 .td-progress-text {
   height: 100%;
-  font-family: var(--td-font-family);
   font-weight: var(--td-font-weight-600);
   font-size: 20px;
   color: var(--td-tertiary-color);
@@ -48,7 +47,6 @@
   .td-progress-text-wrapper {
     .td-progress-text {
       height: 100%;
-      font-family: var(--td-font-family);
       font-weight: var(--td-font-weight-600);
       font-size: var(--td-page-content-font-size);
       color: var(--td-tertiary-color);

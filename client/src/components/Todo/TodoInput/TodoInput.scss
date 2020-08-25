@@ -1,0 +1,33 @@
+/**
+ * TodoInput
+ *
+ * Basic styling for TodoInput's component
+ */
+
+.input-container {
+  position: relative;
+}
+
+.td-input-wrapper {
+  margin-top: 50px;
+  margin-bottom: 46px;
+  width: 100%;
+
+  .td-input {
+    width: 100%;
+    padding-left: 70px;
+  }
+}
+
+.input-checkbox {
+  min-width: 20px;
+  min-height: 20px;
+  border: solid 3px var(--td-tertiary-color);
+  position: absolute;
+  left: 35px;
+  cursor: pointer;
+
+  &.invalid {
+    border-color: var(--td-accent-red);
+  }
+}

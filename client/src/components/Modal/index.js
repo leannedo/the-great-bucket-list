@@ -12,6 +12,10 @@ import { useModal } from "../../modules/modal/contexts/ModalContext";
 const Modal = ({ className, children, modalKey, visible }) => {
   const { closeModal } = useModal();
 
+  /**
+   * Close the selected modal
+   * @param {event} e
+   */
   const closeModalHandler = () => {
     closeModal({ key: modalKey });
   };
@@ -26,6 +30,8 @@ const Modal = ({ className, children, modalKey, visible }) => {
 
 Modal.defaultProps = {
   className: "",
+  modalKey: "",
+  visible: false,
 };
 
 Modal.propTypes = {
@@ -34,6 +40,12 @@ Modal.propTypes = {
 
   /** component's children */
   children: PropTypes.node,
+
+  /** modal's identify key */
+  modalKey: PropTypes.string,
+
+  /** modal's visibility state */
+  visible: PropTypes.bool,
 };
 
 export default Modal;

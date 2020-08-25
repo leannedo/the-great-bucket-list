@@ -5,9 +5,9 @@
  */
 
 .td-btn {
+  font-family: var(--td-font-family);
   padding: 16px;
   color: var(--td-white-color);
-  font-family: var(--td-font-family);
   font-weight: var(--td-btn-font-weight);
   font-size: var(--td-btn-font-size);
   border-radius: var(--td-btn-border-radius);
@@ -17,6 +17,11 @@
   border-style: initial;
   cursor: pointer;
   user-select: none;
+
+  &:disabled {
+    background-color: var(--td-tertiary-color);
+    cursor: not-allowed;
+  }
 }
 
 .btn- {

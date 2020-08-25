@@ -1,4 +1,11 @@
 export default [
+  /**
+   * @typedef {Object} TodoEntity
+   * @property {string} id - how todo is distinguished
+   * @property {string} content - todo's content
+   * @property {string} categoryId - todo's category which is represented by category's color
+   * @property {boolean} completed - state of completion in each todo
+   */
   {
     id: "98379dd3-f9aa-492e-9c15-74d24d2bd8bc",
     content: "Fix issues with order cancellation and refund",
@@ -28,7 +35,7 @@ export default [
     id: "ca9314ab-19d7-463d-a89b-b91a8305f700",
     content:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-    categoryId: "25fc882a-56d0-4aa5-b7f2-2e9d2479c6ad",
+    categoryId: "ceaa5efc-b400-41d0-9d61-af8cc842db20",
     completed: false,
   },
 ];

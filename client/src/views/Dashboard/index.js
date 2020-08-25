@@ -8,33 +8,46 @@ import "./Dashboard.scss";
 import PageTitle from "../../components/PageTitle";
 import CategoryList from "../../components/CategoryList";
 import ProgressBar from "../../components/ProgressBar";
-import Input from "../../components/Input";
-import InputCheckbox from "../../components/Input/InputCheckbox";
-import ToDoList from "../../components/ToDoList";
+import ToDoList from "../../components/Todo/TodoList";
+import TodoInput from "../../components/Todo/TodoInput/TodoInput";
 import FilterBar from "../../components/FilterBar";
 import CategorySelectionModal from "../../components/Modal/CategorySelectionModal";
 import CategoryEditingModal from "../../components/Modal/CategoryEditingModal";
 import ConfirmModal from "../../components/Modal/ConfirmModal";
 
+// Hooks
+import { useModal } from "../../modules/modal/contexts/ModalContext";
+import { useTodo } from "../../modules/todo/contexts/TodoContext";
+
 const Dashboard = () => {
+  const { showModal, categoryEditingModal } = useModal();
+  const { completedPercent } = useTodo();
+
+  /**
+   * Trigger showModal function from useModal
+   * @param {Object} category
+   */
+  const onCategoryClick = (category) => {
+    showModal({ key: categoryEditingModal.key, props: { category } });
+  };
+
   return (
     <div className="td-dashboard">
       <div className="td-header-wrapper">
         <div className="td-header">
           <PageTitle title="To-do list" className="td-page-title" />
-          <CategoryList className="td-category-list-wrapper" />
-          <ProgressBar className="td-progress-bar" progress={40} />
+          <CategoryList
+            className="td-category-list-wrapper"
+            onCategoryClick={(category) => onCategoryClick(category)}
+          />
+          <ProgressBar
+            className="td-progress-bar"
+            progress={completedPercent}
+          />
         </div>
       </div>
       <div className="td-body">
-        <div className="input-container">
-          <InputCheckbox />
-          <Input
-            className="td-input-wrapper"
-            placeholder="What's needed to be done?"
-            name="text"
-          />
-        </div>
+        <TodoInput />
         <ToDoList className="td-todo-list" />
       </div>
       <div className="td-bottom-bar">

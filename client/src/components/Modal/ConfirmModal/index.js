@@ -12,25 +12,51 @@ import "./ConfirmModal.scss";
 // Hooks
 import { useModal } from "../../../modules/modal/contexts/ModalContext";
 
-const ConfirmModal = ({ className, okHandler, cancelHandler }) => {
+const ConfirmModal = (props) => {
   const { confirmModal, closeModal } = useModal();
 
+  const {
+    props: modalProps,
+    isVisible: modalVisible,
+    key: modalKey,
+  } = confirmModal;
+
+  const mergedProps = {
+    ...props,
+    ...modalProps,
+    ...{ isVisible: modalVisible, key: modalKey },
+  };
+
+  const {
+    className,
+    okText,
+    okHandler,
+    cancelText,
+    cancelHandler,
+    isVisible,
+    key,
+  } = mergedProps;
+
+  /**
+   * Close modal and trigger additional handler from modal's props
+   */
+  const onModalClose = () => {
+    cancelHandler();
+    closeModal({ key: key });
+  };
+
   return (
-    <Modal
-      className={className}
-      visible={confirmModal.isVisible}
-      modalKey={confirmModal.key}
-    >
+    <Modal className={className} visible={isVisible} modalKey={key}>
       <div className="td-confirm-modal">
         <Button onClick={okHandler} type="danger">
-          {confirmModal.props.okText}
+          {okText}
         </Button>
         <Button
-          onClick={() => closeModal({ key: confirmModal.key })}
+          onClick={onModalClose}
           className="confirm-modal-cancel-btn"
           type="text"
         >
-          {confirmModal.props.cancelText}
+          {cancelText}
         </Button>
       </div>
     </Modal>
@@ -43,6 +69,8 @@ ConfirmModal.defaultProps = {
   cancelText: "",
   okHandler: () => {},
   cancelHandler: () => {},
+  isVisible: false,
+  key: "",
 };
 
 ConfirmModal.propTypes = {
@@ -60,6 +88,12 @@ ConfirmModal.propTypes = {
 
   /** cancel text's action */
   okHandler: PropTypes.func,
+
+  /** modal visibility state */
+  isVisible: PropTypes.bool,
+
+  /** modal identified key */
+  key: PropTypes.string,
 };
 
 export default ConfirmModal;

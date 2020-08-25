@@ -1,6 +1,13 @@
-/** modalReducer to manage state change in modal */
+/**
+ * modalReducer receives 2 params: state & action
+ * @param {Object} currentState - Initial state to be computed
+ * @param {Object} action
+ * @param {string} action.type - Action type, including "SHOW_MODAL", "CLOSE_MODAL", "CLOSE_ALL_MODALS"
+ * @param {Object} action.payload - Extra data
+ * @returns {Object} - Return computed state
+ */
 
-const modalReducer = (currentState, { type, payload }) => {
+const modalReducer = (currentState, { type, payload = {} }) => {
   const { key, props } = payload;
   let state = { ...currentState };
 
@@ -19,6 +26,14 @@ const modalReducer = (currentState, { type, payload }) => {
     case "CLOSE_MODAL":
       for (const field in state) {
         if (state[field].key === key) {
+          state = { ...state, [field]: { ...state[field], isVisible: false } };
+        }
+      }
+      return state;
+
+    case "CLOSE_ALL_MODALS":
+      for (const field in state) {
+        if (state[field].isVisible === true) {
           state = { ...state, [field]: { ...state[field], isVisible: false } };
         }
       }

@@ -11,9 +11,19 @@ import "./CategorySelectionModal.scss";
 
 // Hooks
 import { useModal } from "../../../modules/modal/contexts/ModalContext";
+import { useCategory } from "../../../modules/category/contexts/CategoryContext";
 
 const CategorySelectionModal = ({ className }) => {
-  const { categorySelectionModal } = useModal();
+  const { categorySelectionModal, closeModal } = useModal();
+  const { selectCategory } = useCategory();
+
+  /**
+   * Save selected category and close modal
+   */
+  const onCategoryClick = (category) => {
+    selectCategory(category);
+    closeModal({ key: categorySelectionModal.key });
+  };
 
   return (
     <Modal
@@ -21,7 +31,7 @@ const CategorySelectionModal = ({ className }) => {
       visible={categorySelectionModal.isVisible}
       className={`td-category-selection-modal ${className}`}
     >
-      <CategoryList />
+      <CategoryList onCategoryClick={(category) => onCategoryClick(category)} />
     </Modal>
   );
 };

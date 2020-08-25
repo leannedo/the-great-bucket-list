@@ -5,7 +5,16 @@ import PropTypes from "prop-types";
 // Styling
 import "./Input.scss";
 
-const Input = ({ label, className, placeholder, name, onChange, value }) => {
+const Input = ({
+  label,
+  className,
+  placeholder,
+  name,
+  onChange,
+  value,
+  onKeyUpHandler,
+  isValid,
+}) => {
   return (
     <div className={className}>
       {label && (
@@ -15,11 +24,12 @@ const Input = ({ label, className, placeholder, name, onChange, value }) => {
       )}
       <input
         value={value}
-        className="td-input"
+        className={`td-input ${isValid === false ? "invalid" : ""}`}
         id={name}
         name={name}
         placeholder={placeholder}
-        onChange={onChange}
+        onChange={(e) => onChange(e.target.value)}
+        onKeyUp={onKeyUpHandler}
       />
     </div>
   );

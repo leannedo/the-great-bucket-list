@@ -17,6 +17,10 @@ $left: 15px;
   margin-bottom: $bottom;
   user-select: none;
   position: relative;
+
+  .td-todo-icon {
+    cursor: pointer;
+  }
 }
 
 .td-todo-item-input-checkbox {
@@ -70,7 +74,6 @@ $left: 15px;
 }
 
 .td-todo-item-text {
-  font-family: var(--td-font-family);
   font-weight: 500;
   font-size: var(--td-page-content-font-size);
   position: relative;
@@ -89,6 +92,4 @@ $left: 15px;
   }
 }
 
-.td-todo-icon {
-  cursor: pointer;
-}
+

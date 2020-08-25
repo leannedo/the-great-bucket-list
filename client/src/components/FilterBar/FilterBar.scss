@@ -12,7 +12,6 @@
 }
 
 .td-filter-bar-count {
-  font-family: var(--td-font-family);
   font-size: 20px;
   font-weight: var(--td-font-weight-600);
   color: var(--td-primary-color);
@@ -25,7 +24,6 @@
   flex-direction: row;
 
   .filter {
-    font-family: var(--td-font-family);
     font-weight: 700;
     color: var(--td-primary-color);
     font-size: 15px;

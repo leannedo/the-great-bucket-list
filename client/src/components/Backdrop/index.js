@@ -13,15 +13,15 @@ const Backdrop = ({ className, closeModalHandler }) => {
 
 Backdrop.defaultProps = {
   className: "",
-  onClick: () => {},
+  closeModalHandler: () => {},
 };
 
 Backdrop.propTypes = {
   /** component's classname*/
   className: PropTypes.string,
 
-  /** onClick handler*/
-  onClick: PropTypes.func,
+  /** close modal triggered by backdrop click */
+  closeModalHandler: PropTypes.func,
 };
 
 export default Backdrop;
