@@ -143,9 +143,8 @@ export const useCategoryEditing = () => {
     setCategory("");
   };
 
-  /** validate form = 2 inputs */
+  /** return form as valid based on valid state of color code and category name */
   const validateForm = () => {
-    console.log("form valid" + colorProp.isValid && categoryProp.isValid);
     return colorProp.isValid && categoryProp.isValid;
   };
 

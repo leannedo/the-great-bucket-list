@@ -5,6 +5,9 @@ import React, { useReducer, createContext, useContext, useEffect } from "react";
 import todoReducer from "../hooks/todoReducer";
 import { useFetch } from "../../../hooks/useFetch";
 
+// Async
+import { postTodo, putTodo, deleteTodo } from "../hooks/async";
+
 /** Initialize context */
 const TodoContext = createContext();
 
@@ -14,8 +17,8 @@ export const useTodo = () => useContext(TodoContext);
 const TodoHooks = ({ children }) => {
   /**
    * @typedef {Object} initialState
-   * @property {TodoEntity} todos
-   * @property {TodoEntity} filteredTodos
+   * @property {[]TodoEntity} todos
+   * @property {[]TodoEntity} filteredTodos
    * @property {number} uncompletedCount
    * @property {number} completedPercent
    * @property {string} currentFilterKey - key that represents current filter action ("FILTER_ALL", "FILTER_ONGOING", "FILTER_COMPLETED")
@@ -39,12 +42,64 @@ const TodoHooks = ({ children }) => {
     currentFilterKey,
   } = state;
 
+  /**
+   * Post todo to BE and dispatch action to reducer
+   * @param {TodoEntity} todo
+   *
+   * @typedef {Object} TodoEntity
+   * @property {string} id - how todo is distinguished
+   * @property {string} content - todo's content
+   * @property {string} categoryId - todo's category which is represented by category's color
+   * @property {boolean} completed - state of completion in each todo
+   */
+  const addTodo = (todo) => {
+    postTodo(todo, (resData) => {
+      if (resData) {
+        dispatch({ type: "ADD_TODO", payload: { todo: resData } });
+      }
+    });
+  };
+
+  /**
+   * dispatch action "TOGGLE_COMPLETE"
+   * @param {string} id - todo's id to toggle complete state
+   */
+  const toggleCompleteTodo = ({ id, completed }) => {
+    const updatedTodo = { id, completed };
+
+    putTodo(updatedTodo, (resData) => {
+      if (resData) {
+        dispatch({ type: "TOGGLE_COMPLETE", payload: { id, completed } });
+      }
+    });
+  };
+
+  /**
+   * dispatch action "DELETE_TODO"
+   * @param {string} id - todo'id to be removed
+   */
+  const deleteTodoItem = (id) => {
+    deleteTodo(id, (resData) => {
+      if (resData) {
+        dispatch({ type: "DELETE_TODO", payload: { id } });
+      }
+    });
+  };
+
+  /**
+   * dispatch action "FILTER_TODO"
+   * @param {string} filterKey - filter action that is triggered at the moment
+   */
+  const filterTodo = (filterKey) => {
+    dispatch({ type: filterKey });
+  };
+
   /** Hook to watch changes on todos */
   useEffect(() => {
     filterTodo(currentFilterKey);
   }, [todos]);
 
-  /** Set todos to state after fetching */
+  /** Set todos after fetching */
   const onTodosFetched = (fetchedTodos) => {
     if (fetchedTodos && fetchedTodos.length > 0) {
       dispatch({ type: "SET_TODOS", payload: { todos: fetchedTodos } });
@@ -58,39 +113,6 @@ const TodoHooks = ({ children }) => {
     callback: onTodosFetched,
   });
 
-  /**
-   * dispatch action "DELETE_TODO"
-   * @param {string} id - todo'id to be removed
-   */
-  const deleteTodo = (id) => {
-    dispatch({ type: "DELETE_TODO", payload: { id } });
-  };
-
-  /**
-   * dispatch action "TOGGLE_COMPLETE"
-   * @param {string} id - todo's id to toggle complete state
-   */
-  const toggleCompleteTodo = (id) => {
-    dispatch({ type: "TOGGLE_COMPLETE", payload: { id } });
-  };
-
-  /**
-   * dispatch action "ADD_TODO"
-   * @param {string} content
-   * @param {string} categoryId
-   */
-  const addTodo = ({ name, categoryId }) => {
-    dispatch({ type: "ADD_TODO", payload: { name, categoryId } });
-  };
-
-  /**
-   * dispatch action "FILTER_TODO"
-   * @param {string} filterKey - filter action that is triggered at the moment
-   */
-  const filterTodo = (filterKey) => {
-    dispatch({ type: filterKey });
-  };
-
   return (
     <TodoContext.Provider
       value={{
@@ -99,7 +121,7 @@ const TodoHooks = ({ children }) => {
         filteredTodos,
         uncompletedCount,
         completedPercent,
-        deleteTodo,
+        deleteTodoItem,
         toggleCompleteTodo,
         addTodo,
         filterTodo,

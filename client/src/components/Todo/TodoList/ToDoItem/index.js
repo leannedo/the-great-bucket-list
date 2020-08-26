@@ -14,7 +14,7 @@ import { useTodo } from "../../../../modules/todo/contexts/TodoContext";
 
 const ToDoItem = ({ className, name, id, colorIndicator, completed }) => {
   const { confirmModal, showModal, closeModal } = useModal();
-  const { deleteTodo, toggleCompleteTodo } = useTodo();
+  const { deleteTodoItem, toggleCompleteTodo } = useTodo();
 
   /** Initialize hover state for icon */
   const [isHover, setIsHover] = useState(false);
@@ -24,7 +24,7 @@ const ToDoItem = ({ className, name, id, colorIndicator, completed }) => {
    * @param {string} id
    */
   const deleteTodoHandler = (id) => {
-    deleteTodo(id);
+    deleteTodoItem(id);
     closeModal({ key: confirmModal.key });
   };
 
@@ -32,8 +32,9 @@ const ToDoItem = ({ className, name, id, colorIndicator, completed }) => {
    * Toggle completed state of todo
    * @param {string} id
    */
-  const completeTodo = (id) => {
-    toggleCompleteTodo(id);
+  const toggleCompletedState = (id) => {
+    const updatedCompletedState = !completed;
+    toggleCompleteTodo({ id, completed: updatedCompletedState });
   };
 
   return (
@@ -48,7 +49,7 @@ const ToDoItem = ({ className, name, id, colorIndicator, completed }) => {
         className="td-todo-item-input-checkbox"
         checked={completed}
       />
-      <span className="checked" onClick={() => completeTodo(id)} />
+      <span className="checked" onClick={() => toggleCompletedState(id)} />
       <span
         style={{ backgroundColor: `${colorIndicator}` }}
         className="td-todo-item-color-indicator"

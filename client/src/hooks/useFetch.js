@@ -1,3 +1,4 @@
+// Libraries
 import { useReducer, useEffect } from "react";
 import axios from "axios";
 
@@ -20,6 +21,13 @@ const fetchReducer = (state, { type, payload }) => {
   }
 };
 
+/**
+ * fetch utility
+ * @param {Object} config - { url, params, callback }
+ * @param {string} config.url - url endpoint
+ * @param {Object} config.params - query parameters
+ * @param {Object} config.callback - callback function when fetch success
+ */
 export const useFetch = ({ url, params, callback }) => {
   const [state, dispatch] = useReducer(fetchReducer, initialState);
 
@@ -31,6 +39,7 @@ export const useFetch = ({ url, params, callback }) => {
 
         const response = await axios({
           url: url,
+          method: "get",
           params: params,
         });
 

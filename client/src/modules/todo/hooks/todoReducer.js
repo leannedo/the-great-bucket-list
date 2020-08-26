@@ -1,6 +1,3 @@
-// Libraries
-import { v4 as uuidv4 } from "uuid";
-
 // Helper functions
 import { calculateCompletedPercent } from "./helpers";
 
@@ -36,10 +33,10 @@ const todoReducer = (currentState, { type, payload }) => {
         ),
       };
 
-    case "DELETE_TODO":
-      const { id: deletedId } = payload;
+    case "ADD_TODO":
+      const { todo: addedTodo } = payload;
 
-      updatedTodos = state.todos.filter((todo) => todo.id !== deletedId);
+      updatedTodos = [...state.todos, addedTodo];
       uncompletedCount = updatedTodos.filter((todo) => !todo.completed).length;
       completedCount = updatedTodos.length - uncompletedCount;
 
@@ -55,10 +52,10 @@ const todoReducer = (currentState, { type, payload }) => {
       };
 
     case "TOGGLE_COMPLETE":
-      const { id: completedId } = payload;
+      const { id: completedId, completed } = payload;
 
       updatedTodos = state.todos.map((todo) =>
-        todo.id === completedId ? { ...todo, completed: !todo.completed } : todo
+        todo.id === completedId ? { ...todo, completed } : todo
       );
       uncompletedCount = updatedTodos.filter((todo) => !todo.completed).length;
       completedCount = updatedTodos.length - uncompletedCount;
@@ -74,18 +71,10 @@ const todoReducer = (currentState, { type, payload }) => {
         ),
       };
 
-    case "ADD_TODO":
-      const { name, categoryId } = payload;
+    case "DELETE_TODO":
+      const { id: deletedId } = payload;
 
-      updatedTodos = [
-        ...state.todos,
-        {
-          id: uuidv4(),
-          name: name,
-          categoryId: categoryId,
-          completed: false,
-        },
-      ];
+      updatedTodos = state.todos.filter((todo) => todo.id !== deletedId);
       uncompletedCount = updatedTodos.filter((todo) => !todo.completed).length;
       completedCount = updatedTodos.length - uncompletedCount;
 

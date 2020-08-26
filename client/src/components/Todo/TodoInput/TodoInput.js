@@ -51,10 +51,13 @@ const TodoInput = () => {
         return;
       }
 
-      addTodo({
+      const todo = {
         name: todoInput.value,
         categoryId: currentSelectedCategory.id,
-      });
+        completed: false,
+      };
+      addTodo(todo);
+
       setTodoInput("");
       setInputTouched(false);
       setCategoryBox("#FFFFFF");
