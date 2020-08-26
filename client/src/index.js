@@ -7,6 +7,10 @@ import "./styles/variables.scss";
 
 import * as serviceWorker from "./serviceWorker";
 
+import { initiateAxiosConfig } from "./axiosConfigs";
+
+initiateAxiosConfig();
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

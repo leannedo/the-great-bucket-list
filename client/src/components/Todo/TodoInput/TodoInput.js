@@ -52,7 +52,7 @@ const TodoInput = () => {
       }
 
       addTodo({
-        content: todoInput.value,
+        name: todoInput.value,
         categoryId: currentSelectedCategory.id,
       });
       setTodoInput("");

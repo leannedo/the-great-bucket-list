@@ -3,9 +3,7 @@ import React, { useReducer, createContext, useContext, useEffect } from "react";
 
 // Hooks
 import todoReducer from "../hooks/todoReducer";
-
-// Data
-import todoData from "./todo-data";
+import { useFetch } from "../../../hooks/useFetch";
 
 /** Initialize context */
 const TodoContext = createContext();
@@ -23,11 +21,11 @@ const TodoHooks = ({ children }) => {
    * @property {string} currentFilterKey - key that represents current filter action ("FILTER_ALL", "FILTER_ONGOING", "FILTER_COMPLETED")
    */
   const initialState = {
-    todos: todoData,
-    filteredTodos: [...todoData],
-    uncompletedCount: todoData.length,
+    todos: [],
+    filteredTodos: [],
+    uncompletedCount: 0,
     completedPercent: 0,
-    currentFilterKey: "",
+    currentFilterKey: "FILTER_ALL",
   };
 
   const [state, dispatch] = useReducer(todoReducer, initialState);
@@ -45,6 +43,20 @@ const TodoHooks = ({ children }) => {
   useEffect(() => {
     filterTodo(currentFilterKey);
   }, [todos]);
+
+  /** Set todos to state after fetching */
+  const onTodosFetched = (fetchedTodos) => {
+    if (fetchedTodos && fetchedTodos.length > 0) {
+      dispatch({ type: "SET_TODOS", payload: { todos: fetchedTodos } });
+    }
+  };
+
+  /** Fetch todos on page load */
+  const { status: todosFetchStatus, data: fetchedTodos } = useFetch({
+    url: "/todos",
+    method: "get",
+    callback: onTodosFetched,
+  });
 
   /**
    * dispatch action "DELETE_TODO"
@@ -67,8 +79,8 @@ const TodoHooks = ({ children }) => {
    * @param {string} content
    * @param {string} categoryId
    */
-  const addTodo = ({ content, categoryId }) => {
-    dispatch({ type: "ADD_TODO", payload: { content, categoryId } });
+  const addTodo = ({ name, categoryId }) => {
+    dispatch({ type: "ADD_TODO", payload: { name, categoryId } });
   };
 
   /**
@@ -82,6 +94,7 @@ const TodoHooks = ({ children }) => {
   return (
     <TodoContext.Provider
       value={{
+        todosFetchStatus,
         todos,
         filteredTodos,
         uncompletedCount,

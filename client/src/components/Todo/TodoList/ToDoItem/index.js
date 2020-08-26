@@ -12,7 +12,7 @@ import "./ToDoItem.scss";
 import { useModal } from "../../../../modules/modal/contexts/ModalContext";
 import { useTodo } from "../../../../modules/todo/contexts/TodoContext";
 
-const ToDoItem = ({ className, content, id, colorIndicator, completed }) => {
+const ToDoItem = ({ className, name, id, colorIndicator, completed }) => {
   const { confirmModal, showModal, closeModal } = useModal();
   const { deleteTodo, toggleCompleteTodo } = useTodo();
 
@@ -54,7 +54,7 @@ const ToDoItem = ({ className, content, id, colorIndicator, completed }) => {
         className="td-todo-item-color-indicator"
       />
       <label htmlFor={id} className="td-todo-item-text">
-        {content}
+        {name}
       </label>
       <div
         style={{
@@ -86,7 +86,7 @@ const ToDoItem = ({ className, content, id, colorIndicator, completed }) => {
 ToDoItem.defaultProps = {
   className: "",
   colorIndicator: "",
-  content: "",
+  name: "",
   id: "",
   completed: false,
 };
@@ -95,8 +95,8 @@ ToDoItem.propTypes = {
   /** component's default classname */
   className: PropTypes.string,
 
-  /** todo's content passed down to label */
-  content: PropTypes.string,
+  /** todo's name passed down to label */
+  name: PropTypes.string,
 
   /** todo's colorIndicator passed down to color box */
   colorIndicator: PropTypes.string,

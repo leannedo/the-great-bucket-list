@@ -20,6 +20,22 @@ const todoReducer = (currentState, { type, payload }) => {
   let completedCount = 0;
 
   switch (type) {
+    case "SET_TODOS":
+      const { todos: fetchedTodos } = payload;
+
+      uncompletedCount = fetchedTodos.filter((todo) => !todo.completed).length;
+      completedCount = fetchedTodos.length - uncompletedCount;
+
+      return {
+        ...state,
+        todos: fetchedTodos,
+        uncompletedCount: uncompletedCount,
+        completedPercent: calculateCompletedPercent(
+          completedCount,
+          fetchedTodos.length
+        ),
+      };
+
     case "DELETE_TODO":
       const { id: deletedId } = payload;
 
@@ -59,13 +75,13 @@ const todoReducer = (currentState, { type, payload }) => {
       };
 
     case "ADD_TODO":
-      const { content, categoryId } = payload;
+      const { name, categoryId } = payload;
 
       updatedTodos = [
         ...state.todos,
         {
           id: uuidv4(),
-          content: content,
+          name: name,
           categoryId: categoryId,
           completed: false,
         },
