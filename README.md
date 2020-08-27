@@ -6,7 +6,13 @@ StepOut develops this Todo App as an add-on gift for their users when they downl
 ##### Overview of functionalities and user flows
 This Todo App is designed with friendly UI/UX in mind, so functionalities such as adding or deleting a to-do item and updating its status when completed remain similar to other on-the-market applications, yet users are surprised with the ability to add a category to each of their tasks and distinguish them by color. Moreover, they can filter the to-do list and have a good overview of their progress.
 
+Give it a try here: https://stepout-todo.herokuapp.com/
 
+<br/>
+
+![app-interaction](screenshots/todo.gif)
+
+<br/>
 # 2. Technology stacks 
 
 ### React (with Hooks & Context)
@@ -298,13 +304,15 @@ The project also have several tests running to ensure everything is working smoo
 
 Tests are written mostly for our application logic's part, such as `reducers` and `hooks`. With more time given, we can also have a snapshot testing for each of our components, but that can be improved later.
 
-To check test coverage, please run `npm run test` and open the file.
-
 # 8. Responsiveness & Cross-browser compatibility
-This app is responsive for desktop, tablet, and mobile. It supports Chrome, Safari, Firefox, and Microsoft Edge. 
+This app is responsive for desktop, tablet, and mobile. It supports Chrome, Safari, Firefox, and Microsoft Edge.
+ 
+<br/>
 
-<br />
-<br />
+![Responsive](screenshots/responsive.jpg)
+
+<br/>
+<br/>
 
 ----
 The below sections are the extra chapters that I document my development process. Feel free to read if you are interested !
@@ -318,10 +326,20 @@ The below sections are the extra chapters that I document my development process
 ### 2. Wireframing
 Construct wireframe with main components based on design. It becomes extremely useful once we've built other generic components and chain them together to place in those placeholders. And it fast forwards the building of the app's UI. 
 
+<br/>
+
+![wireframe](screenshots/ui-wireframe.png)
+
 ### 3. Building components
 Building smaller parts of the component should always be the first thing todo, before composing them in our main view.
 
 - Generic components which will be reused throughout the app: Todo, Category, Button, Icon, Modal, Input, Backdrop, etc
+
+![button](screenshots/button-component.png)
+
+<br/>
+
+![modal](screenshots/modal-component.png)
 
 - Other components: CategoryList, TodoList, FilterBar, etc.
 
