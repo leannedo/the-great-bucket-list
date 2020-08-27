@@ -28,10 +28,10 @@ ToDoItemLoader.defaultProps = {
 
 ToDoItemLoader.propTypes = {
   /** loader's width */
-  width: PropTypes.number,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /** loader's height */
-  height: PropTypes.number,
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default ToDoItemLoader;

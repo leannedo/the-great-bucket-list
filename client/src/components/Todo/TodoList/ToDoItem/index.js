@@ -48,6 +48,7 @@ const ToDoItem = ({ className, name, id, colorIndicator, completed }) => {
         id={id}
         className="td-todo-item-input-checkbox"
         checked={completed}
+        onChange={() => toggleCompletedState(id)}
       />
       <span className="checked" onClick={() => toggleCompletedState(id)} />
       <span

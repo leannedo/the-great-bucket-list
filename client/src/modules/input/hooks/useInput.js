@@ -5,9 +5,10 @@ import { useState, useEffect } from "react";
 import { validate as validateInput } from "./validation";
 
 /**
- * modalReducer receives 2 params: state & action and returns new state for modal
+ * useInput receives 2 params: initialValue and validationRules
  * @param {string} initialValue
- * @returns {Array} return an input prop with (value and onChange) and a method to setValue
+ * @param {Object} validationRules
+ * @returns {Array} return an input prop with (value, onChange, validate function, and isValid) and a method to setValue
  */
 export const useInput = ({ initialValue = "", validationRules = {} }) => {
   const [value, setValue] = useState(initialValue);

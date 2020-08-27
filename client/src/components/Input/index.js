@@ -18,9 +18,9 @@ const Input = ({
   return (
     <div className={className}>
       {label && (
-        <lable className="td-label" for={name}>
+        <label className="td-label" htmlFor={name}>
           {label.toUpperCase()}
-        </lable>
+        </label>
       )}
       <input
         value={value}
@@ -48,10 +48,10 @@ Input.propTypes = {
   className: PropTypes.string,
 
   /** input's name handler */
-  name: PropTypes.func,
+  name: PropTypes.string,
 
   /** input's label */
-  label: PropTypes.func,
+  label: PropTypes.string,
 
   /** input's placeholder */
   placeholder: PropTypes.string,

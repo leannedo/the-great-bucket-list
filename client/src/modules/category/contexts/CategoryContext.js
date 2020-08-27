@@ -78,7 +78,7 @@ const CategoryHooks = ({ children }) => {
   return (
     <CategoryContext.Provider
       value={{
-        defaultCategories: initialState.categories,
+        defaultCategories: categoryData,
         categories,
         currentSelectedCategory,
         addCategory,

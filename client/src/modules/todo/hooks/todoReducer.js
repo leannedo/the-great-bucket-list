@@ -3,15 +3,14 @@ import { calculateCompletedPercent } from "./helpers";
 
 /**
  * todoReducer receives 2 params: state & action
- * @param {Object} currentState - Initial state to be computed
+ * @param {Object} state - Initial state to be computed
  * @param {Object} action
  * @param {string} action.type - Action type, including "DELETE_TODO", "TOGGLE_COMPLETE", "ADD_TODO", "FILTER_ALL", "FILTER_ONGOING", "FILTER_COMPLETED"
  * @param {Object} action.payload - Extra data
  * @returns {Object} return computed state
  */
 
-const todoReducer = (currentState, { type, payload }) => {
-  const state = { ...currentState };
+const todoReducer = (state, { type, payload }) => {
   let updatedTodos = [];
   let uncompletedCount = 0;
   let completedCount = 0;
@@ -35,6 +34,10 @@ const todoReducer = (currentState, { type, payload }) => {
 
     case "ADD_TODO":
       const { todo: addedTodo } = payload;
+
+      if (!addedTodo) {
+        return state;
+      }
 
       updatedTodos = [...state.todos, addedTodo];
       uncompletedCount = updatedTodos.filter((todo) => !todo.completed).length;
@@ -111,7 +114,7 @@ const todoReducer = (currentState, { type, payload }) => {
       };
 
     default:
-      return currentState;
+      return state;
   }
 };
 

@@ -15,7 +15,7 @@ const ProgressBar = ({ className, progress }) => {
       />
       <div
         className="td-progress-text-wrapper"
-        style={progress >= 70 ? style : {}}
+        style={Number(progress) >= 70 ? style : {}}
       >
         <div className="td-progress-text">{`${progress.toString()}% Completed`}</div>
       </div>
@@ -33,7 +33,7 @@ ProgressBar.propTypes = {
   className: PropTypes.string,
 
   /** percent of completion */
-  progress: PropTypes.number,
+  progress: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 export default ProgressBar;

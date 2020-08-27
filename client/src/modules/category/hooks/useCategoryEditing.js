@@ -145,7 +145,7 @@ export const useCategoryEditing = () => {
 
   /** return form as valid based on valid state of color code and category name */
   const validateForm = () => {
-    return colorProp.isValid && categoryProp.isValid;
+    setFormIsValid(colorProp.isValid && categoryProp.isValid);
   };
 
   /**
@@ -159,7 +159,7 @@ export const useCategoryEditing = () => {
   useEffect(() => setColor(getDefaultColorDisplay()), [currentCategory]);
   useEffect(() => setCategory(getDefaultCategoryName()), [currentCategory]);
 
-  useEffect(() => validateForm, [categoryProp, colorProp]);
+  useEffect(() => validateForm(), [categoryProp, colorProp]);
 
   return {
     inputChangeHandler,

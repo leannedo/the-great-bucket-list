@@ -23,14 +23,14 @@ export const validate = (value, rules) => {
   return isValid;
 };
 
-const minLengthValidator = (value, minLength) => {
+export const minLengthValidator = (value, minLength) => {
   return value.length > minLength;
 };
 
-const requiredValidator = (value) => {
+export const requiredValidator = (value) => {
   return value.trim() !== "";
 };
 
-const hexCodeValidator = (value) => {
-  return /^([0-9A-F]{3}){1,2}$/i.test(value);
+export const hexCodeValidator = (value) => {
+  return /^([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(value);
 };

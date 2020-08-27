@@ -16,6 +16,10 @@ const categoryReducer = (currentState, { type, payload }) => {
     case "ADD_CATEGORY":
       const { addedCategory } = payload;
 
+      if (!addedCategory) {
+        return state;
+      }
+
       return {
         ...state,
         categories: [...state.categories, { id: uuidv4(), ...addedCategory }],
@@ -32,6 +36,10 @@ const categoryReducer = (currentState, { type, payload }) => {
     case "UPDATE_CATEGORY":
       const { updatedCategory } = payload;
 
+      if (!updatedCategory) {
+        return state;
+      }
+
       return {
         ...state,
         categories: state.categories.map((category) =>
@@ -43,6 +51,10 @@ const categoryReducer = (currentState, { type, payload }) => {
 
     case "SELECT_CATEGORY":
       const { selectedCategory } = payload;
+
+      if (!selectedCategory) {
+        return state;
+      }
 
       return {
         ...state,

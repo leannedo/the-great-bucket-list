@@ -8,7 +8,7 @@ import ToDoItemLoader from "./ToDoItem/ToDoItemLoader";
 const ToDoListLoader = ({ count }) => (
   <div className="todo-list-loader">
     {Array.from(Array(count), (_, i) => (
-      <ToDoItemLoader width="100%" />
+      <ToDoItemLoader key={i} width="100%" />
     ))}
   </div>
 );
