@@ -13,6 +13,7 @@ Give it a try here: https://stepout-todo.herokuapp.com/
 ![app-interaction](screenshots/todo.gif)
 
 <br/>
+
 # 2. Technology stacks 
 
 ### React (with Hooks & Context)
@@ -99,7 +100,7 @@ Contains our application main's views. For a SPA, it would be the entry point fo
 
 State management is one of the most critical, yet complicated part of every React application. Large projects usually rely on State Management libraries such as Redux (industry standard) for a scalable and maintainable solution.
 
-However, for small projects (like this one), React built-in `Context API` and `Hooks` are a nice and convenient way, yet still powerful enough to reduce the hassel of state management, as well as keeping the integrity of our application. Plus, we don't need to install other dependencies (which might add extra kb to our bundle size) !
+However, for small projects (like this one), React built-in `Context API` and `Hooks` are a nice and convenient way, yet still powerful enough to reduce the hassle of state management, as well as keeping the integrity of our application. Plus, we don't need to install other dependencies (which might add extra kb to our bundle size) !
 
 In this project, `Contexts` and `Hooks` are separated according to the application's domain, for example:
 
@@ -141,7 +142,7 @@ const CategoryList = ({ className, onCategoryClick }) => {
 
 - `Hooks`, on the other hand, supply state management's logic, with the help of `Reducer` pattern. 
 
-Each hook will have its own `reducer`function, which will compute the new states based on the `action` type and payload. It is useful for computing multiple states at once (which is usually a hassel with normal `useState`).
+Each hook will have its own `reducer`function, which will compute the new states based on the `action` type and payload. It is useful for computing multiple states at once (which is usually a hassle with normal `useState`).
 
 ```js
 // todoReducer.js
@@ -247,7 +248,7 @@ const Modal = ({ className, children, modalKey, visible }) => {
 };
 ```
 
-Then we can reuse our `Modal` component in differnt contexts:
+Then we can reuse our `Modal` component in different contexts:
 
 ```js
 // in ConfirmModal component, which is an extension of the Modal component
@@ -315,7 +316,7 @@ This app is responsive for desktop, tablet, and mobile. It supports Chrome, Safa
 <br/>
 
 ----
-The below sections are the extra chapters that I document my development process. Feel free to read if you are interested !
+The below sections are the extra chapters that I document my development process. Feel free to take a look if you are interested !
 
 ## Process
 
@@ -331,7 +332,7 @@ Construct wireframe with main components based on design. It becomes extremely u
 ![wireframe](screenshots/ui-wireframe.png)
 
 ### 3. Building components
-Building smaller parts of the component should always be the first thing todo, before composing them in our main view.
+Building smaller parts of the component should always be the first thing to do, before composing them in our main view.
 
 - Generic components which will be reused throughout the app: Todo, Category, Button, Icon, Modal, Input, Backdrop, etc
 
@@ -344,7 +345,7 @@ Building smaller parts of the component should always be the first thing todo, b
 - Other components: CategoryList, TodoList, FilterBar, etc.
 
 ### 4. Composing components
-This is the fun part. Composing all of the components in our main Dashboard view, and adjusting them so they can work perfectly together.
+This is the fun part: composing all of the components in our main Dashboard view, and adjusting them so they can work perfectly together.
 
 ### 5. Connecting logic
 The most strenuous part, including:
@@ -354,7 +355,7 @@ The most strenuous part, including:
 and etc.
 
 ### 6. Streamlining data
-Bored of manually writing mock data without actual BE? https://www.mockapi.io/ comes as a fun tool to use. It helps me to mock the API and therefore, make it easier to write asynchronous calls in our application (fetch todos, post new todo, update todo, delete todo, etc). This way we can ensure that the Backend integration part will become as smooth as possible. 
+Usually, we are getting bored of manually writing mock data without actual Backend. That's why https://www.mockapi.io/ comes as a fun tool to use. It helps me to mock the API and therefore, make it easier to write asynchronous calls in our application (fetch/post/update/delete todo, etc). This way we can ensure that the Backend integration part will become as smooth as possible. 
 
 ### 7. Writing tests
 
