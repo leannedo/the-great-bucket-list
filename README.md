@@ -4,7 +4,7 @@
 StepOut develops this Todo App as an add-on gift for their users when they download the main Step Out application. It can be used for versatile purposes from scribbling notes on the go or jotting down next challenges to overcome on their fitness journey. With clean UI and friendly but exquisite UX, organizing tasks and checking them out when finished will be like a freeze.  
 
 ##### Overview of functionalities and user flows
-This Todo App is designed with friendly UI/UX in mind, so functionalities such as adding or deleting a to-do item and updating its status when completed remain similar to other on-the-market applications, yet users are surprised with the ability to add a category to each of their tasks and distinguish them by color. Moreover, they can filter the to-do list and have a good overview of their progress.
+This Todo App is designed with friendly UI/UX in mind, so functionalities such as adding or deleting a to-do item and mark it as completed remain similar to other on-the-market applications, yet users are surprised with the ability to add a category to each of their tasks and distinguish them by color. Moreover, they can filter the to-do list and have a good overview of their progress.
 
 Give it a try here: https://stepout-todo.herokuapp.com/
 
@@ -142,7 +142,7 @@ const CategoryList = ({ className, onCategoryClick }) => {
 
 - `Hooks`, on the other hand, supply state management's logic, with the help of `Reducer` pattern. 
 
-Each hook will have its own `reducer`function, which will compute the new states based on the `action` type and payload. It is useful for computing multiple states at once (which is usually a hassle with normal `useState`).
+Each hook will have its own `reducer` function, which will compute the new states based on the `action` type and payload. It is useful for computing multiple states at once (which is usually a hassle with normal `useState`).
 
 ```js
 // todoReducer.js
@@ -360,7 +360,6 @@ Usually, we are getting bored of manually writing mock data without actual Backe
 ### 7. Writing tests
 
 This is when we try to break out application. By having actual test coverage, we can feel more confident about our application going live !
-
 
 ### 8. Deploying 
 When everything is ready, it's a good time to see our application going live. I create a simple server to serve our static assets, and with several configs, the application can be easily deployed to Heroku.
