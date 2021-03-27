@@ -6,7 +6,7 @@ StepOut develops this Todo App as an add-on gift for their users when they downl
 ##### Overview of functionalities and user flows
 This Todo App is designed with friendly UI/UX in mind, so functionalities such as adding or deleting a to-do item and mark it as completed remain similar to other on-the-market applications, yet users are surprised with the ability to add a category to each of their tasks and distinguish them by color. Moreover, they can filter the to-do list and have a good overview of their progress.
 
-Give it a try here: https://stepout-todo.herokuapp.com/
+Give it a try here: https://thegreatbucketlist.herokuapp.com/
 
 <br/>
 
