@@ -1,10 +1,7 @@
 # 1. Overview
 
-##### What is this project for?
-StepOut develops this Todo App as an add-on gift for their users when they download the main Step Out application. It can be used for versatile purposes from scribbling notes on the go or jotting down next challenges to overcome on their fitness journey. With clean UI and friendly but exquisite UX, organizing tasks and checking them out when finished will be like a freeze.  
-
-##### Overview of functionalities and user flows
-This Todo App is designed with friendly UI/UX in mind, so functionalities such as adding or deleting a to-do item and mark it as completed remain similar to other on-the-market applications, yet users are surprised with the ability to add a category to each of their tasks and distinguish them by color. Moreover, they can filter the to-do list and have a good overview of their progress.
+##### What is this?
+A friendly and fun-to-use application which can be used for versatile purposes from scribbling notes on the go or jotting down next challenges to overcome on your journey. With clean UI and exquisite UX, organizing tasks and checking them out when finished will be like a freeze.
 
 Give it a try here: https://thegreatbucketlist.herokuapp.com/
 
