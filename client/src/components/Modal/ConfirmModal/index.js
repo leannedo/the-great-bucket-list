@@ -1,16 +1,16 @@
 // Libraries
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // Components
-import Modal from "./../../Modal/index";
-import Button from "../../Button";
+import Modal from '../index';
+import Button from '../../Button';
 
 // Styling
-import "./ConfirmModal.scss";
+import './ConfirmModal.scss';
 
 // Hooks
-import { useModal } from "../../../modules/modal/contexts/ModalContext";
+import { useModal } from '../../../modules/modal/contexts/ModalContext';
 
 const ConfirmModal = (props) => {
   const { confirmModal, closeModal } = useModal();
@@ -42,7 +42,7 @@ const ConfirmModal = (props) => {
    */
   const onModalClose = () => {
     cancelHandler();
-    closeModal({ key: key });
+    closeModal({ key });
   };
 
   return (
@@ -64,13 +64,13 @@ const ConfirmModal = (props) => {
 };
 
 ConfirmModal.defaultProps = {
-  className: "",
-  okText: "",
-  cancelText: "",
+  className: '',
+  okText: '',
+  cancelText: '',
   okHandler: () => {},
   cancelHandler: () => {},
   isVisible: false,
-  key: "",
+  key: '',
 };
 
 ConfirmModal.propTypes = {

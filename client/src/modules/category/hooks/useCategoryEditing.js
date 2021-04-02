@@ -1,12 +1,12 @@
 // Libraries
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
 // Context
-import { useModal } from "../../modal/contexts/ModalContext";
-import { useCategory } from "../contexts/CategoryContext";
+import { useModal } from '../../modal/contexts/ModalContext';
+import { useCategory } from '../contexts/CategoryContext';
 
 // Hooks
-import { useInput } from "../../input/hooks/useInput";
+import { useInput } from '../../input/hooks/useInput';
 
 export const useCategoryEditing = () => {
   /** Get data from useModal context */
@@ -39,9 +39,7 @@ export const useCategoryEditing = () => {
    * @param {string} hexCode - initial hex code to be formatted
    * @returns {string} return a hex code without #
    */
-  const formatColorCode = (hexCode) => {
-    return hexCode.replace("#", "");
-  };
+  const formatColorCode = (hexCode) => hexCode.replace('#', '');
 
   /**
    * Helpers function to get default color display by current category
@@ -53,16 +51,15 @@ export const useCategoryEditing = () => {
         ? currentCategory.colorIndicator
         : defaultCategories[0].colorIndicator;
 
-    return colorCode ? formatColorCode(colorCode) : "";
+    return colorCode ? formatColorCode(colorCode) : '';
   };
 
   /**
    * Helpers function to get default category name by current category
    * @returns {string} default category name
    */
-  const getDefaultCategoryName = () => {
-    return currentCategory ? currentCategory.name : "";
-  };
+  const getDefaultCategoryName = () =>
+    currentCategory ? currentCategory.name : '';
 
   /** Establish state for inputs */
   const [colorProp, setColor] = useInput({
@@ -77,11 +74,11 @@ export const useCategoryEditing = () => {
    * Helper for rendering color blocks component by looping through defaultCategories and map each element to a div with formatted colorCode
    * @returns {React.Component} color blocks component
    */
-  const renderDefaultColorBlocks = () => {
-    return defaultCategories.map((el, id) => {
+  const renderDefaultColorBlocks = () =>
+    defaultCategories.map((el, id) => {
       const colorCode = el.colorIndicator
         ? formatColorCode(el.colorIndicator)
-        : "";
+        : '';
       return (
         <div
           onClick={() => setColor(colorCode)}
@@ -93,7 +90,6 @@ export const useCategoryEditing = () => {
         />
       );
     });
-  };
 
   const inputChangeHandler = (value, input) => {
     if (!input) {
@@ -111,8 +107,8 @@ export const useCategoryEditing = () => {
     showModal({
       key: confirmModal.key,
       props: {
-        okText: "Delete this category?",
-        cancelText: "Cancel",
+        okText: 'Delete this category?',
+        cancelText: 'Cancel',
         okHandler: () => {
           deleteCurrentCategory();
           closeAllModals();
@@ -139,8 +135,8 @@ export const useCategoryEditing = () => {
     }
 
     closeModal({ key: categoryEditingModal.key });
-    setColor("");
-    setCategory("");
+    setColor('');
+    setCategory('');
   };
 
   /** return form as valid based on valid state of color code and category name */

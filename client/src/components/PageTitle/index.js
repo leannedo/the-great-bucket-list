@@ -1,25 +1,19 @@
 // Libraries
-import React from "react";
-import PropTypes from "prop-types";
-
-// Assets
-import Logo from "./../../assets/logo.svg";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // Styling
-import "./PageTitle.scss";
+import './PageTitle.scss';
 
-const PageTitle = ({ title, className }) => {
-  return (
-    <div className={className}>
-      <img src={Logo} />
-      <h1>{title}</h1>
-    </div>
-  );
-};
+const PageTitle = ({ title, className }) => (
+  <div className={className}>
+    <h1>{title}</h1>
+  </div>
+);
 
 PageTitle.defaultProps = {
-  title: "",
-  className: "",
+  title: '',
+  className: '',
 };
 
 PageTitle.propTypes = {

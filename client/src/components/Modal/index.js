@@ -1,13 +1,13 @@
 // Libraries
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // Styling
-import "./Modal.scss";
-import Backdrop from "../Backdrop";
+import './Modal.scss';
+import Backdrop from '../Backdrop';
 
 // Hooks
-import { useModal } from "../../modules/modal/contexts/ModalContext";
+import { useModal } from '../../modules/modal/contexts/ModalContext';
 
 const Modal = ({ className, children, modalKey, visible }) => {
   const { closeModal } = useModal();
@@ -21,7 +21,7 @@ const Modal = ({ className, children, modalKey, visible }) => {
   };
 
   return (
-    <div className={`td-modal-wrapper ${visible ? "show" : "hide"}`}>
+    <div className={`td-modal-wrapper ${visible ? 'show' : 'hide'}`}>
       <div className={`td-modal ${className}`}>{children}</div>
       <Backdrop closeModalHandler={closeModalHandler} modalVisible={visible} />
     </div>
@@ -29,8 +29,8 @@ const Modal = ({ className, children, modalKey, visible }) => {
 };
 
 Modal.defaultProps = {
-  className: "",
-  modalKey: "",
+  className: '',
+  modalKey: '',
   visible: false,
 };
 

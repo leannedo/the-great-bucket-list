@@ -5,6 +5,5 @@
  * @returns {string} - Percent of completed on total, rounded to whole number.
  */
 
-export const calculateCompletedPercent = (completed, total) => {
-  return ((completed / total) * 100).toFixed(0);
-};
+export const calculateCompletedPercent = (completed, total) =>
+  ((completed / total) * 100).toFixed(0);

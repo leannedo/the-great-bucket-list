@@ -1,6 +1,6 @@
 // Libraries
-import axios from "axios";
-import { v4 as uuidv4 } from "uuid";
+import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 
 /**
  * send new todo to API server
@@ -10,8 +10,8 @@ import { v4 as uuidv4 } from "uuid";
 const postTodo = async (todo, callback) => {
   try {
     const response = await axios({
-      url: "/todos",
-      method: "post",
+      url: '/todos',
+      method: 'post',
       data: { ...todo, id: uuidv4() },
     });
 
@@ -32,7 +32,7 @@ const deleteTodo = async (id, callback) => {
   try {
     const response = await axios({
       url: `/todos/${id}`,
-      method: "delete",
+      method: 'delete',
     });
 
     if (callback) {
@@ -52,7 +52,7 @@ const putTodo = async (updatedTodo, callback) => {
   try {
     const response = await axios({
       url: `/todos/${updatedTodo.id}`,
-      method: "put",
+      method: 'put',
       data: updatedTodo,
     });
 

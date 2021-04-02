@@ -1,9 +1,9 @@
 // Libraries
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 // Styling
-import "./Category.scss";
+import './Category.scss';
 
 const Category = ({ className, category, onClick }) => {
   const [isHover, setIsHover] = useState(false);
@@ -12,7 +12,7 @@ const Category = ({ className, category, onClick }) => {
 
   const hoverStyle = {
     backgroundColor: `${category.colorIndicator}`,
-    color: "var(--td-white-color)",
+    color: 'var(--td-white-color)',
   };
 
   const toggleHoverHandler = () => {
@@ -20,6 +20,7 @@ const Category = ({ className, category, onClick }) => {
   };
 
   return (
+    // eslint-disable-next-line jsx-a11y/anchor-is-valid
     <a
       className={`td-category ${className}`}
       onMouseEnter={toggleHoverHandler}
@@ -33,9 +34,9 @@ const Category = ({ className, category, onClick }) => {
 };
 
 Category.defaultProps = {
-  className: "",
-  name: "",
-  colorIndicator: "",
+  className: '',
+  name: '',
+  colorIndicator: '',
 };
 
 Category.propTypes = {

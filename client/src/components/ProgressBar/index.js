@@ -1,12 +1,12 @@
 // Libraries
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // Styling
-import "./ProgressBar.scss";
+import './ProgressBar.scss';
 
 const ProgressBar = ({ className, progress }) => {
-  const style = { position: "absolute", right: "20px" };
+  const style = { position: 'absolute', right: '20px' };
   return (
     <div className={`td-progress-bar-wrapper ${className}`}>
       <div
@@ -24,7 +24,7 @@ const ProgressBar = ({ className, progress }) => {
 };
 
 ProgressBar.defaultProps = {
-  className: "",
+  className: '',
   progress: 0,
 };
 

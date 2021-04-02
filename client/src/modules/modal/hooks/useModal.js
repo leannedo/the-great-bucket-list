@@ -1,8 +1,8 @@
 // Libraries
-import { useReducer } from "react";
+import { useReducer } from 'react';
 
 // Hooks
-import modalReducer from "./modalReducer";
+import modalReducer from './modalReducer';
 
 /**
  * @typedef {Object} initialModalState
@@ -12,16 +12,16 @@ import modalReducer from "./modalReducer";
  */
 const initialModalState = {
   categoryEditingModal: {
-    key: "CATEGORY_EDITING_MODAL",
+    key: 'CATEGORY_EDITING_MODAL',
     isVisible: false,
     props: {},
   },
   categorySelectionModal: {
-    key: "CATEGORY_SELECTION_MODAL",
+    key: 'CATEGORY_SELECTION_MODAL',
     isVisible: false,
   },
   confirmModal: {
-    key: "CONFIRM_MODAL",
+    key: 'CONFIRM_MODAL',
     isVisible: false,
     props: {},
   },
@@ -36,7 +36,7 @@ export const useModalHook = (initialState = initialModalState) => {
    * @param {Object} props - props passed down to modal depending on context
    */
   const showModal = ({ key, props = {} }) => {
-    dispatch({ type: "SHOW_MODAL", payload: { key, props } });
+    dispatch({ type: 'SHOW_MODAL', payload: { key, props } });
   };
 
   /**
@@ -44,14 +44,14 @@ export const useModalHook = (initialState = initialModalState) => {
    * @param {string} key - which modal is selected to close
    */
   const closeModal = ({ key }) => {
-    dispatch({ type: "CLOSE_MODAL", payload: { key } });
+    dispatch({ type: 'CLOSE_MODAL', payload: { key } });
   };
 
   /**
    * dispatch action "CLOSE_ALL_MODALS"
    */
   const closeAllModals = () => {
-    dispatch({ type: "CLOSE_ALL_MODALS" });
+    dispatch({ type: 'CLOSE_ALL_MODALS' });
   };
 
   return { state, showModal, closeModal, closeAllModals };

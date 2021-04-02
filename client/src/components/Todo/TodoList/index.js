@@ -1,17 +1,17 @@
 // Libraries
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // Component
-import ToDoItem from "./ToDoItem";
-import ToDoListLoader from "./ToDoListLoader";
+import ToDoItem from './ToDoItem';
+import ToDoListLoader from './ToDoListLoader';
 
 // Styling
-import "./ToDoList.scss";
+import './ToDoList.scss';
 
 // Hooks
-import { useTodo } from "../../../modules/todo/contexts/TodoContext";
-import { useCategory } from "../../../modules/category/contexts/CategoryContext";
+import { useTodo } from '../../../modules/todo/contexts/TodoContext';
+import { useCategory } from '../../../modules/category/contexts/CategoryContext';
 
 const ToDoList = ({ className }) => {
   const { filteredTodos, todosFetchStatus } = useTodo();
@@ -19,7 +19,7 @@ const ToDoList = ({ className }) => {
 
   return (
     <div className={`td-todo-list-wrapper ${className}`}>
-      {todosFetchStatus === "fetching" ? (
+      {todosFetchStatus === 'fetching' ? (
         <ToDoListLoader count={6} />
       ) : (
         <>
@@ -40,7 +40,7 @@ const ToDoList = ({ className }) => {
 };
 
 ToDoList.defaultProps = {
-  className: "",
+  className: '',
 };
 
 ToDoList.propTypes = {

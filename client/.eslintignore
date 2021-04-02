@@ -1,0 +1,14 @@
+# ignore built files
+dist/*
+
+# ignore node_modules
+node_modules/*
+
+# ignore public folder
+public/*
+
+# ignore assets folder
+src/assets/*
+
+# ignore webpack config
+config/*

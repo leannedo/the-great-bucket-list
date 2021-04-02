@@ -1,17 +1,17 @@
 // Libraries
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
 // Components
-import Input from "../../Input";
+import Input from '../../Input';
 
 // Styling
-import "./TodoInput.scss";
+import './TodoInput.scss';
 
 // Hooks
-import { useModal } from "../../../modules/modal/contexts/ModalContext";
-import { useInput } from "../../../modules/input/hooks/useInput";
-import { useCategory } from "../../../modules/category/contexts/CategoryContext";
-import { useTodo } from "../../../modules/todo/contexts/TodoContext";
+import { useModal } from '../../../modules/modal/contexts/ModalContext';
+import { useInput } from '../../../modules/input/hooks/useInput';
+import { useCategory } from '../../../modules/category/contexts/CategoryContext';
+import { useTodo } from '../../../modules/todo/contexts/TodoContext';
 
 const TodoInput = () => {
   /** Extracting state from hooks */
@@ -23,7 +23,7 @@ const TodoInput = () => {
   const [todoInput, setTodoInput] = useInput({
     validationRules: { isRequired: true },
   });
-  const [categoryBox, setCategoryBox] = useState("#FFFFFF");
+  const [categoryBox, setCategoryBox] = useState('#FFFFFF');
   const [inputTouched, setInputTouched] = useState(false);
 
   /** Hook to watch changes on current selected category */
@@ -58,9 +58,9 @@ const TodoInput = () => {
       };
       addTodo(todo);
 
-      setTodoInput("");
+      setTodoInput('');
       setInputTouched(false);
-      setCategoryBox("#FFFFFF");
+      setCategoryBox('#FFFFFF');
     }
   };
 
@@ -71,7 +71,7 @@ const TodoInput = () => {
     <div className="input-container">
       <div
         onClick={() => showModal({ key: categorySelectionModal.key })}
-        className={`input-checkbox ${todoValid ? "" : "invalid"}`}
+        className={`input-checkbox ${todoValid ? '' : 'invalid'}`}
         style={{ backgroundColor: `${categoryBox}` }}
       />
       <Input

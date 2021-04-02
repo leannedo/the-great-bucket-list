@@ -1,8 +1,8 @@
 // Libraries
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 // Utils
-import { validate as validateInput } from "./validation";
+import { validate as validateInput } from './validation';
 
 /**
  * useInput receives 2 params: initialValue and validationRules
@@ -10,7 +10,7 @@ import { validate as validateInput } from "./validation";
  * @param {Object} validationRules
  * @returns {Array} return an input prop with (value, onChange, validate function, and isValid) and a method to setValue
  */
-export const useInput = ({ initialValue = "", validationRules = {} }) => {
+export const useInput = ({ initialValue = '', validationRules = {} }) => {
   const [value, setValue] = useState(initialValue);
   const [isValid, setIsValid] = useState(null);
 
@@ -23,10 +23,10 @@ export const useInput = ({ initialValue = "", validationRules = {} }) => {
 
   return [
     {
-      value: value,
+      value,
       onChange: (value) => setValue(value),
       validate,
-      isValid: isValid,
+      isValid,
     },
     (value) => setValue(value),
   ];

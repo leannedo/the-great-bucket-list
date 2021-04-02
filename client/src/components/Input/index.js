@@ -1,9 +1,9 @@
 // Libraries
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // Styling
-import "./Input.scss";
+import './Input.scss';
 
 const Input = ({
   label,
@@ -14,33 +14,31 @@ const Input = ({
   value,
   onKeyUpHandler,
   isValid,
-}) => {
-  return (
-    <div className={className}>
-      {label && (
-        <label className="td-label" htmlFor={name}>
-          {label.toUpperCase()}
-        </label>
-      )}
-      <input
-        value={value}
-        className={`td-input ${isValid === false ? "invalid" : ""}`}
-        id={name}
-        name={name}
-        placeholder={placeholder}
-        onChange={(e) => onChange(e.target.value)}
-        onKeyUp={onKeyUpHandler}
-      />
-    </div>
-  );
-};
+}) => (
+  <div className={className}>
+    {label && (
+      <label className="td-label" htmlFor={name}>
+        {label.toUpperCase()}
+      </label>
+    )}
+    <input
+      value={value}
+      className={`td-input ${isValid === false ? 'invalid' : ''}`}
+      id={name}
+      name={name}
+      placeholder={placeholder}
+      onChange={(e) => onChange(e.target.value)}
+      onKeyUp={onKeyUpHandler}
+    />
+  </div>
+);
 
 Input.defaultProps = {
-  className: "",
-  placeholder: "",
+  className: '',
+  placeholder: '',
   onChange: () => {},
-  name: "",
-  label: "",
+  name: '',
+  label: '',
 };
 
 Input.propTypes = {

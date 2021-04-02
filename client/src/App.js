@@ -1,14 +1,14 @@
 // Libraries
-import React from "react";
+import React from 'react';
 
 // Components
-import Layout from "./layout/index";
-import Dashboard from "./views/Dashboard";
+import Layout from './layout/index';
+import Dashboard from './views/Dashboard';
 
 // Context
-import ModalProvider from "./modules/modal/contexts/ModalContext";
-import CategoryProvider from "./modules/category/contexts/CategoryContext";
-import TodoProvider from "./modules/todo/contexts/TodoContext";
+import ModalProvider from './modules/modal/contexts/ModalContext';
+import CategoryProvider from './modules/category/contexts/CategoryContext';
+import TodoProvider from './modules/todo/contexts/TodoContext';
 
 function App() {
   return (

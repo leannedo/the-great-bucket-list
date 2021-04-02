@@ -1,17 +1,16 @@
 // Libraries
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // Styling
-import "./CategoryList.scss";
+import './CategoryList.scss';
 
 // Components
-import Category from "./Category";
-import Icon from "./../Icon/index";
+import Category from './Category';
 
 // Hooks
-import { useModal } from "../../modules/modal/contexts/ModalContext";
-import { useCategory } from "../../modules/category/contexts/CategoryContext";
+import { useModal } from '../../modules/modal/contexts/ModalContext';
+import { useCategory } from '../../modules/category/contexts/CategoryContext';
 
 const CategoryList = ({ className, onCategoryClick }) => {
   const { showModal, categoryEditingModal } = useModal();
@@ -28,14 +27,14 @@ const CategoryList = ({ className, onCategoryClick }) => {
           />
         ))}
         <div className="td-category-add-btn">
-          <Icon
+          <i
+            className="fas fa-plus"
             onClick={() =>
               showModal({
                 key: categoryEditingModal.key,
-                props: { category: { name: "", colorIndicator: "" } },
+                props: { category: { name: '', colorIndicator: '' } },
               })
             }
-            name="plus-solid"
           />
         </div>
       </div>
@@ -44,7 +43,7 @@ const CategoryList = ({ className, onCategoryClick }) => {
 };
 
 CategoryList.defaultProps = {
-  className: "",
+  className: '',
 };
 
 CategoryList.propTypes = {

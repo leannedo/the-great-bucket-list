@@ -1,11 +1,11 @@
 // Libraries
-import React, { useReducer, useContext, createContext } from "react";
+import React, { useReducer, useContext, createContext } from 'react';
 
 // Data
-import categoryData from "./data";
+import categoryData from './data';
 
 // Hooks
-import categoryReducer from "../hooks/categoryReducer";
+import categoryReducer from '../hooks/categoryReducer';
 
 /** Initialize context */
 const CategoryContext = createContext();
@@ -45,7 +45,7 @@ const CategoryHooks = ({ children }) => {
    * @param {CategoryEntity} addedCategory - new category to be added
    */
   const addCategory = (addedCategory) => {
-    dispatch({ type: "ADD_CATEGORY", payload: { addedCategory } });
+    dispatch({ type: 'ADD_CATEGORY', payload: { addedCategory } });
   };
 
   /**
@@ -53,7 +53,7 @@ const CategoryHooks = ({ children }) => {
    * @param {string} id - category's id to be deleted
    */
   const deleteCategory = (id) => {
-    dispatch({ type: "DELETE_CATEGORY", payload: { id } });
+    dispatch({ type: 'DELETE_CATEGORY', payload: { id } });
   };
 
   /**
@@ -62,7 +62,7 @@ const CategoryHooks = ({ children }) => {
    */
   const updateCategory = (updatedCategory) => {
     dispatch({
-      type: "UPDATE_CATEGORY",
+      type: 'UPDATE_CATEGORY',
       payload: { updatedCategory },
     });
   };
@@ -72,7 +72,7 @@ const CategoryHooks = ({ children }) => {
    * @param {Object} selectedCategory - current selected category (from category selection modal)
    */
   const selectCategory = (selectedCategory) => {
-    dispatch({ type: "SELECT_CATEGORY", payload: { selectedCategory } });
+    dispatch({ type: 'SELECT_CATEGORY', payload: { selectedCategory } });
   };
 
   return (
