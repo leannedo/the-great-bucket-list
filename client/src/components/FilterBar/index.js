@@ -1,18 +1,18 @@
 // Libraries
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 // Styling
-import "./FilterBar.scss";
+import './FilterBar.scss';
 
 // Hooks
-import { useTodo } from "../../modules/todo/contexts/TodoContext";
+import { useTodo } from '../../modules/todo/contexts/TodoContext';
 
-const FilterBar = ({ count, className }) => {
+const FilterBar = ({ className }) => {
   const { uncompletedCount, filterTodo } = useTodo();
 
-  const [active, setActive] = useState("FILTER_ALL");
-  const filterAction = ["FILTER_ALL", "FILTER_ONGOING", "FILTER_COMPLETED"];
+  const [active, setActive] = useState('FILTER_ALL');
+  const filterAction = ['FILTER_ALL', 'FILTER_ONGOING', 'FILTER_COMPLETED'];
 
   /**
    * Set active state for filter tab and trigger filter action
@@ -30,12 +30,12 @@ const FilterBar = ({ count, className }) => {
    */
   const formatActionLabel = (action) => {
     if (!action) {
-      return "";
+      return '';
     }
 
-    const split = action.split("_");
+    const split = action.split('_');
 
-    return split.length > 1 ? split[1] : "";
+    return split.length > 1 ? split[1] : '';
   };
 
   return (
@@ -46,7 +46,7 @@ const FilterBar = ({ count, className }) => {
           <div
             key={id}
             onClick={() => onFilterItemClick(action)}
-            className={`filter ${active === action ? "active" : ""}`}
+            className={`filter ${active === action ? 'active' : ''}`}
           >
             {formatActionLabel(action)}
           </div>
@@ -57,16 +57,13 @@ const FilterBar = ({ count, className }) => {
 };
 
 FilterBar.defaultProps = {
-  className: "",
+  className: '',
   count: 0,
 };
 
 FilterBar.propTypes = {
   /** component's default classname */
   className: PropTypes.string,
-
-  /** filter's count value */
-  count: PropTypes.number,
 };
 
 export default FilterBar;

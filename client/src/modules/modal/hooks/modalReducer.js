@@ -12,18 +12,18 @@ const modalReducer = (currentState, { type, payload = {} }) => {
   let state = { ...currentState };
 
   switch (type) {
-    case "SHOW_MODAL":
+    case 'SHOW_MODAL':
       for (const field in state) {
         if (state[field].key === key) {
           state = {
             ...state,
-            [field]: { ...state[field], isVisible: true, props: props },
+            [field]: { ...state[field], isVisible: true, props },
           };
         }
       }
       return state;
 
-    case "CLOSE_MODAL":
+    case 'CLOSE_MODAL':
       for (const field in state) {
         if (state[field].key === key) {
           state = { ...state, [field]: { ...state[field], isVisible: false } };
@@ -31,7 +31,7 @@ const modalReducer = (currentState, { type, payload = {} }) => {
       }
       return state;
 
-    case "CLOSE_ALL_MODALS":
+    case 'CLOSE_ALL_MODALS':
       for (const field in state) {
         if (state[field].isVisible === true) {
           state = { ...state, [field]: { ...state[field], isVisible: false } };

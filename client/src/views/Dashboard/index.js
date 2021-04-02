@@ -1,23 +1,23 @@
 // Libraries
-import React from "react";
+import React from 'react';
 
 // Styling
-import "./Dashboard.scss";
+import './Dashboard.scss';
 
 // Components
-import PageTitle from "../../components/PageTitle";
-import CategoryList from "../../components/CategoryList";
-import ProgressBar from "../../components/ProgressBar";
-import ToDoList from "../../components/Todo/TodoList";
-import TodoInput from "../../components/Todo/TodoInput/TodoInput";
-import FilterBar from "../../components/FilterBar";
-import CategorySelectionModal from "../../components/Modal/CategorySelectionModal";
-import CategoryEditingModal from "../../components/Modal/CategoryEditingModal";
-import ConfirmModal from "../../components/Modal/ConfirmModal";
+import PageTitle from '../../components/PageTitle';
+import CategoryList from '../../components/CategoryList';
+import ProgressBar from '../../components/ProgressBar';
+import ToDoList from '../../components/Todo/TodoList';
+import TodoInput from '../../components/Todo/TodoInput/TodoInput';
+import FilterBar from '../../components/FilterBar';
+import CategorySelectionModal from '../../components/Modal/CategorySelectionModal';
+import CategoryEditingModal from '../../components/Modal/CategoryEditingModal';
+import ConfirmModal from '../../components/Modal/ConfirmModal';
 
 // Hooks
-import { useModal } from "../../modules/modal/contexts/ModalContext";
-import { useTodo } from "../../modules/todo/contexts/TodoContext";
+import { useModal } from '../../modules/modal/contexts/ModalContext';
+import { useTodo } from '../../modules/todo/contexts/TodoContext';
 
 const Dashboard = () => {
   const { showModal, categoryEditingModal } = useModal();
@@ -35,7 +35,7 @@ const Dashboard = () => {
     <div className="td-dashboard">
       <div className="td-header-wrapper">
         <div className="td-header">
-          <PageTitle title="To-do list" className="td-page-title" />
+          <PageTitle title="The Great Bucket List" className="td-page-title" />
           <CategoryList
             className="td-category-list-wrapper"
             onCategoryClick={(category) => onCategoryClick(category)}

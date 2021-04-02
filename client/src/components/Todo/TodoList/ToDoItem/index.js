@@ -1,16 +1,13 @@
 // Libraries
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-
-// Component
-import Icon from "../../../Icon";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 // Styling
-import "./ToDoItem.scss";
+import './ToDoItem.scss';
 
 // Hooks
-import { useModal } from "../../../../modules/modal/contexts/ModalContext";
-import { useTodo } from "../../../../modules/todo/contexts/TodoContext";
+import { useModal } from '../../../../modules/modal/contexts/ModalContext';
+import { useTodo } from '../../../../modules/todo/contexts/TodoContext';
 
 const ToDoItem = ({ className, name, id, colorIndicator, completed }) => {
   const { confirmModal, showModal, closeModal } = useModal();
@@ -60,25 +57,24 @@ const ToDoItem = ({ className, name, id, colorIndicator, completed }) => {
       </label>
       <div
         style={{
-          opacity: isHover ? "1" : "0",
-          transition: "all 0.3s ease-in-out",
+          opacity: isHover ? '1' : '0',
+          transition: 'all 0.3s ease-in-out',
         }}
       >
-        <Icon
+        <i
+          className="fas fa-trash td-todo-icon"
           onClick={() =>
             showModal({
               key: confirmModal.key,
               props: {
-                okText: "Delete this task?",
-                cancelText: "Cancel",
+                okText: 'Delete this task?',
+                cancelText: 'Cancel',
                 okHandler: () => {
                   deleteTodoHandler(id);
                 },
               },
             })
           }
-          className="td-todo-icon"
-          name="trash-solid"
         />
       </div>
     </div>
@@ -86,10 +82,10 @@ const ToDoItem = ({ className, name, id, colorIndicator, completed }) => {
 };
 
 ToDoItem.defaultProps = {
-  className: "",
-  colorIndicator: "",
-  name: "",
-  id: "",
+  className: '',
+  colorIndicator: '',
+  name: '',
+  id: '',
   completed: false,
 };
 

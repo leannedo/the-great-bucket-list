@@ -1,8 +1,8 @@
 // Libraries
-import React, { createContext, useContext, useReducer } from "react";
+import React, { createContext, useContext } from 'react';
 
 // Hooks
-import { useModalHook } from "./../hooks/useModal";
+import { useModalHook } from '../hooks/useModal';
 
 /** Initialize context */
 const ModalContext = createContext();
@@ -14,7 +14,7 @@ const ModalHooks = ({ children }) => {
   /** Extract data from useModalHook */
   const { state, showModal, closeModal, closeAllModals } = useModalHook();
 
-  /** Extract data from state in useModalHook*/
+  /** Extract data from state in useModalHook */
   const { categoryEditingModal, categorySelectionModal, confirmModal } = state;
 
   return (

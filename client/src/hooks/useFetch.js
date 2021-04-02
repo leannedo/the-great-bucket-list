@@ -1,21 +1,21 @@
 // Libraries
-import { useReducer, useEffect } from "react";
-import axios from "axios";
+import { useReducer, useEffect } from 'react';
+import axios from 'axios';
 
 const initialState = {
-  status: "",
+  status: '',
   error: null,
   data: [],
 };
 
 const fetchReducer = (state, { type, payload }) => {
   switch (type) {
-    case "FETCHING":
-      return { ...initialState, status: "fetching" };
-    case "FETCHED":
-      return { ...initialState, status: "success", data: payload.data };
-    case "FETCH_ERROR":
-      return { ...initialState, status: "error", error: payload.error };
+    case 'FETCHING':
+      return { ...initialState, status: 'fetching' };
+    case 'FETCHED':
+      return { ...initialState, status: 'success', data: payload.data };
+    case 'FETCH_ERROR':
+      return { ...initialState, status: 'error', error: payload.error };
     default:
       return state;
   }
@@ -35,27 +35,27 @@ export const useFetch = ({ url, params, callback }) => {
     if (!url) return;
     const fetchData = async () => {
       try {
-        dispatch({ type: "FETCHING" });
+        dispatch({ type: 'FETCHING' });
 
         const response = await axios({
-          url: url,
-          method: "get",
-          params: params,
+          url,
+          method: 'get',
+          params,
         });
 
         if (response.data) {
-          dispatch({ type: "FETCHED", payload: { data: response.data } });
+          dispatch({ type: 'FETCHED', payload: { data: response.data } });
         }
 
         if (callback) {
           callback(response.data);
         }
       } catch (error) {
-        dispatch({ type: "FETCH_ERROR", payload: { error: error.message } });
+        dispatch({ type: 'FETCH_ERROR', payload: { error: error.message } });
       }
     };
 
-    fetchData();
+    fetchData().then();
   }, [url]);
 
   const { status, data } = state;

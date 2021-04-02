@@ -1,23 +1,23 @@
 // Libraries
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // Styling
-import "./Icon.scss";
+import './Icon.scss';
 
-const Icon = ({ className, name, onClick, hoverable }) => {
-  return (
-    <img
-      src={require(`./../../assets/icons/${name}.svg`)}
-      className={`td-icon ${className} ${hoverable ? "icon-hoverable" : ""}`}
-      onClick={onClick}
-    />
-  );
-};
+const Icon = ({ className, path, onClick, hoverable }) => (
+  // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
+  <img
+    src={path}
+    className={`td-icon ${className} ${hoverable ? 'icon-hoverable' : ''}`}
+    onClick={onClick}
+    alt="icon"
+  />
+);
 
 Icon.defaultProps = {
-  className: "",
-  name: "unknown",
+  className: '',
+  name: 'unknown',
   onClick: () => {},
 };
 

@@ -1,23 +1,21 @@
 // Libraries
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // Styling
-import "./Backdrop.scss";
+import './Backdrop.scss';
 
-const Backdrop = ({ className, closeModalHandler }) => {
-  return (
-    <div onClick={closeModalHandler} className={`td-backdrop ${className}`} />
-  );
-};
+const Backdrop = ({ className, closeModalHandler }) => (
+  <div onClick={closeModalHandler} className={`td-backdrop ${className}`} />
+);
 
 Backdrop.defaultProps = {
-  className: "",
+  className: '',
   closeModalHandler: () => {},
 };
 
 Backdrop.propTypes = {
-  /** component's classname*/
+  /** component's classname */
   className: PropTypes.string,
 
   /** close modal triggered by backdrop click */

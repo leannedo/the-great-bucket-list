@@ -1,12 +1,12 @@
 // Libraries
-import React, { useReducer, createContext, useContext, useEffect } from "react";
+import React, { useReducer, createContext, useContext, useEffect } from 'react';
 
 // Hooks
-import todoReducer from "../hooks/todoReducer";
-import { useFetch } from "../../../hooks/useFetch";
+import todoReducer from '../hooks/todoReducer';
+import { useFetch } from '../../../hooks/useFetch';
 
 // Async
-import { postTodo, putTodo, deleteTodo } from "../hooks/async";
+import { postTodo, putTodo, deleteTodo } from '../hooks/async';
 
 /** Initialize context */
 const TodoContext = createContext();
@@ -28,7 +28,7 @@ const TodoHooks = ({ children }) => {
     filteredTodos: [],
     uncompletedCount: 0,
     completedPercent: 0,
-    currentFilterKey: "FILTER_ALL",
+    currentFilterKey: 'FILTER_ALL',
   };
 
   const [state, dispatch] = useReducer(todoReducer, initialState);
@@ -55,7 +55,7 @@ const TodoHooks = ({ children }) => {
   const addTodo = (todo) => {
     postTodo(todo, (resData) => {
       if (resData) {
-        dispatch({ type: "ADD_TODO", payload: { todo: resData } });
+        dispatch({ type: 'ADD_TODO', payload: { todo: resData } });
       }
     });
   };
@@ -69,7 +69,7 @@ const TodoHooks = ({ children }) => {
 
     putTodo(updatedTodo, (resData) => {
       if (resData) {
-        dispatch({ type: "TOGGLE_COMPLETE", payload: { id, completed } });
+        dispatch({ type: 'TOGGLE_COMPLETE', payload: { id, completed } });
       }
     });
   };
@@ -81,7 +81,7 @@ const TodoHooks = ({ children }) => {
   const deleteTodoItem = (id) => {
     deleteTodo(id, (resData) => {
       if (resData) {
-        dispatch({ type: "DELETE_TODO", payload: { id } });
+        dispatch({ type: 'DELETE_TODO', payload: { id } });
       }
     });
   };
@@ -102,14 +102,14 @@ const TodoHooks = ({ children }) => {
   /** Set todos after fetching */
   const onTodosFetched = (fetchedTodos) => {
     if (fetchedTodos && fetchedTodos.length > 0) {
-      dispatch({ type: "SET_TODOS", payload: { todos: fetchedTodos } });
+      dispatch({ type: 'SET_TODOS', payload: { todos: fetchedTodos } });
     }
   };
 
   /** Fetch todos on page load */
-  const { status: todosFetchStatus, data: fetchedTodos } = useFetch({
-    url: "/todos",
-    method: "get",
+  const { status: todosFetchStatus } = useFetch({
+    url: '/todos',
+    method: 'get',
     callback: onTodosFetched,
   });
 

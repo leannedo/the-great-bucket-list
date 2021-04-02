@@ -1,20 +1,20 @@
 // Libraries
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // Components
-import Modal from "./../../Modal/index";
-import Input from "./../../Input/index";
-import Button from "../../Button";
-import Icon from "../../Icon";
+import Modal from '../index';
+import Input from '../../Input/index';
+import Button from '../../Button';
+import Icon from '../../Icon';
 
 // Styling
-import "./CategoryEditingModal.scss";
+import './CategoryEditingModal.scss';
 
 // Hooks
-import { useCategoryEditing } from "../../../modules/category/hooks/useCategoryEditing";
+import { useCategoryEditing } from '../../../modules/category/hooks/useCategoryEditing';
 
-const CategoryEditingModal = ({ className, onChange }) => {
+const CategoryEditingModal = ({ className }) => {
   const {
     inputChangeHandler,
     submitHandler,
@@ -61,27 +61,24 @@ const CategoryEditingModal = ({ className, onChange }) => {
         </div>
       </div>
       <div className="td-action-icon-wrapper">
-        <Icon onClick={showModalHandler} name="trash-solid" />
+        <i onClick={showModalHandler} className="fas fa-trash td-todo-icon" />
         <Button type="icon" onClick={submitHandler} disabled={!formIsValid}>
-          <Icon name="check-solid" />
+          <i className="fas fa-check" />
         </Button>
-        <div></div>
+        <div />
       </div>
     </Modal>
   );
 };
 
 CategoryEditingModal.defaultProps = {
-  className: "",
+  className: '',
   onChange: () => {},
 };
 
 CategoryEditingModal.propTypes = {
   /** element's class name */
   className: PropTypes.string,
-
-  /** element's event handler */
-  onChange: PropTypes.func,
 };
 
 export default CategoryEditingModal;

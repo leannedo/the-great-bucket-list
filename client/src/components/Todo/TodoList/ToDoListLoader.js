@@ -1,9 +1,9 @@
-// Libaries
-import React from "react";
-import PropTypes from "prop-types";
+// Libraries
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // Components
-import ToDoItemLoader from "./ToDoItem/ToDoItemLoader";
+import ToDoItemLoader from './ToDoItem/ToDoItemLoader';
 
 const ToDoListLoader = ({ count }) => (
   <div className="todo-list-loader">

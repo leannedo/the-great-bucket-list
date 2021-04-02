@@ -1,17 +1,17 @@
 // Libraries
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // Components
-import CategoryList from "../../CategoryList";
-import Modal from "../index";
+import CategoryList from '../../CategoryList';
+import Modal from '../index';
 
 // Styling
-import "./CategorySelectionModal.scss";
+import './CategorySelectionModal.scss';
 
 // Hooks
-import { useModal } from "../../../modules/modal/contexts/ModalContext";
-import { useCategory } from "../../../modules/category/contexts/CategoryContext";
+import { useModal } from '../../../modules/modal/contexts/ModalContext';
+import { useCategory } from '../../../modules/category/contexts/CategoryContext';
 
 const CategorySelectionModal = ({ className }) => {
   const { categorySelectionModal, closeModal } = useModal();
@@ -37,7 +37,7 @@ const CategorySelectionModal = ({ className }) => {
 };
 
 CategorySelectionModal.defaultProps = {
-  className: "",
+  className: '',
 };
 
 CategorySelectionModal.propTypes = {

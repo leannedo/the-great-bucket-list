@@ -1,26 +1,24 @@
 // Libraries
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // Styling
-import "./Button.scss";
+import './Button.scss';
 
-const Button = ({ className, block, type, onClick, children, disabled }) => {
-  return (
-    <button
-      className={`td-btn ${className} btn-${type} ${block ? "btn-block" : ""}`}
-      onClick={onClick}
-      disabled={disabled}
-    >
-      {children}
-    </button>
-  );
-};
+const Button = ({ className, block, type, onClick, children, disabled }) => (
+  <button
+    className={`td-btn ${className} btn-${type} ${block ? 'btn-block' : ''}`}
+    onClick={onClick}
+    disabled={disabled}
+  >
+    {children}
+  </button>
+);
 
 Button.defaultProps = {
-  className: "",
+  className: '',
   block: false,
-  type: "primary",
+  type: 'primary',
   onClick: () => {},
   disabled: false,
 };
