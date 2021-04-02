@@ -1,6 +1,5 @@
 const paths = require('./paths');
 const webpack = require('webpack');
-const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   mode: 'development',
@@ -19,8 +18,5 @@ module.exports = {
   plugins: [
     // Only update what has changed on hot reload
     new webpack.HotModuleReplacementPlugin(),
-    new Dotenv({
-      path: `${paths.config}/webpack/.env.development`,
-    }),
   ],
 };
