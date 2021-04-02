@@ -6,7 +6,7 @@ module.exports = {
   devtool: 'source-map',
   output: {
     filename: 'js/[name].[contenthash].bundle.js',
-    publicPath: '/home',
+    publicPath: '/',
   },
   plugins: [
     // style-loader is for development, MiniCssExtractPlugin is for production
