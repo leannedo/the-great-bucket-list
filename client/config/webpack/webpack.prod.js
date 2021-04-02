@@ -1,7 +1,5 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const paths = require('./paths');
-const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   mode: 'production',
@@ -17,9 +15,6 @@ module.exports = {
       chunkFilename: '[id].css',
     }),
     new CleanWebpackPlugin(),
-    new Dotenv({
-      path: `${paths.config}/webpack/.env.production`,
-    }),
   ],
   module: {
     rules: [
