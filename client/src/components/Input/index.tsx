@@ -17,18 +17,14 @@ const Input = ({
 }) => (
   <div className={className}>
     {label && (
-      // @ts-expect-error ts-migrate(2339) FIXME: Property 'onKeyUpHandler' does not exist on type '... Remove this comment to see the full error message
       <label className="td-label" htmlFor={name}>
-        {/* @ts-expect-error ts-migrate(2339) FIXME: Property 'isValid' does not exist on type 'Props'. */}
         {label.toUpperCase()}
       </label>
     )}
     <input
-      // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       value={value}
       className={`td-input ${isValid === false ? 'invalid' : ''}`}
       id={name}
-      // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       name={name}
       placeholder={placeholder}
       onChange={(e) => onChange(e.target.value)}
@@ -39,7 +35,6 @@ const Input = ({
 
 Input.defaultProps = {
   className: '',
-  // @ts-expect-error ts-migrate(2722) FIXME: Cannot invoke an object which is possibly 'undefin... Remove this comment to see the full error message
   placeholder: '',
   onChange: () => {},
   name: '',

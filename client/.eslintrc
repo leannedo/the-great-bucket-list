@@ -5,20 +5,25 @@
     "es6": true,
     "node": true
   },
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": 2018,
+    "ecmaVersion": 2020,
     "sourceType": "module"
   },
-  "extends": ["airbnb", "prettier", "prettier/react"],
+  "extends": [
+    "airbnb", 
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended", 
+    "plugin:@typescript-eslint/recommended"
+  ],
   "rules": {
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [".js", ".jsx"]
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     ],
     "prettier/prettier": [
@@ -49,10 +54,12 @@
     "react/button-has-type": 0,
     "react/default-props-match-prop-types": 0,
     "react/no-array-index-key": 0,
+    "react/jsx-one-expression-per-line": 0,
     "jsx-a11y/label-has-for": 0,
     "jsx-a11y/label-has-associated-control": 0,
     "jsx-a11y/click-events-have-key-events": 0,
     "jsx-a11y/no-static-element-interactions": 0,
+    "jsx-a11y/anchor-is-valid": 0,
     "no-unused-vars": 1,
     "no-nested-ternary": 0,
     "no-use-before-define": 0,
@@ -63,7 +70,8 @@
     "no-shadow": 0,
     "no-undef": 0,
     "import/order": 0,
-    "import/no-unresolved": 1,
+    "import/no-unresolved": 0,
+    "import/extensions": 0,
     "import/no-duplicates": 1,
     "import/prefer-default-export": 0,
     "import/no-extraneous-dependencies": 0,
@@ -75,5 +83,5 @@
     "no-prototype-builtins": 0,
     "import/no-cycle": 0
   },
-  "plugins": ["prettier", "react", "jsx-a11y"]
+  "plugins": ["prettier", "react", "jsx-a11y", "react-hooks"]
 }

@@ -7,10 +7,7 @@
  * @returns {Object} - Return computed state
  */
 
-const modalReducer = (currentState: any, {
-  type,
-  payload = {}
-}: any) => {
+const modalReducer = (currentState: any, { type, payload = {} }: any) => {
   const { key, props } = payload;
   let state = { ...currentState };
 

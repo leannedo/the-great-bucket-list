@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import './Category.scss';
 
 const Category = ({ className, category, onClick }) => {
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'category' does not exist on type 'Props'... Remove this comment to see the full error message
   const [isHover, setIsHover] = useState(false);
 
   const style = { boxShadow: `inset 7px 0 0 ${category.colorIndicator}` };
@@ -21,10 +20,8 @@ const Category = ({ className, category, onClick }) => {
   };
 
   return (
-    // eslint-disable-next-line jsx-a11y/anchor-is-valid
     <a
       className={`td-category ${className}`}
-      // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       onMouseEnter={toggleHoverHandler}
       onMouseLeave={toggleHoverHandler}
       style={isHover ? hoverStyle : style}

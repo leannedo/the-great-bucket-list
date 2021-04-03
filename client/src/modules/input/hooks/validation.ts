@@ -29,4 +29,5 @@ export const minLengthValidator = (value: any, minLength: any) =>
 
 export const requiredValidator = (value: any) => value.trim() !== '';
 
-export const hexCodeValidator = (value: any) => /^([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(value);
+export const hexCodeValidator = (value: any) =>
+  /^([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(value);

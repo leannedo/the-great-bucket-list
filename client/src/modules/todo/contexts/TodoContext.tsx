@@ -9,8 +9,7 @@ import { useFetch } from '../../../hooks/useFetch';
 import { postTodo, putTodo, deleteTodo } from '../hooks/async';
 
 /** Initialize context */
-// @ts-expect-error ts-migrate(2554) FIXME: Expected 1 arguments, but got 0.
-const TodoContext = createContext();
+const TodoContext = createContext({});
 
 /** use context through useTodo */
 export const useTodo = () => useContext(TodoContext);
@@ -51,6 +50,7 @@ const TodoHooks = ({ children }) => {
    * @property {string} id - how todo is distinguished
    * @property {string} content - todo's content
    * @property {string} categoryId - todo's category which is represented by category's color
+   //  ts-migrate(7006) FIXME: Parameter 'todo' implicitly has an 'any' type.
    * @property {boolean} completed - state of completion in each todo
    */
   const addTodo = (todo) => {
@@ -63,6 +63,7 @@ const TodoHooks = ({ children }) => {
 
   /**
    * dispatch action "TOGGLE_COMPLETE"
+   //  ts-migrate(7031) FIXME: Binding element 'id' implicitly has an 'any' type.
    * @param {string} id - todo's id to toggle complete state
    */
   const toggleCompleteTodo = ({ id, completed }) => {
@@ -77,6 +78,7 @@ const TodoHooks = ({ children }) => {
 
   /**
    * dispatch action "DELETE_TODO"
+   //  ts-migrate(7006) FIXME: Parameter 'id' implicitly has an 'any' type.
    * @param {string} id - todo'id to be removed
    */
   const deleteTodoItem = (id) => {
@@ -117,7 +119,6 @@ const TodoHooks = ({ children }) => {
   return (
     <TodoContext.Provider
       value={{
-        // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         todosFetchStatus,
         todos,
         filteredTodos,

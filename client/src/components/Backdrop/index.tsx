@@ -1,26 +1,21 @@
 // Libraries
 import React from 'react';
-import PropTypes from 'prop-types';
 
 // Styling
 import './Backdrop.scss';
 
-const Backdrop = ({ className, closeModalHandler }) => (
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+type Props = {
+  className?: string;
+  closeModalHandler?: (...args: any[]) => any;
+};
+
+const Backdrop = ({ className, closeModalHandler }: Props) => (
   <div onClick={closeModalHandler} className={`td-backdrop ${className}`} />
 );
 
 Backdrop.defaultProps = {
   className: '',
   closeModalHandler: () => {},
-};
-
-Backdrop.propTypes = {
-  /** component's classname */
-  className: PropTypes.string,
-
-  /** close modal triggered by backdrop click */
-  closeModalHandler: PropTypes.func,
 };
 
 export default Backdrop;

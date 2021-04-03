@@ -7,12 +7,14 @@ import './PageTitle.scss';
 
 const PageTitle = ({ title, className }) => (
   <div className={className}>
-    {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+    {/*  ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+    {/*  ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
     <h1>{title}</h1>
   </div>
 );
 
-// @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+//  ts-migrate(2578) FIXME: Unused '' directive.
+//  ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
 PageTitle.defaultProps = {
   title: '',
   className: '',

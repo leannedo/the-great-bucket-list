@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from 'react';
 
 // Context
-// @ts-expect-error ts-migrate(6142) FIXME: Module '../../modal/contexts/ModalContext' was res... Remove this comment to see the full error message
+//  ts-migrate(6142) FIXME: Module '../../modal/contexts/ModalContext' was res... Remove this comment to see the full error message
 import { useModal } from '../../modal/contexts/ModalContext';
-// @ts-expect-error ts-migrate(6142) FIXME: Module '../contexts/CategoryContext' was resolved ... Remove this comment to see the full error message
+//  ts-migrate(6142) FIXME: Module '../contexts/CategoryContext' was resolved ... Remove this comment to see the full error message
 import { useCategory } from '../contexts/CategoryContext';
 
 // Hooks
@@ -39,7 +39,7 @@ export const useCategoryEditing = () => {
   /**
    * Helper functions for displaying default color
    * @param {string} hexCode - initial hex code to be formatted
-   // @ts-expect-error ts-migrate(7006) FIXME: Parameter 'hexCode' implicitly has an 'any' type.
+   //  ts-migrate(7006) FIXME: Parameter 'hexCode' implicitly has an 'any' type.
    * @returns {string} return a hex code without #
    */
   const formatColorCode = (hexCode) => hexCode.replace('#', '');
@@ -78,15 +78,15 @@ export const useCategoryEditing = () => {
    * @returns {React.Component} color blocks component
    */
   const renderDefaultColorBlocks = () =>
-    // @ts-expect-error ts-migrate(7006) FIXME: Parameter 'el' implicitly has an 'any' type.
+    //  ts-migrate(7006) FIXME: Parameter 'el' implicitly has an 'any' type.
     defaultCategories.map((el, id) => {
-      // @ts-expect-error ts-migrate(7006) FIXME: Parameter 'id' implicitly has an 'any' type.
+      //  ts-migrate(7006) FIXME: Parameter 'id' implicitly has an 'any' type.
       const colorCode = el.colorIndicator
         ? formatColorCode(el.colorIndicator)
         : '';
       return (
         <div
-          // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          //  ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           onClick={() => setColor(colorCode)}
           key={id}
           style={{
@@ -94,9 +94,9 @@ export const useCategoryEditing = () => {
           }}
           className="td-color-block"
         />
-      // @ts-expect-error ts-migrate(7006) FIXME: Parameter 'value' implicitly has an 'any' type.
+        //  ts-migrate(7006) FIXME: Parameter 'value' implicitly has an 'any' type.
       );
-    // @ts-expect-error ts-migrate(7006) FIXME: Parameter 'input' implicitly has an 'any' type.
+      //  ts-migrate(7006) FIXME: Parameter 'input' implicitly has an 'any' type.
     });
 
   const inputChangeHandler = (value, input) => {
@@ -137,23 +137,23 @@ export const useCategoryEditing = () => {
       });
     } else {
       addCategory({
-        // @ts-expect-error ts-migrate(2339) FIXME: Property 'value' does not exist on type '((value: ... Remove this comment to see the full error message
+        //  ts-migrate(2339) FIXME: Property 'value' does not exist on type '((value: ... Remove this comment to see the full error message
         name: categoryProp.value,
-        // @ts-expect-error ts-migrate(2339) FIXME: Property 'value' does not exist on type '((value: ... Remove this comment to see the full error message
+        //  ts-migrate(2339) FIXME: Property 'value' does not exist on type '((value: ... Remove this comment to see the full error message
         colorIndicator: `#${colorProp.value}`,
       });
     }
 
     closeModal({ key: categoryEditingModal.key });
     setColor('');
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'value' does not exist on type '((value: ... Remove this comment to see the full error message
+    //  ts-migrate(2339) FIXME: Property 'value' does not exist on type '((value: ... Remove this comment to see the full error message
     setCategory('');
   };
 
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'value' does not exist on type '((value: ... Remove this comment to see the full error message
+  //  ts-migrate(2339) FIXME: Property 'value' does not exist on type '((value: ... Remove this comment to see the full error message
   /** return form as valid based on valid state of color code and category name */
   const validateForm = () => {
-    // @ts-expect-error ts-migrate(2349) FIXME: This expression is not callable.
+    //  ts-migrate(2349) FIXME: This expression is not callable.
     setFormIsValid(colorProp.isValid && categoryProp.isValid);
   };
 
@@ -162,7 +162,7 @@ export const useCategoryEditing = () => {
    */
   const deleteCurrentCategory = () => {
     const currentCategoryId = currentCategory.id;
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'isValid' does not exist on type '((value... Remove this comment to see the full error message
+    //  ts-migrate(2339) FIXME: Property 'isValid' does not exist on type '((value... Remove this comment to see the full error message
     deleteCategory(currentCategoryId);
   };
 
@@ -172,11 +172,11 @@ export const useCategoryEditing = () => {
   useEffect(() => validateForm(), [categoryProp, colorProp]);
 
   return {
-    // @ts-expect-error ts-migrate(2349) FIXME: This expression is not callable.
+    //  ts-migrate(2349) FIXME: This expression is not callable.
     inputChangeHandler,
     submitHandler,
     showModalHandler,
-    // @ts-expect-error ts-migrate(2349) FIXME: This expression is not callable.
+    //  ts-migrate(2349) FIXME: This expression is not callable.
     renderDefaultColorBlocks,
     modalKey,
     modalVisibility,

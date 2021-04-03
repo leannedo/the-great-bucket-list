@@ -3,14 +3,30 @@ const paths = require('./paths');
 
 module.exports = {
   entry: {
-    main: `${paths.src}/index.js`,
+    main: `${paths.src}/index.tsx`,
   },
   output: {
     path: paths.build,
     filename: '[name].bundle.js',
   },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx']
+  },
   module: {
     rules: [
+      {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'awesome-typescript-loader',
+          options: {
+            useCache: true,
+            useBabel: true,
+            babelCore: '@babel/core',
+            configFileName: `${paths.src}/tsconfig.json`
+          },
+        },
+      },
       // js
       {
         test: /\.(js|jsx)$/,
@@ -27,22 +43,8 @@ module.exports = {
         use: {
           loader: 'url-loader',
         },
-      },
-      {
-        test: /\.svg$/,
-        use: [
-          {
-            loader: 'svg-url-loader',
-            options: {
-              encoding: 'base64',
-            },
-          },
-        ],
-      },
+      }
     ],
-  },
-  resolve: {
-    extensions: ['*', '.js', '.jsx'],
   },
   plugins: [
     new HtmlWebpackPlugin({

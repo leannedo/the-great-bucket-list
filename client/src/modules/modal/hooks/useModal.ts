@@ -35,10 +35,7 @@ export const useModalHook = (initialState = initialModalState) => {
    * @param {string} key - which modal is selected to show
    * @param {Object} props - props passed down to modal depending on context
    */
-  const showModal = ({
-    key,
-    props = {}
-  }: any) => {
+  const showModal = ({ key, props = {} }: any) => {
     dispatch({ type: 'SHOW_MODAL', payload: { key, props } });
   };
 
@@ -46,9 +43,7 @@ export const useModalHook = (initialState = initialModalState) => {
    * dispatch action "CLOSE_MODAL"
    * @param {string} key - which modal is selected to close
    */
-  const closeModal = ({
-    key
-  }: any) => {
+  const closeModal = ({ key }: any) => {
     dispatch({ type: 'CLOSE_MODAL', payload: { key } });
   };
 
