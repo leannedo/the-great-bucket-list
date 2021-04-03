@@ -9,6 +9,7 @@ import { useFetch } from '../../../hooks/useFetch';
 import { postTodo, putTodo, deleteTodo } from '../hooks/async';
 
 /** Initialize context */
+// @ts-expect-error ts-migrate(2554) FIXME: Expected 1 arguments, but got 0.
 const TodoContext = createContext();
 
 /** use context through useTodo */
@@ -116,6 +117,7 @@ const TodoHooks = ({ children }) => {
   return (
     <TodoContext.Provider
       value={{
+        // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         todosFetchStatus,
         todos,
         filteredTodos,

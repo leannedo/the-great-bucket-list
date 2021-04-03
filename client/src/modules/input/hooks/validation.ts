@@ -1,4 +1,4 @@
-export const validate = (value, rules) => {
+export const validate = (value: any, rules: any) => {
   let isValid = true;
 
   // eslint-disable-next-line guard-for-in
@@ -24,10 +24,9 @@ export const validate = (value, rules) => {
   return isValid;
 };
 
-export const minLengthValidator = (value, minLength) =>
+export const minLengthValidator = (value: any, minLength: any) =>
   value.length > minLength;
 
-export const requiredValidator = (value) => value.trim() !== '';
+export const requiredValidator = (value: any) => value.trim() !== '';
 
-export const hexCodeValidator = (value) =>
-  /^([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(value);
+export const hexCodeValidator = (value: any) => /^([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(value);

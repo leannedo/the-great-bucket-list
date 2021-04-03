@@ -12,6 +12,7 @@ const Button = ({ className, block, type, onClick, children, disabled }) => (
     disabled={disabled}
   >
     {children}
+  {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
   </button>
 );
 

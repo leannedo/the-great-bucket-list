@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import './Backdrop.scss';
 
 const Backdrop = ({ className, closeModalHandler }) => (
+  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
   <div onClick={closeModalHandler} className={`td-backdrop ${className}`} />
 );
 

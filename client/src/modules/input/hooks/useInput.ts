@@ -16,6 +16,7 @@ export const useInput = ({ initialValue = '', validationRules = {} }) => {
 
   const validate = (value) => {
     const isValid = validateInput(value, validationRules);
+    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'boolean' is not assignable to pa... Remove this comment to see the full error message
     setIsValid(isValid);
   };
 

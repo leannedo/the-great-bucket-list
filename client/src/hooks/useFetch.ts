@@ -8,7 +8,10 @@ const initialState = {
   data: [],
 };
 
-const fetchReducer = (state, { type, payload }) => {
+const fetchReducer = (state: any, {
+  type,
+  payload
+}: any) => {
   switch (type) {
     case 'FETCHING':
       return { ...initialState, status: 'fetching' };
@@ -28,7 +31,11 @@ const fetchReducer = (state, { type, payload }) => {
  * @param {Object} config.params - query parameters
  * @param {Object} config.callback - callback function when fetch success
  */
-export const useFetch = ({ url, params, callback }) => {
+export const useFetch = ({
+  url,
+  params,
+  callback
+}: any) => {
   const [state, dispatch] = useReducer(fetchReducer, initialState);
 
   useEffect(() => {

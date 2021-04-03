@@ -5,6 +5,7 @@ import React, { createContext, useContext } from 'react';
 import { useModalHook } from '../hooks/useModal';
 
 /** Initialize context */
+// @ts-expect-error ts-migrate(2554) FIXME: Expected 1 arguments, but got 0.
 const ModalContext = createContext();
 
 /** use context through useModal */
@@ -18,6 +19,7 @@ const ModalHooks = ({ children }) => {
   const { categoryEditingModal, categorySelectionModal, confirmModal } = state;
 
   return (
+    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <ModalContext.Provider
       value={{
         categoryEditingModal,

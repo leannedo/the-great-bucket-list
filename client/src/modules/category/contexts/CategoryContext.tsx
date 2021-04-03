@@ -8,6 +8,7 @@ import categoryData from './data';
 import categoryReducer from '../hooks/categoryReducer';
 
 /** Initialize context */
+// @ts-expect-error ts-migrate(2554) FIXME: Expected 1 arguments, but got 0.
 const CategoryContext = createContext();
 
 /** use context through useCategory */
@@ -77,6 +78,7 @@ const CategoryHooks = ({ children }) => {
 
   return (
     <CategoryContext.Provider
+      // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       value={{
         defaultCategories: categoryData,
         categories,
