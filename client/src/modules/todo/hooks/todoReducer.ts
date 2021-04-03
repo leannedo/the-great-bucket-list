@@ -1,0 +1,124 @@
+// Helper functions
+import { calculateCompletedPercent } from './helpers';
+
+/**
+ * todoReducer receives 2 params: state & action
+ * @param {Object} state - Initial state to be computed
+ * @param {Object} action
+ * @param {string} action.type - Action type, including "DELETE_TODO", "TOGGLE_COMPLETE", "ADD_TODO", "FILTER_ALL", "FILTER_ONGOING", "FILTER_COMPLETED"
+ * @param {Object} action.payload - Extra data
+ * @returns {Object} return computed state
+ */
+
+const todoReducer = (state: any, { type, payload }: any) => {
+  let updatedTodos = [];
+  let uncompletedCount = 0;
+  let completedCount = 0;
+
+  switch (type) {
+    case 'SET_TODOS':
+      const { todos: fetchedTodos } = payload;
+
+      uncompletedCount = fetchedTodos.filter((todo: any) => !todo.completed)
+        .length;
+      completedCount = fetchedTodos.length - uncompletedCount;
+
+      return {
+        ...state,
+        todos: fetchedTodos,
+        uncompletedCount,
+        completedPercent: calculateCompletedPercent(
+          completedCount,
+          fetchedTodos.length,
+        ),
+      };
+
+    case 'ADD_TODO':
+      const { todo: addedTodo } = payload;
+
+      if (!addedTodo) {
+        return state;
+      }
+
+      updatedTodos = [...state.todos, addedTodo];
+      uncompletedCount = updatedTodos.filter((todo) => !todo.completed).length;
+      completedCount = updatedTodos.length - uncompletedCount;
+
+      return {
+        ...state,
+        todos: updatedTodos,
+        filteredTodos: updatedTodos,
+        uncompletedCount,
+        completedPercent: calculateCompletedPercent(
+          completedCount,
+          updatedTodos.length,
+        ),
+      };
+
+    case 'TOGGLE_COMPLETE':
+      const { id: completedId, completed } = payload;
+
+      updatedTodos = state.todos.map((todo: any) =>
+        todo.id === completedId ? { ...todo, completed } : todo,
+      );
+      uncompletedCount = updatedTodos.filter((todo: any) => !todo.completed)
+        .length;
+      completedCount = updatedTodos.length - uncompletedCount;
+
+      return {
+        ...state,
+        todos: updatedTodos,
+        filteredTodos: updatedTodos,
+        uncompletedCount,
+        completedPercent: calculateCompletedPercent(
+          completedCount,
+          updatedTodos.length,
+        ),
+      };
+
+    case 'DELETE_TODO':
+      const { id: deletedId } = payload;
+
+      updatedTodos = state.todos.filter((todo: any) => todo.id !== deletedId);
+      uncompletedCount = updatedTodos.filter((todo: any) => !todo.completed)
+        .length;
+      completedCount = updatedTodos.length - uncompletedCount;
+
+      return {
+        ...state,
+        todos: updatedTodos,
+        filteredTodos: updatedTodos,
+        uncompletedCount,
+        completedPercent: calculateCompletedPercent(
+          completedCount,
+          updatedTodos.length,
+        ),
+      };
+
+    case 'FILTER_COMPLETED':
+      return {
+        ...state,
+        filteredTodos: state.todos.filter((todo: any) => todo.completed),
+        currentFilterKey: type,
+      };
+
+    case 'FILTER_ONGOING':
+      return {
+        ...state,
+        filteredTodos: state.todos.filter((todo: any) => !todo.completed),
+        currentFilterKey: type,
+      };
+
+    case 'FILTER_ALL':
+      return {
+        ...state,
+        filteredTodos: state.todos,
+        currentFilterKey: type,
+      };
+
+    default:
+      return state;
+  }
+};
+
+export default todoReducer;
