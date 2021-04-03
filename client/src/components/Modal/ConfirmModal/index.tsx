@@ -1,20 +1,27 @@
 // Libraries
 import React from 'react';
-import PropTypes from 'prop-types';
 
 // Components
-//  ts-migrate(6142) FIXME: Module '../../Button' was resolved to '/Users/ngoc... Remove this comment to see the full error message
 import Modal from '../index';
 import Button from '../../Button';
 
 // Styling
-//  ts-migrate(6142) FIXME: Module '../../../modules/modal/contexts/ModalConte... Remove this comment to see the full error message
 import './ConfirmModal.scss';
 
 // Hooks
 import { useModal } from '../../../modules/modal/contexts/ModalContext';
 
-const ConfirmModal = (props) => {
+interface IConfirmModalProps {
+  className?: string;
+  okText: string;
+  cancelText: string;
+  cancelHandler: () => void;
+  okHandler: () => void;
+  isVisible: boolean;
+  key: string;
+}
+
+const ConfirmModal = (props: IConfirmModalProps): JSX.Element => {
   const { confirmModal, closeModal } = useModal();
 
   const {
@@ -52,54 +59,17 @@ const ConfirmModal = (props) => {
       <div className="td-confirm-modal">
         <Button onClick={okHandler} type="danger">
           {okText}
-          {/*  ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
         </Button>
         <Button
           onClick={onModalClose}
-          //  ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           className="confirm-modal-cancel-btn"
-          //  ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           type="text"
         >
           {cancelText}
         </Button>
       </div>
     </Modal>
-    //  ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
   );
-};
-
-ConfirmModal.defaultProps = {
-  className: '',
-  okText: '',
-  cancelText: '',
-  okHandler: () => {},
-  cancelHandler: () => {},
-  isVisible: false,
-  key: '',
-};
-
-ConfirmModal.propTypes = {
-  /** element's class name */
-  className: PropTypes.string,
-
-  /** confirm text */
-  okText: PropTypes.string,
-
-  /** cancel text  */
-  cancelText: PropTypes.string,
-
-  /** confirm text's action */
-  cancelHandler: PropTypes.func,
-
-  /** cancel text's action */
-  okHandler: PropTypes.func,
-
-  /** modal visibility state */
-  isVisible: PropTypes.bool,
-
-  /** modal identified key */
-  key: PropTypes.string,
 };
 
 export default ConfirmModal;

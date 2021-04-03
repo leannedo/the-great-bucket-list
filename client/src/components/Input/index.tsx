@@ -1,20 +1,30 @@
 // Libraries
 import React from 'react';
-import PropTypes from 'prop-types';
 
 // Styling
 import './Input.scss';
+
+interface IInputProps {
+  label?: string;
+  className?: string;
+  placeholder?: string;
+  name: string;
+  onChange: (value: string) => void;
+  value: string;
+  onKeyUpHandler?: (value) => void;
+  isValid?: boolean;
+}
 
 const Input = ({
   label,
   className,
   placeholder,
   name,
-  onChange,
+  onChange = () => undefined,
   value,
   onKeyUpHandler,
   isValid,
-}) => (
+}: IInputProps): JSX.Element => (
   <div className={className}>
     {label && (
       <label className="td-label" htmlFor={name}>
@@ -32,33 +42,5 @@ const Input = ({
     />
   </div>
 );
-
-Input.defaultProps = {
-  className: '',
-  placeholder: '',
-  onChange: () => {},
-  name: '',
-  label: '',
-};
-
-Input.propTypes = {
-  /** element's class name */
-  className: PropTypes.string,
-
-  /** input's name handler */
-  name: PropTypes.string,
-
-  /** input's label */
-  label: PropTypes.string,
-
-  /** input's placeholder */
-  placeholder: PropTypes.string,
-
-  /** onChange handler */
-  onChange: PropTypes.func,
-
-  /** input's value */
-  value: PropTypes.string,
-};
 
 export default Input;

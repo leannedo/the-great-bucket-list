@@ -1,6 +1,5 @@
 // Libraries
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 
 // Styling
 import './FilterBar.scss';
@@ -8,7 +7,11 @@ import './FilterBar.scss';
 // Hooks
 import { useTodo } from '../../modules/todo/contexts/TodoContext';
 
-const FilterBar = ({ className }) => {
+interface IFilterBarProps {
+  className?: string;
+}
+
+const FilterBar = ({ className }: IFilterBarProps): JSX.Element => {
   const { uncompletedCount, filterTodo } = useTodo();
 
   const [active, setActive] = useState('FILTER_ALL');
@@ -54,16 +57,6 @@ const FilterBar = ({ className }) => {
       </div>
     </div>
   );
-};
-
-FilterBar.defaultProps = {
-  className: '',
-  count: 0,
-};
-
-FilterBar.propTypes = {
-  /** component's default classname */
-  className: PropTypes.string,
 };
 
 export default FilterBar;

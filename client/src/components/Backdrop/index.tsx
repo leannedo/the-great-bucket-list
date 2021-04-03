@@ -4,18 +4,16 @@ import React from 'react';
 // Styling
 import './Backdrop.scss';
 
-type Props = {
+interface IBackdropProps {
   className?: string;
-  closeModalHandler?: (...args: any[]) => any;
-};
+  closeModalHandler?: () => void;
+}
 
-const Backdrop = ({ className, closeModalHandler }: Props) => (
+const Backdrop = ({
+  className,
+  closeModalHandler = () => undefined,
+}: IBackdropProps): JSX.Element => (
   <div onClick={closeModalHandler} className={`td-backdrop ${className}`} />
 );
-
-Backdrop.defaultProps = {
-  className: '',
-  closeModalHandler: () => {},
-};
 
 export default Backdrop;

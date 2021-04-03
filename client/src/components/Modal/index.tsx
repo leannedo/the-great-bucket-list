@@ -1,17 +1,26 @@
 // Libraries
 import React from 'react';
-import PropTypes from 'prop-types';
 
 // Styling
-//  ts-migrate(6142) FIXME: Module '../Backdrop' was resolved to '/Users/ngocd... Remove this comment to see the full error message
 import './Modal.scss';
-//  ts-migrate(6142) FIXME: Module '../../modules/modal/contexts/ModalContext'... Remove this comment to see the full error message
 import Backdrop from '../Backdrop';
 
 // Hooks
 import { useModal } from '../../modules/modal/contexts/ModalContext';
 
-const Modal = ({ className, children, modalKey, visible }) => {
+interface IModalProps {
+  className?: string;
+  children: React.ReactNode;
+  modalKey: string;
+  visible: boolean;
+}
+
+const Modal = ({
+  className,
+  children,
+  modalKey,
+  visible = false,
+}: IModalProps): JSX.Element => {
   const { closeModal } = useModal();
 
   /**
@@ -24,33 +33,11 @@ const Modal = ({ className, children, modalKey, visible }) => {
 
   return (
     <div className={`td-modal-wrapper ${visible ? 'show' : 'hide'}`}>
-      {/*  ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
       <div className={`td-modal ${className}`}>{children}</div>
-      {/*  ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
-      <Backdrop closeModalHandler={closeModalHandler} modalVisible={visible} />
+      {/* <Backdrop closeModalHandler={closeModalHandler} modalVisible={visible} /> */}
+      <Backdrop closeModalHandler={closeModalHandler} />
     </div>
   );
-  //  ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-};
-
-Modal.defaultProps = {
-  className: '',
-  modalKey: '',
-  visible: false,
-};
-
-Modal.propTypes = {
-  /** component's classname */
-  className: PropTypes.string,
-
-  /** component's children */
-  children: PropTypes.node,
-
-  /** modal's identify key */
-  modalKey: PropTypes.string,
-
-  /** modal's visibility state */
-  visible: PropTypes.bool,
 };
 
 export default Modal;

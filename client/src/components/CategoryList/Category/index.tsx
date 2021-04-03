@@ -1,11 +1,23 @@
 // Libraries
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 
 // Styling
 import './Category.scss';
 
-const Category = ({ className, category, onClick }) => {
+// Types
+import { ICategory } from '../../../types';
+
+interface ICategoryProps {
+  className?: string;
+  category: ICategory;
+  onClick: (category: ICategory) => void;
+}
+
+const Category = ({
+  className,
+  category,
+  onClick = () => undefined,
+}: ICategoryProps): JSX.Element => {
   const [isHover, setIsHover] = useState(false);
 
   const style = { boxShadow: `inset 7px 0 0 ${category.colorIndicator}` };
@@ -30,23 +42,6 @@ const Category = ({ className, category, onClick }) => {
       {category.name}
     </a>
   );
-};
-
-Category.defaultProps = {
-  className: '',
-  name: '',
-  colorIndicator: '',
-};
-
-Category.propTypes = {
-  /** element's class name */
-  className: PropTypes.string,
-
-  /** category's name */
-  name: PropTypes.string,
-
-  /** category's color indicator */
-  colorIndicator: PropTypes.string,
 };
 
 export default Category;

@@ -112,7 +112,6 @@ const TodoHooks = ({ children }) => {
   /** Fetch todos on page load */
   const { status: todosFetchStatus } = useFetch({
     url: '/todos',
-    method: 'get',
     callback: onTodosFetched,
   });
 

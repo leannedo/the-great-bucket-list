@@ -1,16 +1,21 @@
 // Libraries
 import React from 'react';
-import PropTypes from 'prop-types';
 
 // Components
 import ContentLoader from 'react-content-loader';
 
-const ToDoItemLoader = ({ width, height }) => (
+interface IToDoItemLoaderProps {
+  width?: string | number;
+  height?: string | number;
+}
+
+const ToDoItemLoader = ({
+  width = 768,
+  height = 25,
+}: IToDoItemLoaderProps): JSX.Element => (
   <ContentLoader
     speed={2}
     width={width}
-    //  ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
-    //  ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     height={height}
     viewBox="0 0 768 23"
     backgroundColor="#f3f3f3"
@@ -18,25 +23,9 @@ const ToDoItemLoader = ({ width, height }) => (
     style={{ marginBottom: '20px' }}
   >
     <circle cx="10" cy="10" r="10" />
-    {/*  ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
-    {/*  ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
     <rect x="34" y="0" rx="0" ry="0" width="20" height="20" />
-    {/*  ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
     <rect x="79" y="1" rx="0" ry="0" width="90%" height="19" />
   </ContentLoader>
 );
-
-ToDoItemLoader.defaultProps = {
-  width: 768,
-  height: 25,
-};
-
-ToDoItemLoader.propTypes = {
-  /** loader's width */
-  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-
-  /** loader's height */
-  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-};
 
 export default ToDoItemLoader;

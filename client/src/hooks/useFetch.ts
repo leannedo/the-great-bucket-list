@@ -2,20 +2,36 @@
 import { useReducer, useEffect } from 'react';
 import axios from 'axios';
 
-const initialState = {
+interface UseFetchState {
+  status: string;
+  error: string | null;
+  data: Record<string, unknown>[];
+}
+const initialState: UseFetchState = {
   status: '',
   error: null,
   data: [],
 };
 
-const fetchReducer = (state: any, { type, payload }: any) => {
-  switch (type) {
+type ActionType =
+  | { type: 'FETCHING'; payload?: unknown }
+  | {
+      type: 'FETCHED';
+      payload: Record<string, unknown>[];
+    }
+  | {
+      type: 'FETCH_ERROR';
+      payload: string;
+    };
+
+const fetchReducer = (state: typeof initialState, action: ActionType) => {
+  switch (action.type) {
     case 'FETCHING':
       return { ...initialState, status: 'fetching' };
     case 'FETCHED':
-      return { ...initialState, status: 'success', data: payload.data };
+      return { ...initialState, status: 'success', data: action.payload };
     case 'FETCH_ERROR':
-      return { ...initialState, status: 'error', error: payload.error };
+      return { ...initialState, status: 'error', error: action.payload };
     default:
       return state;
   }
@@ -28,7 +44,16 @@ const fetchReducer = (state: any, { type, payload }: any) => {
  * @param {Object} config.params - query parameters
  * @param {Object} config.callback - callback function when fetch success
  */
-export const useFetch = ({ url, params, callback }: any) => {
+
+export const useFetch = ({
+  url,
+  params,
+  callback,
+}: {
+  url: string;
+  params?: Record<string, string | string[]>;
+  callback: (data) => void;
+}): { status: string; data: Record<string, unknown>[] } => {
   const [state, dispatch] = useReducer(fetchReducer, initialState);
 
   useEffect(() => {
@@ -44,14 +69,14 @@ export const useFetch = ({ url, params, callback }: any) => {
         });
 
         if (response.data) {
-          dispatch({ type: 'FETCHED', payload: { data: response.data } });
+          dispatch({ type: 'FETCHED', payload: response.data });
         }
 
         if (callback) {
           callback(response.data);
         }
       } catch (error) {
-        dispatch({ type: 'FETCH_ERROR', payload: { error: error.message } });
+        dispatch({ type: 'FETCH_ERROR', payload: error.message });
       }
     };
 

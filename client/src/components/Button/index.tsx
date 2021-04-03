@@ -1,11 +1,26 @@
 // Libraries
 import React from 'react';
-import PropTypes from 'prop-types';
 
 // Styling
 import './Button.scss';
 
-const Button = ({ className, block, type, onClick, children, disabled }) => (
+interface IButtonProps {
+  className?: string;
+  block?: boolean;
+  type: string;
+  onClick: () => void;
+  children: string | React.ReactNode;
+  disabled?: boolean;
+}
+
+const Button = ({
+  className,
+  block,
+  type = 'primary',
+  onClick = () => undefined,
+  children,
+  disabled,
+}: IButtonProps): JSX.Element => (
   <button
     className={`td-btn ${className} btn-${type} ${block ? 'btn-block' : ''}`}
     onClick={onClick}
@@ -14,33 +29,5 @@ const Button = ({ className, block, type, onClick, children, disabled }) => (
     {children}
   </button>
 );
-
-Button.defaultProps = {
-  className: '',
-  block: false,
-  type: 'primary',
-  onClick: () => undefined,
-  disabled: false,
-};
-
-Button.propTypes = {
-  /** element's class name */
-  className: PropTypes.string,
-
-  /** option to fit button width to its parent width */
-  block: PropTypes.bool,
-
-  /** button variant, eg. "primary", "text", "icon", etc */
-  type: PropTypes.string,
-
-  /** onClick handler */
-  onClick: PropTypes.func,
-
-  /** button content */
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-
-  /** button disable state */
-  disabled: PropTypes.bool,
-};
 
 export default Button;
