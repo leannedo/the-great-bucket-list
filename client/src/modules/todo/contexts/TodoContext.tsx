@@ -5,8 +5,12 @@ import React, { useReducer, createContext, useContext, useEffect } from 'react';
 import todoReducer from '../hooks/todoReducer';
 import { useFetch } from '../../../hooks/useFetch';
 
-// Async
-import { postTodo, putTodo, deleteTodo } from '../hooks/async';
+// Apollo
+import { useApolloClient } from '@apollo/client';
+import { GET_TO_DOS } from '../../../graphql/todos.graphql';
+import { CREATE_TO_DO } from '../../../graphql/createTodo.graphql';
+import { UPDATE_TO_DO } from '../../../graphql/updateTodo.graphql';
+import { DELETE_TO_DO } from '../../../graphql/deleteTodo.graphql';
 
 /** Initialize context */
 const TodoContext = createContext({});
@@ -33,7 +37,8 @@ const TodoHooks = ({ children }) => {
 
   const [state, dispatch] = useReducer(todoReducer, initialState);
 
-  /** Extract data from state */
+  const apolloClient = useApolloClient();
+
   const {
     todos,
     filteredTodos,
@@ -42,76 +47,70 @@ const TodoHooks = ({ children }) => {
     currentFilterKey,
   } = state;
 
-  /**
-   * Post todo to BE and dispatch action to reducer
-   * @param {TodoEntity} todo
-   *
-   * @typedef {Object} TodoEntity
-   * @property {string} id - how todo is distinguished
-   * @property {string} content - todo's content
-   * @property {string} categoryId - todo's category which is represented by category's color
-   //  ts-migrate(7006) FIXME: Parameter 'todo' implicitly has an 'any' type.
-   * @property {boolean} completed - state of completion in each todo
-   */
-  const addTodo = (todo) => {
-    postTodo(todo, (resData) => {
-      if (resData) {
-        dispatch({ type: 'ADD_TODO', payload: { todo: resData } });
+  const addTodo = async (todo) => {
+    try {
+      const { data } = await apolloClient.mutate({
+        mutation: CREATE_TO_DO,
+        variables: { todo },
+      });
+
+      if (data) {
+        dispatch({ type: 'ADD_TODO', payload: { todo: data.createToDo } });
       }
-    });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  /**
-   * dispatch action "TOGGLE_COMPLETE"
-   //  ts-migrate(7031) FIXME: Binding element 'id' implicitly has an 'any' type.
-   * @param {string} id - todo's id to toggle complete state
-   */
-  const toggleCompleteTodo = ({ id, completed }) => {
-    const updatedTodo = { id, completed };
+  const toggleCompleteTodo = async ({ id, completed }) => {
+    try {
+      const { data } = await apolloClient.mutate({
+        mutation: UPDATE_TO_DO,
+        variables: { id, todo: { completed } },
+      });
 
-    putTodo(updatedTodo, (resData) => {
-      if (resData) {
-        dispatch({ type: 'TOGGLE_COMPLETE', payload: { id, completed } });
+      if (data) {
+        const { updateToDo } = data;
+        dispatch({ type: 'TOGGLE_COMPLETE', payload: updateToDo });
       }
-    });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  /**
-   * dispatch action "DELETE_TODO"
-   //  ts-migrate(7006) FIXME: Parameter 'id' implicitly has an 'any' type.
-   * @param {string} id - todo'id to be removed
-   */
-  const deleteTodoItem = (id) => {
-    deleteTodo(id, (resData) => {
-      if (resData) {
+  const deleteTodoItem = async (id) => {
+    try {
+      const { data } = await apolloClient.mutate({
+        mutation: DELETE_TO_DO,
+        variables: { id },
+      });
+
+      if (data) {
         dispatch({ type: 'DELETE_TODO', payload: { id } });
+        console.log(data);
       }
-    });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  /**
-   * dispatch action "FILTER_TODO"
-   * @param {string} filterKey - filter action that is triggered at the moment
-   */
   const filterTodo = (filterKey) => {
     dispatch({ type: filterKey });
   };
 
-  /** Hook to watch changes on todos */
   useEffect(() => {
     filterTodo(currentFilterKey);
   }, [todos]);
 
-  /** Set todos after fetching */
-  const onTodosFetched = (fetchedTodos) => {
-    if (fetchedTodos && fetchedTodos.length > 0) {
-      dispatch({ type: 'SET_TODOS', payload: { todos: fetchedTodos } });
+  const onTodosFetched = (data) => {
+    if (data && data.todos) {
+      dispatch({ type: 'SET_TODOS', payload: { todos: data.todos } });
     }
   };
 
-  /** Fetch todos on page load */
   const { status: todosFetchStatus } = useFetch({
-    url: '/todos',
+    client: apolloClient,
+    query: GET_TO_DOS,
     callback: onTodosFetched,
   });
 
