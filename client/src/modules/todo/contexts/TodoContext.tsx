@@ -11,9 +11,22 @@ import { GET_TO_DOS } from '../../../graphql/todos.graphql';
 import { CREATE_TO_DO } from '../../../graphql/createTodo.graphql';
 import { UPDATE_TO_DO } from '../../../graphql/updateTodo.graphql';
 import { DELETE_TO_DO } from '../../../graphql/deleteTodo.graphql';
+import { IToDo } from '../../../../../server/src/models/ToDoModel';
+
+interface ITodoContext {
+  todosFetchStatus?: string;
+  todos?: IToDo[];
+  filteredTodos?: IToDo[];
+  uncompletedCount?: number;
+  completedPercent?: string;
+  deleteTodoItem?: (id: string) => void;
+  toggleCompleteTodo?: (todo: IToDo) => void;
+  addTodo?: (todo: IToDo) => void;
+  filterTodo?: (filterKey: string) => void;
+}
 
 /** Initialize context */
-const TodoContext = createContext({});
+export const TodoContext = createContext<ITodoContext>(null);
 
 /** use context through useTodo */
 export const useTodo = () => useContext(TodoContext);
@@ -31,7 +44,7 @@ const TodoHooks = ({ children }) => {
     todos: [],
     filteredTodos: [],
     uncompletedCount: 0,
-    completedPercent: 0,
+    completedPercent: '0',
     currentFilterKey: 'FILTER_ALL',
   };
 
@@ -55,7 +68,7 @@ const TodoHooks = ({ children }) => {
       });
 
       if (data) {
-        dispatch({ type: 'ADD_TODO', payload: { todo: data.createToDo } });
+        return data;
       }
     } catch (error) {
       console.error(error);

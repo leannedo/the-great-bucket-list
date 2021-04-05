@@ -1,6 +1,6 @@
 // Libraries
 import { useReducer, useEffect } from 'react';
-import { ApolloClient, DocumentNode } from '@apollo/client';
+import axios from 'axios';
 
 interface UseFetchState {
   status: string;
@@ -46,41 +46,42 @@ const fetchReducer = (state: typeof initialState, action: ActionType) => {
  */
 
 export const useFetch = ({
-  client,
-  query,
-  variables,
+  url,
+  params,
   callback,
 }: {
-  client: ApolloClient<unknown>;
-  query: DocumentNode;
-  variables?: Record<string, unknown>;
-  callback: (data) => void;
+  url: string;
+  params?: Record<string, string | string[]>;
+  callback?: (data) => void;
 }): { status: string; data: Record<string, unknown>[] } => {
   const [state, dispatch] = useReducer(fetchReducer, initialState);
 
   useEffect(() => {
+    if (!url) return;
     const fetchData = async () => {
       try {
         dispatch({ type: 'FETCHING' });
 
-        const { data } = await client.query({ query, variables });
+        const response = await axios({
+          url,
+          method: 'get',
+          params,
+        });
 
-        if (data) {
-          dispatch({ type: 'FETCHED', payload: data });
+        if (response.data) {
+          dispatch({ type: 'FETCHED', payload: response.data });
         }
 
         if (callback) {
-          callback(data);
+          callback(response.data);
         }
       } catch (error) {
-        const graphQLError = error?.networkError?.result?.errors[0].message;
-        console.error(error);
-        dispatch({ type: 'FETCH_ERROR', payload: graphQLError });
+        dispatch({ type: 'FETCH_ERROR', payload: error.message });
       }
     };
 
     fetchData().then();
-  }, [query, variables]);
+  }, [url]);
 
   const { status, data } = state;
 
