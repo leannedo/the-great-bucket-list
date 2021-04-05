@@ -4,6 +4,7 @@ export interface IToDo extends mongoose.Document {
   id: string;
   name: string;
   completed: boolean;
+  categoryId: string;
   transform: () => IToDo;
 }
 
@@ -11,6 +12,7 @@ export interface IToDo extends mongoose.Document {
 const todoSchema: mongoose.Schema = new mongoose.Schema({
   name: { type: mongoose.SchemaTypes.String, required: true },
   completed: { type: mongoose.SchemaTypes.Boolean, required: true },
+  categoryId: { type: mongoose.SchemaTypes.String },
 });
 
 /**

@@ -5,16 +5,19 @@ export const ToDoSchema = gql`
     id: ID!
     name: String!
     completed: Boolean!
+    categoryId: ID
   }
 
   input CreateTodoInput {
     name: String!
     completed: Boolean = false
+    categoryId: ID
   }
 
   input UpdateTodoInput {
     name: String
     completed: Boolean
+    categoryId: ID
   }
 
   extend type Query {
