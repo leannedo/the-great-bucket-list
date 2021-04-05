@@ -1,5 +1,7 @@
 // Libraries
 import React from 'react';
+import { ApolloProvider } from '@apollo/client';
+import { createClient } from './graphql/client';
 
 // Components
 import Layout from './layout/index';
@@ -10,22 +12,20 @@ import ModalProvider from './modules/modal/contexts/ModalContext';
 import CategoryProvider from './modules/category/contexts/CategoryContext';
 import TodoProvider from './modules/todo/contexts/TodoContext';
 
-function App() {
+const App = (): JSX.Element => {
   return (
-    <Layout>
-      {/*  ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
-      <ModalProvider>
-        {/*  ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
-        <CategoryProvider>
-          {/*  ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
-          <TodoProvider>
-            {/*  ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
-            <Dashboard />
-          </TodoProvider>
-        </CategoryProvider>
-      </ModalProvider>
-    </Layout>
+    <ApolloProvider client={createClient()}>
+      <Layout>
+        <ModalProvider>
+          <CategoryProvider>
+            <TodoProvider>
+              <Dashboard />
+            </TodoProvider>
+          </CategoryProvider>
+        </ModalProvider>
+      </Layout>
+    </ApolloProvider>
   );
-}
+};
 
 export default App;
