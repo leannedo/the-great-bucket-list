@@ -67,7 +67,7 @@ export const updateTodo = async (
   let updatedTodo: IToDo;
 
   try {
-    updatedTodo = await ToDoModel(dbConnection).findByIdAndUpdate(id, todo);
+    updatedTodo = await ToDoModel(dbConnection).findByIdAndUpdate(id, todo, {new: true});
     if (updatedTodo) {
       updatedTodo = updatedTodo.transform();
     }
