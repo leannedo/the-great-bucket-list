@@ -15,22 +15,14 @@ import CategorySelectionModal from '../../components/Modal/CategorySelectionModa
 import CategoryEditingModal from '../../components/Modal/CategoryEditingModal';
 import ConfirmModal from '../../components/Modal/ConfirmModal';
 
-// Hooks
-import { useTodo } from '../../modules/todo/contexts/TodoContext';
-
-const Dashboard = () => {
-  const { completedPercent } = useTodo();
-
+const Dashboard = (): JSX.Element => {
   return (
     <div className="td-dashboard">
       <div className="td-header-wrapper">
         <div className="td-header">
           <PageTitle title="The Great Bucket List" className="td-page-title" />
           <CategoryList className="td-category-list-wrapper" />
-          <ProgressBar
-            className="td-progress-bar"
-            progress={completedPercent}
-          />
+          <ProgressBar className="td-progress-bar" />
         </div>
       </div>
       <div className="td-body">
