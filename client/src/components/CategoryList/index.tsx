@@ -11,20 +11,24 @@ import Category from './Category';
 import { useModal } from '../../modules/modal/contexts/ModalContext';
 import { useCategory } from '../../modules/category/contexts/CategoryContext';
 
-// Types
-import { ICategory } from '../../types';
-
 interface ICategoryListProps {
   className?: string;
-  onCategoryClick: (category: ICategory) => void;
 }
 
-const CategoryList = ({
-  className,
-  onCategoryClick = () => undefined,
-}: ICategoryListProps): JSX.Element => {
+const CategoryList = ({ className }: ICategoryListProps): JSX.Element => {
   const { showModal, categoryEditingModal } = useModal();
   const { categories } = useCategory();
+
+  const onCategoryClick = (category) => {
+    showModal({ key: categoryEditingModal.key, props: { category } });
+  };
+
+  const onAddCategoryClick = () => {
+    showModal({
+      key: categoryEditingModal.key,
+      props: { category: { name: '', colorIndicator: '' } },
+    });
+  };
 
   return (
     <div className={className}>
@@ -33,19 +37,11 @@ const CategoryList = ({
           <Category
             key={id}
             category={el}
-            onClick={(category) => onCategoryClick(category)}
+            onClick={() => onCategoryClick(el)}
           />
         ))}
         <div className="td-category-add-btn">
-          <i
-            className="fas fa-plus"
-            onClick={() =>
-              showModal({
-                key: categoryEditingModal.key,
-                props: { category: { name: '', colorIndicator: '' } },
-              })
-            }
-          />
+          <i className="fas fa-plus" onClick={onAddCategoryClick} />
         </div>
       </div>
     </div>

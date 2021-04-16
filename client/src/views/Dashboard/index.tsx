@@ -16,30 +16,17 @@ import CategoryEditingModal from '../../components/Modal/CategoryEditingModal';
 import ConfirmModal from '../../components/Modal/ConfirmModal';
 
 // Hooks
-import { useModal } from '../../modules/modal/contexts/ModalContext';
 import { useTodo } from '../../modules/todo/contexts/TodoContext';
 
 const Dashboard = () => {
-  const { showModal, categoryEditingModal } = useModal();
   const { completedPercent } = useTodo();
-
-  /**
-   * Trigger showModal function from useModal
-   * @param {Object} category
-   */
-  const onCategoryClick = (category) => {
-    showModal({ key: categoryEditingModal.key, props: { category } });
-  };
 
   return (
     <div className="td-dashboard">
       <div className="td-header-wrapper">
         <div className="td-header">
           <PageTitle title="The Great Bucket List" className="td-page-title" />
-          <CategoryList
-            className="td-category-list-wrapper"
-            onCategoryClick={(category) => onCategoryClick(category)}
-          />
+          <CategoryList className="td-category-list-wrapper" />
           <ProgressBar
             className="td-progress-bar"
             progress={completedPercent}
