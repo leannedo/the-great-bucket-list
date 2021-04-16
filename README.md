@@ -2,7 +2,9 @@
 
 ## Project overview
 
-A friendly and fun-to-use application which can be used for versatile purposes from scribbling notes on the go or jotting down next challenges to overcome on your journey. With clean UI and exquisite UX, organizing tasks and checking them out when finished will be like a freeze.
+A friendly and fun-to-use application which can be used for versatile purposes from scribbling notes on the go or jotting down next challenges to overcome on your journey. With clean UI and exquisite UX, organizing tasks and checking them out when finished will be like a freeze. 
+
+The app is designed by my talented friend [Minh Anh](https://www.linkedin.com/in/minh-anh3010/) 🔥 
 
 Give it a try here: https://thegreatbucketlist.herokuapp.com/
 
