@@ -9,7 +9,10 @@ import Button from '../../Button';
 import './ConfirmModal.scss';
 
 // Hooks
-import { useModal } from '../../../modules/modal/contexts/ModalContext';
+import { useModal } from '../../../modules/modal/context/ModalContext';
+
+// Types
+import { ModalKeys } from '../../../modules/modal/types';
 
 interface IConfirmModalProps {
   className?: string;
@@ -24,16 +27,12 @@ interface IConfirmModalProps {
 const ConfirmModal = (props: IConfirmModalProps): JSX.Element => {
   const { confirmModal, closeModal } = useModal();
 
-  const {
-    props: modalProps,
-    isVisible: modalVisible,
-    key: modalKey,
-  } = confirmModal;
+  const { props: modalProps, isVisible: modalVisible } = confirmModal;
 
   const mergedProps = {
     ...props,
     ...modalProps,
-    ...{ isVisible: modalVisible, key: modalKey },
+    ...{ isVisible: modalVisible },
   };
 
   const {
@@ -46,12 +45,9 @@ const ConfirmModal = (props: IConfirmModalProps): JSX.Element => {
     key,
   } = mergedProps;
 
-  /**
-   * Close modal and trigger additional handler from modal's props
-   */
   const onModalClose = () => {
-    cancelHandler();
-    closeModal({ key });
+    if (cancelHandler) cancelHandler();
+    closeModal(ModalKeys.CONFIRM_MODAL);
   };
 
   return (

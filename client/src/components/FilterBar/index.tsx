@@ -17,20 +17,11 @@ const FilterBar = ({ className }: IFilterBarProps): JSX.Element => {
   const [active, setActive] = useState('FILTER_ALL');
   const filterAction = ['FILTER_ALL', 'FILTER_ONGOING', 'FILTER_COMPLETED'];
 
-  /**
-   * Set active state for filter tab and trigger filter action
-   * @param {string} action
-   */
   const onFilterItemClick = (action) => {
     setActive(action);
     filterTodo(action);
   };
 
-  /**
-   * Format label for filter tab
-   * @param {string} action
-   * @return {string} label without "FILTER_"
-   */
   const formatActionLabel = (action) => {
     if (!action) {
       return '';

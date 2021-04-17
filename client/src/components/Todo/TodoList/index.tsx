@@ -10,7 +10,7 @@ import './ToDoList.scss';
 
 // Hooks
 import { useTodo } from '../../../modules/todo/contexts/TodoContext';
-import { useCategory } from '../../../modules/category/contexts/CategoryContext';
+import { useCategory } from '../../../modules/category/context/CategoryContext';
 
 interface IToDoListProps {
   className?: string;

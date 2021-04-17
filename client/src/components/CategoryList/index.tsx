@@ -8,25 +8,28 @@ import './CategoryList.scss';
 import Category from './Category';
 
 // Hooks
-import { useModal } from '../../modules/modal/contexts/ModalContext';
-import { useCategory } from '../../modules/category/contexts/CategoryContext';
+import { useModal } from '../../modules/modal/context/ModalContext';
+import { useCategory } from '../../modules/category/context/CategoryContext';
+
+// Types
+import { ICategory } from '../../types';
+import { ModalKeys } from '../../modules/modal/types';
 
 interface ICategoryListProps {
   className?: string;
+  onCategoryClick: (category: ICategory) => void;
 }
 
-const CategoryList = ({ className }: ICategoryListProps): JSX.Element => {
-  const { showModal, categoryEditingModal } = useModal();
+const CategoryList = ({
+  className,
+  onCategoryClick = () => undefined,
+}: ICategoryListProps): JSX.Element => {
+  const { showModal } = useModal();
   const { categories } = useCategory();
 
-  const onCategoryClick = (category) => {
-    showModal({ key: categoryEditingModal.key, props: { category } });
-  };
-
   const onAddCategoryClick = () => {
-    showModal({
-      key: categoryEditingModal.key,
-      props: { category: { name: '', colorIndicator: '' } },
+    showModal(ModalKeys.CATEGORY_EDITING_MODAL, {
+      category: { name: '', colorIndicator: '' },
     });
   };
 

@@ -15,13 +15,28 @@ import CategorySelectionModal from '../../components/Modal/CategorySelectionModa
 import CategoryEditingModal from '../../components/Modal/CategoryEditingModal';
 import ConfirmModal from '../../components/Modal/ConfirmModal';
 
+// Hooks
+import { useModal } from '../../modules/modal/context/ModalContext';
+
+// Types
+import { ModalKeys } from '../../modules/modal/types';
+
 const Dashboard = (): JSX.Element => {
+  const { showModal } = useModal();
+
+  const onCategoryClick = (category) => {
+    showModal(ModalKeys.CATEGORY_EDITING_MODAL, { category });
+  };
+
   return (
     <div className="td-dashboard">
       <div className="td-header-wrapper">
         <div className="td-header">
           <PageTitle title="The Great Bucket List" className="td-page-title" />
-          <CategoryList className="td-category-list-wrapper" />
+          <CategoryList
+            className="td-category-list-wrapper"
+            onCategoryClick={(category) => onCategoryClick(category)}
+          />
           <ProgressBar className="td-progress-bar" />
         </div>
       </div>

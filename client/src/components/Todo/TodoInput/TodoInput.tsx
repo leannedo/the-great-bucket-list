@@ -8,25 +8,23 @@ import Input from '../../Input';
 import './TodoInput.scss';
 
 // Hooks
-import { useModal } from '../../../modules/modal/contexts/ModalContext';
+import { useModal } from '../../../modules/modal/context/ModalContext';
 import { useInput } from '../../../modules/input/hooks/useInput';
-import { useCategory } from '../../../modules/category/contexts/CategoryContext';
+import { useCategory } from '../../../modules/category/context/CategoryContext';
 import { useTodo } from '../../../modules/todo/contexts/TodoContext';
+import { ModalKeys } from '../../../modules/modal/types';
 
 const TodoInput = (): JSX.Element => {
-  /** Extracting state from hooks */
-  const { showModal, categorySelectionModal } = useModal();
+  const { showModal } = useModal();
   const { currentSelectedCategory } = useCategory();
   const { addTodo } = useTodo();
 
-  /** Establish internal state */
   const [todoInput, setTodoInput] = useInput({
     validationRules: { isRequired: true },
   });
   const [categoryBox, setCategoryBox] = useState('#FFFFFF');
   const [inputTouched, setInputTouched] = useState(false);
 
-  /** Hook to watch changes on current selected category */
   useEffect(() => setCategoryBox(currentSelectedCategory.colorIndicator), [
     currentSelectedCategory,
   ]);
@@ -40,12 +38,7 @@ const TodoInput = (): JSX.Element => {
     todoInput.validate(value);
   };
 
-  /**
-   * Add new todo on Enter's key pressed, then reset state
-   * @param {event} e
-   */
   const addTodoHandler = (e) => {
-    // Enter's key code
     if (e.keyCode === 13) {
       if (!todoInput.isValid || !currentSelectedCategory.id) {
         return;
@@ -70,7 +63,7 @@ const TodoInput = (): JSX.Element => {
   return (
     <div className="input-container">
       <div
-        onClick={() => showModal({ key: categorySelectionModal.key })}
+        onClick={() => showModal(ModalKeys.CATEGORY_SELECTION_MODAL)}
         className={`input-checkbox ${todoValid ? '' : 'invalid'}`}
         style={{ backgroundColor: `${categoryBox}` }}
       />

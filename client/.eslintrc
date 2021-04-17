@@ -47,6 +47,7 @@
       }
     ],
     "no-console": "off",
+    "react/jsx-curly-newline": 0,
     "react/jsx-closing-tag-location": 1,
     "react/forbid-prop-types": 0,
     "react/jsx-first-prop-new-line": 0,

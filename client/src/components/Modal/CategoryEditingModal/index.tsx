@@ -10,7 +10,10 @@ import Button from '../../Button';
 import './CategoryEditingModal.scss';
 
 // Hooks
-import { useCategoryEditing } from '../../../modules/category/hooks/useCategoryEditing';
+import { useCategoryEditing } from '../../../modules/category/reducer/useCategoryEditing';
+
+// Types
+import { ModalKeys } from '../../../modules/modal/types';
 
 interface ICategoryEditingModalProps {
   className?: string;
@@ -24,7 +27,6 @@ const CategoryEditingModal = ({
     submitHandler,
     showModalHandler,
     renderDefaultColorBlocks,
-    modalKey,
     modalVisibility,
     categoryProp,
     colorProp,
@@ -33,7 +35,7 @@ const CategoryEditingModal = ({
 
   return (
     <Modal
-      modalKey={modalKey}
+      modalKey={ModalKeys.CATEGORY_EDITING_MODAL}
       visible={modalVisibility}
       className={`td-category-creation-modal ${className}`}
     >

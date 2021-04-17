@@ -1,5 +1,5 @@
 // Hooks
-import modalReducer from '../hooks/modalReducer';
+import modalReducer from '../reducer/modalReducer';
 
 const initialModalState = {
   categoryEditingModal: {

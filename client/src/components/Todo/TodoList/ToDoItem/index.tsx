@@ -5,8 +5,11 @@ import React, { useState } from 'react';
 import './ToDoItem.scss';
 
 // Hooks
-import { useModal } from '../../../../modules/modal/contexts/ModalContext';
+import { useModal } from '../../../../modules/modal/context/ModalContext';
 import { useTodo } from '../../../../modules/todo/contexts/TodoContext';
+
+// Types
+import { ModalKeys } from '../../../../modules/modal/types';
 
 interface ITodoItemProps {
   className?: string;
@@ -23,25 +26,16 @@ const ToDoItem = ({
   colorIndicator,
   completed = false,
 }: ITodoItemProps): JSX.Element => {
-  const { confirmModal, showModal, closeModal } = useModal();
+  const { showModal, closeModal } = useModal();
   const { deleteTodoItem, toggleCompleteTodo } = useTodo();
 
-  /** Initialize hover state for icon */
   const [isHover, setIsHover] = useState(false);
 
-  /**
-   * Delete todo and close modal
-   * @param {string} id
-   */
   const deleteTodoHandler = (id) => {
     deleteTodoItem(id);
-    closeModal({ key: confirmModal.key });
+    closeModal(ModalKeys.CONFIRM_MODAL);
   };
 
-  /**
-   * Toggle completed state of todo
-   * @param {string} id
-   */
   const toggleCompletedState = (id) => {
     const updatedCompletedState = !completed;
     toggleCompleteTodo({ id, completed: updatedCompletedState });
@@ -77,16 +71,14 @@ const ToDoItem = ({
         <i
           className="fas fa-trash td-todo-icon"
           onClick={() =>
-            showModal({
-              key: confirmModal.key,
-              props: {
-                okText: 'Delete this task?',
-                cancelText: 'Cancel',
-                okHandler: () => {
-                  deleteTodoHandler(id);
-                },
+            showModal(ModalKeys.CONFIRM_MODAL, {
+              okText: 'Delete this task?',
+              cancelText: 'Cancel',
+              okHandler: () => {
+                deleteTodoHandler(id);
               },
-            })}
+            })
+          }
         />
       </div>
     </div>
