@@ -3,15 +3,14 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import Category from '../index';
 import { ICategory } from '../../../../types';
 
-const onClickCallback = jest.fn();
-
-const category: ICategory = {
-  id: 'cat-1',
-  name: 'Cat 1',
-  colorIndicator: '#000',
-};
-
 describe('<Category />', () => {
+  const onClickCallback = jest.fn();
+  const category: ICategory = {
+    id: 'cat-1',
+    name: 'Cat 1',
+    colorIndicator: '#000',
+  };
+
   test('renders Category component', () => {
     render(<Category category={category} onClick={onClickCallback} />);
     expect(screen.getByText('Cat 1')).toBeInTheDocument();

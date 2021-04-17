@@ -3,10 +3,10 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import FilterBar from '../index';
 import { TodoContext } from '../../../modules/todo/contexts/TodoContext';
 
-const filterTodo = jest.fn();
-const uncompletedCount = 1;
-
 describe('<FilterBar />', () => {
+  const filterTodo = jest.fn();
+  const uncompletedCount = 1;
+
   test('renders Filter Bar with mocked context', () => {
     render(
       <TodoContext.Provider

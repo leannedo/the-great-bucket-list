@@ -9,8 +9,8 @@ interface IInputProps {
   className?: string;
   placeholder?: string;
   name: string;
-  onChange: (value: string) => void;
-  value: string;
+  onChange?: (value: string) => void;
+  value?: string;
   onKeyUpHandler?: (value) => void;
   isValid?: boolean;
 }
