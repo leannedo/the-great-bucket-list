@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 
 // Utils
-import { validate as validateInput } from './validation';
+import { validate as validateInput } from '../../../utils/validation';
 
 export const useInput = ({ initialValue = '', validationRules = {} }) => {
   const [value, setValue] = useState(initialValue);
