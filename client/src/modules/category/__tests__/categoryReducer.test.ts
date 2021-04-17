@@ -1,8 +1,8 @@
 // Hooks
-import categoryReducer from '../hooks/categoryReducer';
+import categoryReducer from '../reducer/categoryReducer';
 
 // Data
-import categoryData from '../contexts/data';
+import categoryData from '../context/data';
 
 const initialState = {
   categories: categoryData,

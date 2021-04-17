@@ -8,11 +8,12 @@ import './CategoryList.scss';
 import Category from './Category';
 
 // Hooks
-import { useModal } from '../../modules/modal/contexts/ModalContext';
-import { useCategory } from '../../modules/category/contexts/CategoryContext';
+import { useModal } from '../../modules/modal/context/ModalContext';
+import { useCategory } from '../../modules/category/context/CategoryContext';
 
 // Types
 import { ICategory } from '../../types';
+import { ModalKeys } from '../../modules/modal/types';
 
 interface ICategoryListProps {
   className?: string;
@@ -23,8 +24,14 @@ const CategoryList = ({
   className,
   onCategoryClick = () => undefined,
 }: ICategoryListProps): JSX.Element => {
-  const { showModal, categoryEditingModal } = useModal();
+  const { showModal } = useModal();
   const { categories } = useCategory();
+
+  const onAddCategoryClick = () => {
+    showModal(ModalKeys.CATEGORY_EDITING_MODAL, {
+      category: { name: '', colorIndicator: '' },
+    });
+  };
 
   return (
     <div className={className}>
@@ -33,19 +40,11 @@ const CategoryList = ({
           <Category
             key={id}
             category={el}
-            onClick={(category) => onCategoryClick(category)}
+            onClick={() => onCategoryClick(el)}
           />
         ))}
         <div className="td-category-add-btn">
-          <i
-            className="fas fa-plus"
-            onClick={() =>
-              showModal({
-                key: categoryEditingModal.key,
-                props: { category: { name: '', colorIndicator: '' } },
-              })
-            }
-          />
+          <i className="fas fa-plus" onClick={onAddCategoryClick} />
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ import ToDoListLoader from './ToDoListLoader';
 import './ToDoList.scss';
 
 // Hooks
-import { useCategory } from '../../../modules/category/contexts/CategoryContext';
+import { useCategory } from '../../../modules/category/context/CategoryContext';
 
 // Apollo
 import { useQuery } from '@apollo/client';

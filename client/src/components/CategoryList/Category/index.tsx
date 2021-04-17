@@ -10,7 +10,7 @@ import { ICategory } from '../../../types';
 interface ICategoryProps {
   className?: string;
   category: ICategory;
-  onClick: (category: ICategory) => void;
+  onClick: () => void;
 }
 
 const Category = ({
@@ -37,7 +37,7 @@ const Category = ({
       onMouseEnter={toggleHoverHandler}
       onMouseLeave={toggleHoverHandler}
       style={isHover ? hoverStyle : style}
-      onClick={() => onClick(category)}
+      onClick={onClick}
     >
       {category.name}
     </a>

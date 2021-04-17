@@ -16,19 +16,16 @@ import CategoryEditingModal from '../../components/Modal/CategoryEditingModal';
 import ConfirmModal from '../../components/Modal/ConfirmModal';
 
 // Hooks
-import { useModal } from '../../modules/modal/contexts/ModalContext';
-import { useTodo } from '../../modules/todo/contexts/TodoContext';
+import { useModal } from '../../modules/modal/context/ModalContext';
 
-const Dashboard = () => {
-  const { showModal, categoryEditingModal } = useModal();
-  const { completedPercent } = useTodo();
+// Types
+import { ModalKeys } from '../../modules/modal/types';
 
-  /**
-   * Trigger showModal function from useModal
-   * @param {Object} category
-   */
+const Dashboard = (): JSX.Element => {
+  const { showModal } = useModal();
+
   const onCategoryClick = (category) => {
-    showModal({ key: categoryEditingModal.key, props: { category } });
+    showModal(ModalKeys.CATEGORY_EDITING_MODAL, { category });
   };
 
   return (
@@ -40,10 +37,7 @@ const Dashboard = () => {
             className="td-category-list-wrapper"
             onCategoryClick={(category) => onCategoryClick(category)}
           />
-          <ProgressBar
-            className="td-progress-bar"
-            progress={completedPercent}
-          />
+          <ProgressBar className="td-progress-bar" />
         </div>
       </div>
       <div className="td-body">

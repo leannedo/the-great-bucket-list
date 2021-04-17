@@ -6,12 +6,15 @@ import './Modal.scss';
 import Backdrop from '../Backdrop';
 
 // Hooks
-import { useModal } from '../../modules/modal/contexts/ModalContext';
+import { useModal } from '../../modules/modal/context/ModalContext';
+
+// Types
+import { ModalKeys } from '../../modules/modal/types';
 
 interface IModalProps {
   className?: string;
   children: React.ReactNode;
-  modalKey: string;
+  modalKey: ModalKeys;
   visible: boolean;
 }
 
@@ -23,18 +26,13 @@ const Modal = ({
 }: IModalProps): JSX.Element => {
   const { closeModal } = useModal();
 
-  /**
-   * Close the selected modal
-   * @param {event} e
-   */
   const closeModalHandler = () => {
-    closeModal({ key: modalKey });
+    closeModal(modalKey);
   };
 
   return (
     <div className={`td-modal-wrapper ${visible ? 'show' : 'hide'}`}>
       <div className={`td-modal ${className}`}>{children}</div>
-      {/* <Backdrop closeModalHandler={closeModalHandler} modalVisible={visible} /> */}
       <Backdrop closeModalHandler={closeModalHandler} />
     </div>
   );

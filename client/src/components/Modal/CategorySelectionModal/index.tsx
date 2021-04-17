@@ -9,8 +9,11 @@ import Modal from '../index';
 import './CategorySelectionModal.scss';
 
 // Hooks
-import { useModal } from '../../../modules/modal/contexts/ModalContext';
-import { useCategory } from '../../../modules/category/contexts/CategoryContext';
+import { useModal } from '../../../modules/modal/context/ModalContext';
+import { useCategory } from '../../../modules/category/context/CategoryContext';
+
+// Types
+import { ModalKeys } from '../../../modules/modal/types';
 
 interface ICategorySelectionModalProps {
   className?: string;
@@ -22,18 +25,14 @@ const CategorySelectionModal = ({
   const { categorySelectionModal, closeModal } = useModal();
   const { selectCategory } = useCategory();
 
-  /**
-   * Save selected category and close modal
-   */
-  //  ts-migrate(7006) FIXME: Parameter 'category' implicitly has an 'any' type.
   const onCategoryClick = (category) => {
     selectCategory(category);
-    closeModal({ key: categorySelectionModal.key });
+    closeModal(ModalKeys.CATEGORY_SELECTION_MODAL);
   };
 
   return (
     <Modal
-      modalKey={categorySelectionModal.key}
+      modalKey={ModalKeys.CATEGORY_SELECTION_MODAL}
       visible={categorySelectionModal.isVisible}
       className={`td-category-selection-modal ${className}`}
     >
