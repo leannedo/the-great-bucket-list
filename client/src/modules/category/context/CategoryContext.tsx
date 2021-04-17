@@ -1,27 +1,31 @@
 // Libraries
-import React, { useReducer, useContext, createContext } from 'react';
-
-// Data
-import categoryData from './data';
+import React, { useContext, createContext } from 'react';
 
 // Hooks
-import categoryReducer from '../reducer/categoryReducer';
+import useCategoryReducer from '../reducer/useCategoryReducer';
 
-const CategoryContext = createContext(null);
+// Types
+import { ICategoryReducer } from '../types';
+
+interface ICategoryContext extends ICategoryReducer {
+  getCategoryById: (id: string) => void;
+}
+
+const CategoryContext = createContext<ICategoryContext | null>(null);
 
 const CategoryProvider = ({
   children,
 }: {
   children: React.ReactNode;
 }): JSX.Element => {
-  const initialState = {
-    categories: categoryData,
-    currentSelectedCategory: {},
-  };
-
-  const [state, dispatch] = useReducer(categoryReducer, initialState);
-
-  const { categories, currentSelectedCategory } = state;
+  const {
+    categories,
+    currentSelectedCategory,
+    addCategory,
+    deleteCategory,
+    updateCategory,
+    selectCategory,
+  } = useCategoryReducer();
 
   const getCategoryById = (id) => {
     if (!categories || categories.length <= 0 || !id) {
@@ -30,29 +34,9 @@ const CategoryProvider = ({
     return categories.find((category) => category.id === id) || {};
   };
 
-  const addCategory = (addedCategory) => {
-    dispatch({ type: 'ADD_CATEGORY', payload: { addedCategory } });
-  };
-
-  const deleteCategory = (id) => {
-    dispatch({ type: 'DELETE_CATEGORY', payload: { id } });
-  };
-
-  const updateCategory = (updatedCategory) => {
-    dispatch({
-      type: 'UPDATE_CATEGORY',
-      payload: { updatedCategory },
-    });
-  };
-
-  const selectCategory = (selectedCategory) => {
-    dispatch({ type: 'SELECT_CATEGORY', payload: { selectedCategory } });
-  };
-
   return (
     <CategoryContext.Provider
       value={{
-        defaultCategories: categoryData,
         categories,
         currentSelectedCategory,
         addCategory,
@@ -67,6 +51,6 @@ const CategoryProvider = ({
   );
 };
 
-const useCategory = () => useContext(CategoryContext);
+const useCategory = (): ICategoryContext | null => useContext(CategoryContext);
 
 export { CategoryProvider, useCategory };

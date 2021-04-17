@@ -1,5 +1,5 @@
 // Hooks
-import categoryReducer from '../reducer/categoryReducer';
+import useCategoryReducer from '../reducer/categoryReducer';
 
 // Data
 import categoryData from '../context/data';
@@ -23,7 +23,7 @@ describe('Add category', () => {
         },
       };
 
-      const result = categoryReducer(initialState, action);
+      const result = useCategoryReducer(initialState, action);
 
       expect(result).toHaveProperty('categories');
 
@@ -45,7 +45,7 @@ describe('Add category', () => {
       type: 'ADD_CATEGORY',
     };
 
-    const result = categoryReducer(initialState, action);
+    const result = useCategoryReducer(initialState, action);
 
     expect(result).toEqual(initialState);
   });
@@ -58,7 +58,7 @@ describe('Delete category', () => {
       payload: { id: '6e8cb1b9-3c57-4ee5-96c1-cc8d6e37d04d' },
     };
 
-    const result = categoryReducer(initialState, action);
+    const result = useCategoryReducer(initialState, action);
 
     expect(result).toHaveProperty('categories');
 
@@ -76,7 +76,7 @@ describe('Delete category', () => {
       type: 'DELETE_CATEGORY',
     };
 
-    const result = categoryReducer(initialState, action);
+    const result = useCategoryReducer(initialState, action);
 
     expect(result).toEqual(initialState);
   });
@@ -94,7 +94,7 @@ describe('Update category', () => {
       },
     };
 
-    const result = categoryReducer(initialState, action);
+    const result = useCategoryReducer(initialState, action);
 
     expect(result).toHaveProperty('categories');
 
@@ -116,7 +116,7 @@ describe('Update category', () => {
       type: 'UPDATE_CATEGORY',
     };
 
-    const result = categoryReducer(initialState, action);
+    const result = useCategoryReducer(initialState, action);
 
     expect(result).toEqual(initialState);
   });
@@ -132,7 +132,7 @@ describe('Update category', () => {
       },
     };
 
-    const result = categoryReducer(initialState, action);
+    const result = useCategoryReducer(initialState, action);
 
     expect(result).toEqual(initialState);
   });
@@ -151,7 +151,7 @@ describe('Select category', () => {
       },
     };
 
-    const result = categoryReducer(initialState, action);
+    const result = useCategoryReducer(initialState, action);
     const { currentSelectedCategory } = result;
     expect(currentSelectedCategory).toHaveProperty(
       'id',
@@ -165,7 +165,7 @@ describe('Select category', () => {
       type: 'SELECT_CATEGORY',
     };
 
-    const result = categoryReducer(initialState, action);
+    const result = useCategoryReducer(initialState, action);
 
     expect(result).toEqual(initialState);
   });

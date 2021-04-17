@@ -36,13 +36,17 @@ const CategoryList = ({
   return (
     <div className={className}>
       <div className="td-category-list">
-        {categories.map((el, id) => (
-          <Category
-            key={id}
-            category={el}
-            onClick={() => onCategoryClick(el)}
-          />
-        ))}
+        {categories.length > 0 ? (
+          categories.map((el, id) => (
+            <Category
+              key={id}
+              category={el}
+              onClick={() => onCategoryClick(el)}
+            />
+          ))
+        ) : (
+          <p>Add category</p>
+        )}
         <div className="td-category-add-btn">
           <i className="fas fa-plus" onClick={onAddCategoryClick} />
         </div>

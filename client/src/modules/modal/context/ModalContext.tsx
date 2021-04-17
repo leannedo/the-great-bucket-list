@@ -2,7 +2,9 @@
 import React, { createContext, useContext } from 'react';
 
 // Hooks
-import { useModalReducer } from '../reducer/useModalReducer';
+import useModalReducer from '../reducer/useModalReducer';
+
+// Types
 import { IModalReducer } from '../types';
 
 type IModalContext = IModalReducer;
