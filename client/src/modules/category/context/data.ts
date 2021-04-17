@@ -1,10 +1,4 @@
-export default [
-  /**
-   * @typedef {Object} CategoryEntity
-   * @property {string} id - how category is distinguished
-   * @property {string} name - how category is called
-   * @property {string} colorIndicator - color representation of each category
-   */
+export const defaultCategories = [
   {
     id: '6e8cb1b9-3c57-4ee5-96c1-cc8d6e37d04d',
     name: 'Homework',
@@ -25,4 +19,11 @@ export default [
     name: 'Other',
     colorIndicator: '#21966B',
   },
+];
+
+export const DISPLAYED_COLOR_BLOCKS = [
+  '#38C9FF',
+  '#FFAB38',
+  '#FF3838',
+  '#21966B',
 ];

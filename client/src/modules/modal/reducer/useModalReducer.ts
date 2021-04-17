@@ -104,4 +104,4 @@ const useModalReducer = (initialState = initialModalState): IModalReducer => {
   };
 };
 
-export { useModalReducer };
+export default useModalReducer;

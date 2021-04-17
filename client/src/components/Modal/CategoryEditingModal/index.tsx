@@ -1,5 +1,5 @@
 // Libraries
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // Components
 import Modal from '../index';
@@ -10,10 +10,15 @@ import Button from '../../Button';
 import './CategoryEditingModal.scss';
 
 // Hooks
-import { useCategoryEditing } from '../../../modules/category/reducer/useCategoryEditing';
+import { useCategoryEditing } from '../../../modules/category/hooks/useCategoryEditing';
+
+import { formatColorCode } from '../../../modules/category/helper';
 
 // Types
+
 import { ModalKeys } from '../../../modules/modal/types';
+// Data
+import { DISPLAYED_COLOR_BLOCKS } from '../../../modules/category/context/data';
 
 interface ICategoryEditingModalProps {
   className?: string;
@@ -26,12 +31,26 @@ const CategoryEditingModal = ({
     inputChangeHandler,
     submitHandler,
     showModalHandler,
-    renderDefaultColorBlocks,
+    setColor,
     modalVisibility,
     categoryProp,
     colorProp,
     formIsValid,
   } = useCategoryEditing();
+
+  const renderDefaultColorBlocks = () =>
+    DISPLAYED_COLOR_BLOCKS.map((el) => {
+      return (
+        <div
+          onClick={() => setColor(formatColorCode(el))}
+          key={el}
+          style={{
+            backgroundColor: el,
+          }}
+          className="td-color-block"
+        />
+      );
+    });
 
   return (
     <Modal
