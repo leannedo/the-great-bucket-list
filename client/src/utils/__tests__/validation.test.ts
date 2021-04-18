@@ -1,7 +1,7 @@
 import { minLengthValidator, validate, requiredValidator } from '../validation';
 
-describe('MIN_LENGTH_VALIDATOR', () => {
-  test('it should return true if value larger than min length', () => {
+describe('min length validator', () => {
+  test('it should return true if value length is longer than or equal to min length', () => {
     const value = 'hello_world';
     const minLength = 3;
 
@@ -20,7 +20,7 @@ describe('MIN_LENGTH_VALIDATOR', () => {
   });
 });
 
-describe('REQUIRE_VALIDATOR', () => {
+describe('require validator', () => {
   test('it should return true if value is not empty', () => {
     const value = 'hello_world';
 
@@ -38,7 +38,7 @@ describe('REQUIRE_VALIDATOR', () => {
   });
 });
 
-describe('VALIDATE', () => {
+describe('validate fn', () => {
   test('it should return true if all validation rules are met', () => {
     const value = 'hello_world';
     const validationRules = { isRequired: true, minLength: 3 };
@@ -48,7 +48,7 @@ describe('VALIDATE', () => {
     expect(result).toBeTruthy();
   });
 
-  test('it should return true if all validation rules are met', () => {
+  test('it should return false if one of the validation rules are not met', () => {
     const value = 'he';
     const validationRules = { isRequired: true, minLength: 3 };
 
@@ -57,3 +57,6 @@ describe('VALIDATE', () => {
     expect(result).toBeFalsy();
   });
 });
+
+// it should throw error
+// it should return true if constraint is false

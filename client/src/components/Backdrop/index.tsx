@@ -13,7 +13,11 @@ const Backdrop = ({
   className,
   closeModalHandler = () => undefined,
 }: IBackdropProps): JSX.Element => (
-  <div onClick={closeModalHandler} className={`td-backdrop ${className}`} />
+  <div
+    role="button"
+    onClick={closeModalHandler}
+    className={`td-backdrop ${className}`}
+  />
 );
 
 export default Backdrop;
