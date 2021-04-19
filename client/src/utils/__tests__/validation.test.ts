@@ -58,5 +58,3 @@ describe('validate fn', () => {
   });
 });
 
-// it should throw error
-// it should return true if constraint is false

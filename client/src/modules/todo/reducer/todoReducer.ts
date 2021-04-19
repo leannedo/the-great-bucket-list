@@ -1,5 +1,5 @@
 // Helper functions
-import { calculateCompletedPercent } from './helpers';
+import { calculateCompletedPercent } from '../hooks/helpers';
 
 // Types
 import {

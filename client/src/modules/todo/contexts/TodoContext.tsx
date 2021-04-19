@@ -1,7 +1,7 @@
 // Libraries
 import React, { createContext, useContext } from 'react';
 
-import useTodoReducer from '../reducer/useTodoReducer';
+import useTodoReducer from '../hooks/useTodoReducer';
 import { ITodoReducer } from '../types';
 
 type ITodoContext = ITodoReducer;

@@ -1,5 +1,5 @@
 // Hooks
-import todoReducer from '../hooks/todoReducer';
+import todoReducer from '../reducer/todoReducer';
 import {
   FilterActions,
   ITodoState,

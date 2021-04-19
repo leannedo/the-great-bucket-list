@@ -1,6 +1,6 @@
 // Hooks
 import { useEffect, useReducer } from 'react';
-import todoReducer from '../hooks/todoReducer';
+import todoReducer from '../reducer/todoReducer';
 import { useFetch } from '../../../hooks/useFetch';
 
 // Apollo
