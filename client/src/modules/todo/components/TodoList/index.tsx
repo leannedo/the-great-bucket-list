@@ -2,27 +2,30 @@
 import React from 'react';
 
 // Component
-import ToDoItem from './ToDoItem';
+import ToDoItem from '../ToDoItem';
 import ToDoListLoader from './ToDoListLoader';
 
 // Styling
 import './ToDoList.scss';
 
 // Hooks
-import { useTodo } from '../../../modules/todo/contexts/TodoContext';
-import { useCategory } from '../../../modules/category/context/CategoryContext';
+import { useTodo } from '../../contexts/TodoContext';
+import { useCategory } from '../../../category/context/CategoryContext';
+
+// Types
+import { FetchStatus } from '../../../../hooks/useFetch';
 
 interface IToDoListProps {
   className?: string;
 }
 
 const ToDoList = ({ className }: IToDoListProps): JSX.Element => {
-  const { filteredTodos, todosFetchStatus } = useTodo();
+  const { filteredTodos, fetchStatus } = useTodo();
   const { getCategoryById } = useCategory();
 
   return (
     <div className={`td-todo-list-wrapper ${className}`}>
-      {todosFetchStatus === 'fetching' ? (
+      {fetchStatus === FetchStatus.FETCHING ? (
         <ToDoListLoader count={6} />
       ) : (
         <>

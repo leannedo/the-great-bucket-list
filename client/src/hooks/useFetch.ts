@@ -1,89 +1,102 @@
 // Libraries
 import { useReducer, useEffect } from 'react';
-import axios from 'axios';
+import { ApolloClient, DocumentNode } from '@apollo/client';
 
 interface UseFetchState {
   status: string;
   error: string | null;
-  data: Record<string, unknown>[];
+  data: Record<string, any>;
 }
-const initialState: UseFetchState = {
-  status: '',
-  error: null,
-  data: [],
-};
 
-type ActionType =
-  | { type: 'FETCHING'; payload?: unknown }
+type FetchActions =
+  | { type: FetchActionTypes.FETCHING; payload?: unknown }
   | {
-      type: 'FETCHED';
+      type: FetchActionTypes.FETCHED;
       payload: Record<string, unknown>[];
     }
   | {
-      type: 'FETCH_ERROR';
+      type: FetchActionTypes.FETCH_ERROR;
       payload: string;
     };
 
-const fetchReducer = (state: typeof initialState, action: ActionType) => {
+enum FetchActionTypes {
+  FETCHING = 'FETCHING',
+  FETCHED = 'FETCHED',
+  FETCH_ERROR = 'FETCH_ERROR',
+}
+
+export enum FetchStatus {
+  SUCCESS = 'success',
+  FETCHING = 'fetching',
+  ERROR = 'error',
+}
+
+const initialState: UseFetchState = {
+  status: '',
+  error: null,
+  data: {},
+};
+
+const fetchReducer = (state: typeof initialState, action: FetchActions) => {
   switch (action.type) {
-    case 'FETCHING':
-      return { ...initialState, status: 'fetching' };
-    case 'FETCHED':
-      return { ...initialState, status: 'success', data: action.payload };
-    case 'FETCH_ERROR':
-      return { ...initialState, status: 'error', error: action.payload };
+    case FetchActionTypes.FETCHING:
+      return { ...initialState, status: FetchStatus.FETCHING };
+    case FetchActionTypes.FETCHED:
+      return {
+        ...initialState,
+        status: FetchStatus.SUCCESS,
+        data: action.payload,
+      };
+    case FetchActionTypes.FETCH_ERROR:
+      return {
+        ...initialState,
+        status: FetchStatus.ERROR,
+        error: action.payload,
+      };
     default:
       return state;
   }
 };
 
-/**
- * fetch utility
- * @param {Object} config - { url, params, callback }
- * @param {string} config.url - url endpoint
- * @param {Object} config.params - query parameters
- * @param {Object} config.callback - callback function when fetch success
- */
-
 export const useFetch = ({
-  url,
-  params,
+  client,
+  query,
+  variables,
   callback,
 }: {
-  url: string;
-  params?: Record<string, string | string[]>;
+  client: ApolloClient<unknown>;
+  query: DocumentNode;
+  variables?: Record<string, unknown>;
   callback?: (data) => void;
-}): { status: string; data: Record<string, unknown>[] } => {
+}) => {
   const [state, dispatch] = useReducer(fetchReducer, initialState);
 
-  useEffect(() => {
-    if (!url) return;
-    const fetchData = async () => {
-      try {
-        dispatch({ type: 'FETCHING' });
+  const fetchData = async () => {
+    try {
+      dispatch({ type: FetchActionTypes.FETCHING });
 
-        const response = await axios({
-          url,
-          method: 'get',
-          params,
-        });
+      const { data } = await client.query({
+        query,
+        variables,
+      });
 
-        if (response.data) {
-          dispatch({ type: 'FETCHED', payload: response.data });
-        }
-
-        if (callback) {
-          callback(response.data);
-        }
-      } catch (error) {
-        dispatch({ type: 'FETCH_ERROR', payload: error.message });
+      if (data) {
+        dispatch({ type: FetchActionTypes.FETCHED, payload: data });
       }
-    };
 
+      if (callback) {
+        callback(data);
+      }
+    } catch (error) {
+      const graphQLError = error?.networkError?.result?.errors[0].message;
+      console.error(error);
+      dispatch({ type: FetchActionTypes.FETCH_ERROR, payload: graphQLError });
+    }
+  };
+
+  useEffect(() => {
     fetchData().then();
-  }, [url]);
+  }, [query, variables]);
 
-  const { status, data } = state;
-
-  return { status, data };
+  return state;
 };

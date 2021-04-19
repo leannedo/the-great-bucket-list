@@ -1,6 +1,6 @@
 // Libraries
 import { v4 as uuidv4 } from 'uuid';
-import { useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 
 // Types
 import {
@@ -8,20 +8,26 @@ import {
   ICategoryState,
   ICategoryAction,
   ICategoryReducer,
+  ICategory,
 } from '../types';
 
 // Default data
 import { defaultCategories } from '../context/data';
 
+const getSavedCats = () => {
+  const localItem = localStorage.getItem('categories');
+  return localItem ? JSON.parse(localItem) : null;
+};
+
 const initialCategoryState: ICategoryState = {
-  categories: defaultCategories,
+  categories: getSavedCats() ? getSavedCats() : defaultCategories,
   currentSelectedCategory: { id: '', name: '', colorIndicator: '' },
 };
 
 const categoryReducer = (state: ICategoryState, action: ICategoryAction) => {
   switch (action.type) {
     case CategoryActions.ADD_CATEGORY:
-      const { addedCategory } = action.payload;
+      const addedCategory = action.payload;
 
       if (!addedCategory) {
         return state;
@@ -33,7 +39,7 @@ const categoryReducer = (state: ICategoryState, action: ICategoryAction) => {
       };
 
     case CategoryActions.DELETE_CATEGORY:
-      const { id: deletedId } = action.payload;
+      const deletedId = action.payload;
 
       return {
         ...state,
@@ -41,7 +47,7 @@ const categoryReducer = (state: ICategoryState, action: ICategoryAction) => {
       };
 
     case CategoryActions.UPDATE_CATEGORY:
-      const { updatedCategory } = action.payload;
+      const updatedCategory = action.payload;
 
       if (!updatedCategory) {
         return state;
@@ -57,7 +63,7 @@ const categoryReducer = (state: ICategoryState, action: ICategoryAction) => {
       };
 
     case CategoryActions.SELECT_CATEGORY:
-      const { selectedCategory } = action.payload;
+      const selectedCategory = action.payload;
 
       if (!selectedCategory) {
         return state;
@@ -81,27 +87,35 @@ const useCategoryReducer = (
   const addCategory = (addedCategory) => {
     dispatch({
       type: CategoryActions.ADD_CATEGORY,
-      payload: { addedCategory },
+      payload: addedCategory,
     });
   };
 
   const deleteCategory = (id) => {
-    dispatch({ type: CategoryActions.DELETE_CATEGORY, payload: { id } });
+    dispatch({ type: CategoryActions.DELETE_CATEGORY, payload: id });
   };
 
   const updateCategory = (updatedCategory) => {
     dispatch({
       type: CategoryActions.UPDATE_CATEGORY,
-      payload: { updatedCategory },
+      payload: updatedCategory,
     });
   };
 
   const selectCategory = (selectedCategory) => {
     dispatch({
       type: CategoryActions.SELECT_CATEGORY,
-      payload: { selectedCategory },
+      payload: selectedCategory,
     });
   };
+
+  const updateLocalStorage = (categories: ICategory[]) => {
+    localStorage.setItem('categories', JSON.stringify(categories));
+  };
+
+  useEffect(() => {
+    updateLocalStorage(state.categories);
+  }, [state.categories]);
 
   return {
     categories: state.categories,

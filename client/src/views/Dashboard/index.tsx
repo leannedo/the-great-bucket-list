@@ -6,14 +6,14 @@ import './Dashboard.scss';
 
 // Components
 import PageTitle from '../../components/PageTitle';
-import CategoryList from '../../components/CategoryList';
+import CategoryList from '../../modules/category/components/CategoryList';
 import ProgressBar from '../../components/ProgressBar';
-import ToDoList from '../../components/Todo/TodoList';
-import TodoInput from '../../components/Todo/TodoInput/TodoInput';
+import ToDoList from '../../modules/todo/components/TodoList';
+import TodoInput from '../../modules/todo/components/TodoInput/TodoInput';
 import FilterBar from '../../components/FilterBar';
-import CategorySelectionModal from '../../components/Modal/CategorySelectionModal';
-import CategoryEditingModal from '../../components/Modal/CategoryEditingModal';
-import ConfirmModal from '../../components/Modal/ConfirmModal';
+import CategorySelectionModal from '../../modules/modal/components/CategorySelectionModal';
+import CategoryEditingModal from '../../modules/modal/components/CategoryEditingModal';
+import ConfirmModal from '../../modules/modal/components/ConfirmModal';
 
 // Hooks
 import { useModal } from '../../modules/modal/context/ModalContext';

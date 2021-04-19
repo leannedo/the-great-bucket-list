@@ -5,17 +5,17 @@ import React, { useState } from 'react';
 import './ToDoItem.scss';
 
 // Hooks
-import { useModal } from '../../../../modules/modal/context/ModalContext';
-import { useTodo } from '../../../../modules/todo/contexts/TodoContext';
+import { useModal } from '../../../modal/context/ModalContext';
+import { useTodo } from '../../contexts/TodoContext';
 
 // Types
-import { ModalKeys } from '../../../../modules/modal/types';
+import { ModalKeys } from '../../../modal/types';
 
 interface ITodoItemProps {
   className?: string;
   name: string;
-  id: string;
-  colorIndicator: string;
+  id?: string;
+  colorIndicator?: string;
   completed: boolean;
 }
 
@@ -38,7 +38,7 @@ const ToDoItem = ({
 
   const toggleCompletedState = (id) => {
     const updatedCompletedState = !completed;
-    toggleCompleteTodo({ id, completed: updatedCompletedState });
+    toggleCompleteTodo(id, updatedCompletedState);
   };
 
   return (

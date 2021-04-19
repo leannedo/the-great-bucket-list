@@ -2,26 +2,25 @@
 import React from 'react';
 
 // Components
-import Modal from '../index';
-import Button from '../../Button';
+import Modal from '../../../../components/Modal';
+import Button from '../../../../components/Button';
 
 // Styling
 import './ConfirmModal.scss';
 
 // Hooks
-import { useModal } from '../../../modules/modal/context/ModalContext';
+import { useModal } from '../../context/ModalContext';
 
 // Types
-import { ModalKeys } from '../../../modules/modal/types';
+import { ModalKeys } from '../../types';
 
 interface IConfirmModalProps {
   className?: string;
-  okText: string;
-  cancelText: string;
-  cancelHandler: () => void;
-  okHandler: () => void;
-  isVisible: boolean;
-  key: string;
+  okText?: string;
+  cancelText?: string;
+  cancelHandler?: () => void;
+  okHandler?: () => void;
+  isVisible?: boolean;
 }
 
 const ConfirmModal = (props: IConfirmModalProps): JSX.Element => {
@@ -38,20 +37,25 @@ const ConfirmModal = (props: IConfirmModalProps): JSX.Element => {
   const {
     className,
     okText,
-    okHandler,
+    okHandler = () => undefined,
     cancelText,
     cancelHandler,
     isVisible,
-    key,
   } = mergedProps;
 
   const onModalClose = () => {
-    if (cancelHandler) cancelHandler();
+    if (cancelHandler) {
+      cancelHandler();
+    }
     closeModal(ModalKeys.CONFIRM_MODAL);
   };
 
   return (
-    <Modal className={className} visible={isVisible} modalKey={key}>
+    <Modal
+      className={className}
+      visible={isVisible}
+      modalKey={ModalKeys.CONFIRM_MODAL}
+    >
       <div className="td-confirm-modal">
         <Button onClick={okHandler} type="danger">
           {okText}

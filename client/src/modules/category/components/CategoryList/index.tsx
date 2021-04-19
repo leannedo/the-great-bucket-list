@@ -5,15 +5,15 @@ import React from 'react';
 import './CategoryList.scss';
 
 // Components
-import Category from './Category';
+import Category from '../Category';
 
 // Hooks
-import { useModal } from '../../modules/modal/context/ModalContext';
-import { useCategory } from '../../modules/category/context/CategoryContext';
+import { useModal } from '../../../modal/context/ModalContext';
+import { useCategory } from '../../context/CategoryContext';
 
 // Types
 import { ICategory } from '../../types';
-import { ModalKeys } from '../../modules/modal/types';
+import { ModalKeys } from '../../../modal/types';
 
 interface ICategoryListProps {
   className?: string;
@@ -28,9 +28,7 @@ const CategoryList = ({
   const { categories } = useCategory();
 
   const onAddCategoryClick = () => {
-    showModal(ModalKeys.CATEGORY_EDITING_MODAL, {
-      category: { name: '', colorIndicator: '' },
-    });
+    showModal(ModalKeys.CATEGORY_EDITING_MODAL);
   };
 
   return (

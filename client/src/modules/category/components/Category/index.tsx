@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import './Category.scss';
 
 // Types
-import { ICategory } from '../../../types';
+import { ICategory } from '../../types';
 
 interface ICategoryProps {
   className?: string;

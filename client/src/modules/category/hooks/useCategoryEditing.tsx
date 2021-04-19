@@ -1,28 +1,55 @@
 // Libraries
-import React, { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 // Context
 import { useModal } from '../../modal/context/ModalContext';
 import { useCategory } from '../context/CategoryContext';
 
+// Data
+import { DISPLAYED_COLOR_BLOCKS } from '../context/data';
+
 // Hooks
-import { useInput } from '../../input/hooks/useInput';
+import useForm, { FormControls } from '../../../hooks/useForm';
 
 import { formatColorCode } from '../helper';
 
 // Types
 import { ModalKeys } from '../../modal/types';
 import { ICategory, IUseCategoryEditing } from '../types';
-import { DISPLAYED_COLOR_BLOCKS } from '../context/data';
+
+const categoryFormControls: FormControls = {
+  name: {
+    inputName: 'name',
+    label: 'category name',
+    value: '',
+    valid: false,
+    touched: false,
+    validationRules: {
+      isRequired: true,
+    },
+  },
+  color: {
+    inputName: 'color',
+    label: 'category color',
+    value: formatColorCode(DISPLAYED_COLOR_BLOCKS[0]),
+    valid: true,
+    touched: false,
+    validationRules: {
+      isRequired: true,
+      isHexCode: true,
+    },
+  },
+};
 
 export const useCategoryEditing = (): IUseCategoryEditing => {
-  const [colorProp, setColor] = useInput({
-    validationRules: { isRequired: true, isHexCode: true },
-  });
-  const [categoryProp, setCategory] = useInput({
-    validationRules: { isRequired: true },
-  });
-  const [formIsValid, setFormIsValid] = useState(false);
+  const {
+    form,
+    setForm,
+    isFormValid,
+    inputChangeHandler,
+    onFormSubmit,
+    clearForm,
+  } = useForm(categoryFormControls);
 
   const {
     categoryEditingModal,
@@ -31,73 +58,95 @@ export const useCategoryEditing = (): IUseCategoryEditing => {
     closeAllModals,
   } = useModal();
 
-  const { isVisible: modalVisibility, props } = categoryEditingModal;
-  const currentCategory = (props?.category || {}) as Partial<ICategory>;
-
-  const { id, name = '', colorIndicator } = currentCategory;
-
   const { addCategory, deleteCategory, updateCategory } = useCategory();
 
-  const setDisplayedColor = () => {
-    const colorCode = colorIndicator || DISPLAYED_COLOR_BLOCKS[0];
-    setColor(formatColorCode(colorCode));
-  };
+  /* -------------- modal handler -------------- */
 
-  const inputChangeHandler = (value, input) => {
-    if (!input) {
-      return;
-    }
-    input.onChange(value);
-    input.validate(value);
-  };
+  const { isVisible: modalVisibility, props } = categoryEditingModal;
 
-  const showModalHandler = () => {
+  const showConfirmModal = () => {
     showModal(ModalKeys.CONFIRM_MODAL, {
       okText: 'Delete this category?',
       cancelText: 'Cancel',
       okHandler: () => {
-        deleteCategory(id);
+        deleteCategory(currentCategory.id);
         closeAllModals();
       },
     });
   };
 
-  const submitHandler = () => {
-    if (id) {
-      updateCategory({
-        id,
-        name: categoryProp.value,
-        colorIndicator: `#${colorProp.value}`,
-      });
+  /* -------------- current category handler -------------- */
+
+  const currentCategory = (props?.category || {}) as Partial<ICategory>;
+  useEffect(() => {
+    if (currentCategory.id) {
+      currentCategoryChangeHandler(currentCategory);
     } else {
-      addCategory({
-        name: categoryProp.value,
-        colorIndicator: `#${colorProp.value}`,
-      });
+      clearForm();
+    }
+  }, [currentCategory.id]);
+
+  /* -------------- form handler -------------- */
+
+  const onDefaultColorBlockClick = (colorCode: string) => {
+    setForm({
+      ...form,
+      color: {
+        ...form.color,
+        value: formatColorCode(colorCode),
+      },
+    });
+  };
+
+  const currentCategoryChangeHandler = (currentCategory) => {
+    const {
+      name = '',
+      colorIndicator = DISPLAYED_COLOR_BLOCKS[0],
+    } = currentCategory;
+
+    setForm({
+      ...form,
+      name: {
+        ...form.name,
+        value: name,
+        valid: true,
+      },
+      color: {
+        ...form.color,
+        value: formatColorCode(colorIndicator),
+        valid: true,
+      },
+    });
+  };
+
+  const submitHandler = () => {
+    const formValues = onFormSubmit();
+
+    if (!formValues) {
+      return;
+    }
+
+    const category = {
+      name: formValues.name,
+      colorIndicator: `#${formValues.color}`,
+    };
+
+    if (currentCategory.id) {
+      updateCategory({ ...category, id: currentCategory.id });
+    } else {
+      addCategory(category);
     }
 
     closeModal(ModalKeys.CATEGORY_EDITING_MODAL);
-    setColor('');
-    setCategory('');
   };
-
-  const validateForm = () => {
-    setFormIsValid(colorProp.isValid && categoryProp.isValid);
-  };
-
-  useEffect(() => setCategory(name), [currentCategory]);
-  useEffect(() => setDisplayedColor(), [currentCategory]);
-
-  useEffect(() => validateForm(), [categoryProp, colorProp]);
 
   return {
+    form,
+    isFormValid,
+    onDefaultColorBlockClick,
     inputChangeHandler,
     submitHandler,
-    showModalHandler,
-    setColor,
+    showConfirmModal,
     modalVisibility,
-    categoryProp,
-    colorProp,
-    formIsValid,
   };
 };

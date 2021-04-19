@@ -7,6 +7,9 @@ import './FilterBar.scss';
 // Hooks
 import { useTodo } from '../../modules/todo/contexts/TodoContext';
 
+// Types
+import { FilterActions } from '../../modules/todo/types';
+
 interface IFilterBarProps {
   className?: string;
 }
@@ -14,8 +17,12 @@ interface IFilterBarProps {
 const FilterBar = ({ className }: IFilterBarProps): JSX.Element => {
   const { uncompletedCount, filterTodo } = useTodo();
 
-  const [active, setActive] = useState('FILTER_ALL');
-  const filterAction = ['FILTER_ALL', 'FILTER_ONGOING', 'FILTER_COMPLETED'];
+  const [active, setActive] = useState(FilterActions.FILTER_ALL);
+  const filterAction = [
+    FilterActions.FILTER_ALL,
+    FilterActions.FILTER_ONGOING,
+    FilterActions.FILTER_COMPLETED,
+  ];
 
   const onFilterItemClick = (action) => {
     setActive(action);
