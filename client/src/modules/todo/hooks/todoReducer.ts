@@ -1,48 +1,46 @@
 // Helper functions
 import { calculateCompletedPercent } from './helpers';
 
-/**
- * todoReducer receives 2 params: state & action
- * @param {Object} state - Initial state to be computed
- * @param {Object} action
- * @param {string} action.type - Action type, including "DELETE_TODO", "TOGGLE_COMPLETE", "ADD_TODO", "FILTER_ALL", "FILTER_ONGOING", "FILTER_COMPLETED"
- * @param {Object} action.payload - Extra data
- * @returns {Object} return computed state
- */
+// Types
+import {
+  FilterActions,
+  ITodo,
+  ITodoState,
+  TodoActions,
+  TodoActionTypes,
+} from '../types';
 
-const todoReducer = (state: any, { type, payload }: any) => {
-  let updatedTodos = [];
-  let uncompletedCount = 0;
-  let completedCount = 0;
+const todoReducer = (state: ITodoState, action: TodoActions): ITodoState => {
+  switch (action.type) {
+    case TodoActionTypes.SET_TODOS: {
+      const todos = action.payload;
 
-  switch (type) {
-    case 'SET_TODOS':
-      const { todos: fetchedTodos } = payload;
-
-      uncompletedCount = fetchedTodos.filter((todo: any) => !todo.completed)
+      const uncompletedCount = todos.filter((todo: ITodo) => !todo.completed)
         .length;
-      completedCount = fetchedTodos.length - uncompletedCount;
+      const completedCount = todos.length - uncompletedCount;
 
       return {
         ...state,
-        todos: fetchedTodos,
+        todos,
         uncompletedCount,
         completedPercent: calculateCompletedPercent(
           completedCount,
-          fetchedTodos.length,
+          todos.length,
         ),
       };
+    }
 
-    case 'ADD_TODO':
-      const { todo: addedTodo } = payload;
+    case TodoActionTypes.ADD_TODO: {
+      const addedTodo = action.payload;
 
       if (!addedTodo) {
         return state;
       }
 
-      updatedTodos = [...state.todos, addedTodo];
-      uncompletedCount = updatedTodos.filter((todo) => !todo.completed).length;
-      completedCount = updatedTodos.length - uncompletedCount;
+      const updatedTodos = [...state.todos, addedTodo];
+      const uncompletedCount = updatedTodos.filter((todo) => !todo.completed)
+        .length;
+      const completedCount = updatedTodos.length - uncompletedCount;
 
       return {
         ...state,
@@ -54,16 +52,18 @@ const todoReducer = (state: any, { type, payload }: any) => {
           updatedTodos.length,
         ),
       };
+    }
 
-    case 'TOGGLE_COMPLETE':
-      const { id: completedId, completed } = payload;
+    case TodoActionTypes.TOGGLE_COMPLETE: {
+      const { id, completed } = action.payload;
 
-      updatedTodos = state.todos.map((todo: any) =>
-        todo.id === completedId ? { ...todo, completed } : todo,
+      const updatedTodos = state.todos.map((todo: ITodo) =>
+        todo.id === id ? { ...todo, completed } : todo,
       );
-      uncompletedCount = updatedTodos.filter((todo: any) => !todo.completed)
-        .length;
-      completedCount = updatedTodos.length - uncompletedCount;
+      const uncompletedCount = updatedTodos.filter(
+        (todo: ITodo) => !todo.completed,
+      ).length;
+      const completedCount = updatedTodos.length - uncompletedCount;
 
       return {
         ...state,
@@ -75,14 +75,18 @@ const todoReducer = (state: any, { type, payload }: any) => {
           updatedTodos.length,
         ),
       };
+    }
 
-    case 'DELETE_TODO':
-      const { id: deletedId } = payload;
+    case TodoActionTypes.DELETE_TODO: {
+      const deletedId = action.payload;
 
-      updatedTodos = state.todos.filter((todo: any) => todo.id !== deletedId);
-      uncompletedCount = updatedTodos.filter((todo: any) => !todo.completed)
-        .length;
-      completedCount = updatedTodos.length - uncompletedCount;
+      const updatedTodos = state.todos.filter(
+        (todo: ITodo) => todo.id !== deletedId,
+      );
+      const uncompletedCount = updatedTodos.filter(
+        (todo: ITodo) => !todo.completed,
+      ).length;
+      const completedCount = updatedTodos.length - uncompletedCount;
 
       return {
         ...state,
@@ -94,27 +98,31 @@ const todoReducer = (state: any, { type, payload }: any) => {
           updatedTodos.length,
         ),
       };
+    }
 
-    case 'FILTER_COMPLETED':
+    case FilterActions.FILTER_COMPLETED: {
       return {
         ...state,
-        filteredTodos: state.todos.filter((todo: any) => todo.completed),
-        currentFilterKey: type,
+        filteredTodos: state.todos.filter((todo: ITodo) => todo.completed),
+        currentFilterKey: action.type,
       };
+    }
 
-    case 'FILTER_ONGOING':
+    case FilterActions.FILTER_ONGOING: {
       return {
         ...state,
-        filteredTodos: state.todos.filter((todo: any) => !todo.completed),
-        currentFilterKey: type,
+        filteredTodos: state.todos.filter((todo: ITodo) => !todo.completed),
+        currentFilterKey: action.type,
       };
+    }
 
-    case 'FILTER_ALL':
+    case FilterActions.FILTER_ALL: {
       return {
         ...state,
         filteredTodos: state.todos,
-        currentFilterKey: type,
+        currentFilterKey: action.type,
       };
+    }
 
     default:
       return state;

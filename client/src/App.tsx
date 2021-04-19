@@ -12,7 +12,7 @@ import './App.scss';
 // Context
 import { ModalProvider } from './modules/modal/context/ModalContext';
 import { CategoryProvider } from './modules/category/context/CategoryContext';
-import TodoProvider from './modules/todo/contexts/TodoContext';
+import { TodoProvider } from './modules/todo/contexts/TodoContext';
 
 const App = (): JSX.Element => {
   return (

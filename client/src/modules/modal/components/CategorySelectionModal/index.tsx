@@ -2,18 +2,18 @@
 import React from 'react';
 
 // Components
-import CategoryList from '../../CategoryList';
-import Modal from '../index';
+import CategoryList from '../../../category/components/CategoryList';
+import Modal from '../../../../components/Modal';
 
 // Styling
 import './CategorySelectionModal.scss';
 
 // Hooks
-import { useModal } from '../../../modules/modal/context/ModalContext';
-import { useCategory } from '../../../modules/category/context/CategoryContext';
+import { useModal } from '../../context/ModalContext';
+import { useCategory } from '../../../category/context/CategoryContext';
 
 // Types
-import { ModalKeys } from '../../../modules/modal/types';
+import { ModalKeys } from '../../types';
 
 interface ICategorySelectionModalProps {
   className?: string;

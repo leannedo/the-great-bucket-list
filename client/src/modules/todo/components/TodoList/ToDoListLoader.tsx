@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Components
-import ToDoItemLoader from './ToDoItem/ToDoItemLoader';
+import ToDoItemLoader from '../ToDoItem/ToDoItemLoader';
 
 interface IToDoListLoaderProps {
   count?: number;

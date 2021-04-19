@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "@apollo/client": "^3.3.13",
+    "@babel/plugin-proposal-object-rest-spread": "^7.13.8",
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^13.1.1",
@@ -17,7 +18,8 @@
     "react": "^17.0.1",
     "react-content-loader": "^5.1.0",
     "react-dom": "^17.0.1",
-    "ts-node": "^9.1.1"
+    "ts-node": "^9.1.1",
+    "uuid": "^8.3.2"
   },
   "scripts": {
     "build": "webpack --env NODE_ENV=prod --config config/webpack/webpack.config.js",

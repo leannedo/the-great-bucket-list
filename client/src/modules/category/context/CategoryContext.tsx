@@ -5,10 +5,10 @@ import React, { useContext, createContext } from 'react';
 import useCategoryReducer from '../reducer/useCategoryReducer';
 
 // Types
-import { ICategoryReducer } from '../types';
+import { ICategory, ICategoryReducer } from '../types';
 
 interface ICategoryContext extends ICategoryReducer {
-  getCategoryById: (id: string) => void;
+  getCategoryById: (id: string) => Partial<ICategory>;
 }
 
 const CategoryContext = createContext<ICategoryContext | null>(null);
