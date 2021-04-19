@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import Category from '../index';
-import { ICategory } from '../../../../types';
+import { ICategory } from '../../../types';
 
 describe('<Category />', () => {
   const onClickCallback = jest.fn();

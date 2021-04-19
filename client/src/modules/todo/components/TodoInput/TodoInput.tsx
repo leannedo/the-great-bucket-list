@@ -63,6 +63,7 @@ const TodoInput = (): JSX.Element => {
   return (
     <div className="input-container">
       <div
+        role="option"
         onClick={() => showModal(ModalKeys.CATEGORY_SELECTION_MODAL)}
         className={`input-checkbox ${isTodoValid() ? '' : 'invalid'}`}
         style={{ backgroundColor: `${categoryBox}` }}

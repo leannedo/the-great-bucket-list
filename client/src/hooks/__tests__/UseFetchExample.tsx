@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { FetchStatus, useFetch } from '../useFetch';
 import { gql, useApolloClient } from '@apollo/client';
 
@@ -19,15 +19,11 @@ const UseFetchExample = (): JSX.Element => {
     variables: { id: '123' },
   });
 
-  useEffect(() => {
-    console.log('test');
-  }, []);
-
   return (
     <div>
       {status === FetchStatus.FETCHING && <p>Fetching</p>}
-      {error && <div>Data fetching error</div>}
-      {data && <p>Name: {data.test.name}</p>}
+      {error && <div>{error}</div>}
+      {data?.test?.name && <p>Name: {data.test.name}</p>}
     </div>
   );
 };

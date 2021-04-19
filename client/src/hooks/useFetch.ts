@@ -88,7 +88,9 @@ export const useFetch = ({
         callback(data);
       }
     } catch (error) {
-      const graphQLError = error?.networkError?.result?.errors[0].message;
+      const graphQLError =
+        error.networkError?.result?.errors[0].message ||
+        error.networkError?.message;
       console.error(error);
       dispatch({ type: FetchActionTypes.FETCH_ERROR, payload: graphQLError });
     }
@@ -96,7 +98,7 @@ export const useFetch = ({
 
   useEffect(() => {
     fetchData().then();
-  }, [query, variables]);
+  }, []);
 
   return state;
 };

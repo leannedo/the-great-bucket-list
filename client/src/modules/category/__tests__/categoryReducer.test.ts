@@ -1,51 +1,44 @@
 // Hooks
-import useCategoryReducer from '../reducer/categoryReducer';
+import { categoryReducer } from '../reducer/useCategoryReducer';
 
 // Data
-import categoryData from '../context/data';
+import { defaultCategories } from '../context/data';
+import { CategoryActions, ICategoryAction, ICategoryState } from '../types';
 
-const initialState = {
-  categories: categoryData,
-  currentSelectedCategory: {},
+const initialState: ICategoryState = {
+  categories: defaultCategories,
+  currentSelectedCategory: { id: '', name: '', colorIndicator: '' },
 };
 
 describe('Add category', () => {
-  test(
-    'it should add addedCategory from ' +
-      '' +
-      '' +
-      'action payload to categories',
-    () => {
-      const action = {
-        type: 'ADD_CATEGORY',
-        payload: {
-          addedCategory: { name: 'Test cat', colorIndicator: '#000' },
-        },
-      };
-
-      const result = useCategoryReducer(initialState, action);
-
-      expect(result).toHaveProperty('categories');
-
-      const { categories } = result;
-
-      expect(categories).toHaveLength(initialState.categories.length + 1);
-
-      const newAddedCat = categories[categories.length - 1];
-
-      expect(newAddedCat).toHaveProperty('name', 'Test cat');
-      expect(newAddedCat).toHaveProperty('colorIndicator', '#000');
-      expect(newAddedCat).toHaveProperty('id');
-    },
-  );
-
-  test('it does not alter state on error', () => {
-    const action = {
-      payload: new Error('unit test'),
-      type: 'ADD_CATEGORY',
+  test('it should add addedCategory from action payload to categories', () => {
+    const action: ICategoryAction = {
+      type: CategoryActions.ADD_CATEGORY,
+      payload: { name: 'Test cat', colorIndicator: '#000' },
     };
 
-    const result = useCategoryReducer(initialState, action);
+    const result = categoryReducer(initialState, action);
+
+    expect(result).toHaveProperty('categories');
+
+    const { categories } = result;
+
+    expect(categories).toHaveLength(initialState.categories.length + 1);
+
+    const newAddedCat = categories[categories.length - 1];
+
+    expect(newAddedCat).toHaveProperty('name', 'Test cat');
+    expect(newAddedCat).toHaveProperty('colorIndicator', '#000');
+    expect(newAddedCat).toHaveProperty('id');
+  });
+
+  test('it does not alter state on error', () => {
+    const action: ICategoryAction = {
+      type: CategoryActions.ADD_CATEGORY,
+      payload: undefined,
+    };
+
+    const result = categoryReducer(initialState, action);
 
     expect(result).toEqual(initialState);
   });
@@ -53,12 +46,12 @@ describe('Add category', () => {
 
 describe('Delete category', () => {
   test('it should delete category from categories on provided id', () => {
-    const action = {
-      type: 'DELETE_CATEGORY',
-      payload: { id: '6e8cb1b9-3c57-4ee5-96c1-cc8d6e37d04d' },
+    const action: ICategoryAction = {
+      type: CategoryActions.DELETE_CATEGORY,
+      payload: '6e8cb1b9-3c57-4ee5-96c1-cc8d6e37d04d',
     };
 
-    const result = useCategoryReducer(initialState, action);
+    const result = categoryReducer(initialState, action);
 
     expect(result).toHaveProperty('categories');
 
@@ -66,17 +59,17 @@ describe('Delete category', () => {
 
     expect(categories).toHaveLength(initialState.categories.length - 1);
 
-    const deletedCat = categories.find((cat) => cat.id === action.payload.id);
+    const deletedCat = categories.find((cat) => cat.id === action.payload);
     expect(deletedCat).toBeUndefined();
   });
 
   test('it does not alter state on error', () => {
-    const action = {
-      payload: new Error('unit test'),
-      type: 'DELETE_CATEGORY',
+    const action: ICategoryAction = {
+      type: CategoryActions.DELETE_CATEGORY,
+      payload: '',
     };
 
-    const result = useCategoryReducer(initialState, action);
+    const result = categoryReducer(initialState, action);
 
     expect(result).toEqual(initialState);
   });
@@ -84,17 +77,16 @@ describe('Delete category', () => {
 
 describe('Update category', () => {
   test('it should update category in categories on provided id', () => {
-    const action = {
-      type: 'UPDATE_CATEGORY',
+    const action: ICategoryAction = {
+      type: CategoryActions.UPDATE_CATEGORY,
       payload: {
-        updatedCategory: {
-          id: '6e8cb1b9-3c57-4ee5-96c1-cc8d6e37d04d',
-          name: 'Test cat',
-        },
+        id: '6e8cb1b9-3c57-4ee5-96c1-cc8d6e37d04d',
+        name: 'Test cat',
+        colorIndicator: '#38C9FF',
       },
     };
 
-    const result = useCategoryReducer(initialState, action);
+    const result = categoryReducer(initialState, action);
 
     expect(result).toHaveProperty('categories');
 
@@ -102,7 +94,7 @@ describe('Update category', () => {
     expect(categories).toHaveLength(4);
 
     const updatedCategory = categories.find(
-      (cat) => cat.id === action.payload.updatedCategory.id,
+      (cat) => cat.id === action.payload.id,
     );
 
     expect(updatedCategory).not.toBeUndefined();
@@ -112,27 +104,26 @@ describe('Update category', () => {
 
   test('it does not alter state on error', () => {
     const action = {
-      payload: new Error('unit test'),
-      type: 'UPDATE_CATEGORY',
+      type: CategoryActions.UPDATE_CATEGORY,
+      payload: undefined,
     };
 
-    const result = useCategoryReducer(initialState, action);
+    const result = categoryReducer(initialState, action);
 
     expect(result).toEqual(initialState);
   });
 
   test('it does not alter state on invalid id', () => {
-    const action = {
-      type: 'UPDATE_CATEGORY',
+    const action: ICategoryAction = {
+      type: CategoryActions.UPDATE_CATEGORY,
       payload: {
-        updatedCategory: {
-          id: '6e8-3c57-4ee5-96c1-cc8d6e37d04d',
-          name: 'Test cat',
-        },
+        id: '6e8-3c57-4ee5-96c1-cc8d6e37d04d',
+        name: 'Test cat',
+        colorIndicator: '#38C9FF',
       },
     };
 
-    const result = useCategoryReducer(initialState, action);
+    const result = categoryReducer(initialState, action);
 
     expect(result).toEqual(initialState);
   });
@@ -140,18 +131,16 @@ describe('Update category', () => {
 
 describe('Select category', () => {
   test('it should update current selected category with selected category', () => {
-    const action = {
-      type: 'SELECT_CATEGORY',
+    const action: ICategoryAction = {
+      type: CategoryActions.SELECT_CATEGORY,
       payload: {
-        selectedCategory: {
-          id: '6e8cb1b9-3c57-4ee5-96c1-cc8d6e37d04d',
-          name: 'Homework',
-          colorIndicator: '#38C9FF',
-        },
+        id: '6e8cb1b9-3c57-4ee5-96c1-cc8d6e37d04d',
+        name: 'Homework',
+        colorIndicator: '#38C9FF',
       },
     };
 
-    const result = useCategoryReducer(initialState, action);
+    const result = categoryReducer(initialState, action);
     const { currentSelectedCategory } = result;
     expect(currentSelectedCategory).toHaveProperty(
       'id',
@@ -160,12 +149,12 @@ describe('Select category', () => {
   });
 
   test('it does not alter state on error', () => {
-    const action = {
-      payload: new Error('unit test'),
-      type: 'SELECT_CATEGORY',
+    const action: ICategoryAction = {
+      type: CategoryActions.SELECT_CATEGORY,
+      payload: undefined,
     };
 
-    const result = useCategoryReducer(initialState, action);
+    const result = categoryReducer(initialState, action);
 
     expect(result).toEqual(initialState);
   });

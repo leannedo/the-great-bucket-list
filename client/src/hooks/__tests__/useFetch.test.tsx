@@ -31,7 +31,7 @@ describe('useFetch', () => {
     );
 
     expect(screen.getByText('Fetching')).toBeInTheDocument();
-    const name = await screen.findByText('John Doe');
+    const name = await screen.findByText(/john doe/i);
     expect(name).toBeInTheDocument();
   });
 
@@ -56,7 +56,7 @@ describe('useFetch', () => {
 
     expect(screen.getByText('Fetching')).toBeInTheDocument();
 
-    const error = await screen.findByText('Data fetching error');
+    const error = await screen.findByText('An error occurred');
     expect(error).toBeInTheDocument();
   });
 });
