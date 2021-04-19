@@ -6,7 +6,7 @@ A friendly and fun-to-use application which can be used for versatile purposes f
 
 The app is designed by my talented friend [Minh Anh](https://www.linkedin.com/in/minh-anh3010/) 🔥 
 
-Give it a try here: https://thegreatbucketlist.herokuapp.com/
+Give it a try here: https://thegreatbucketlist.netlify.app
 
 <br/>
 
