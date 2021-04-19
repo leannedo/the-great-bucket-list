@@ -24,7 +24,10 @@ const initialCategoryState: ICategoryState = {
   currentSelectedCategory: { id: '', name: '', colorIndicator: '' },
 };
 
-const categoryReducer = (state: ICategoryState, action: ICategoryAction) => {
+export const categoryReducer = (
+  state: ICategoryState,
+  action: ICategoryAction,
+): ICategoryState => {
   switch (action.type) {
     case CategoryActions.ADD_CATEGORY:
       const addedCategory = action.payload;

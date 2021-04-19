@@ -1,5 +1,11 @@
 // Hooks
 import todoReducer from '../hooks/todoReducer';
+import {
+  FilterActions,
+  ITodoState,
+  TodoActions,
+  TodoActionTypes,
+} from '../types';
 
 const initialState = {
   todos: [
@@ -20,7 +26,7 @@ const initialState = {
   ],
   uncompletedCount: 0,
   completedPercent: '100',
-  currentFilterKey: 'FILTER_ALL',
+  currentFilterKey: FilterActions.FILTER_ALL,
 };
 
 describe('add todo', () => {
@@ -31,11 +37,10 @@ describe('add todo', () => {
       categoryId: 'cat-2',
       completed: false,
     };
-    const action = {
-      type: 'ADD_TODO',
-      payload: {
-        todo: addedTodo,
-      },
+
+    const action: TodoActions = {
+      type: TodoActionTypes.ADD_TODO,
+      payload: addedTodo,
     };
 
     const expectedResult = {
@@ -79,9 +84,9 @@ describe('add todo', () => {
   });
 
   test('it does not alter state on error', () => {
-    const action = {
-      payload: new Error('unit test'),
-      type: 'ADD_TODO',
+    const action: TodoActions = {
+      type: TodoActionTypes.ADD_TODO,
+      payload: undefined,
     };
 
     const result = todoReducer(initialState, action);
@@ -92,11 +97,9 @@ describe('add todo', () => {
 
 describe('delete todo', () => {
   test('it should delete todo from todos on provided id', () => {
-    const action = {
-      type: 'DELETE_TODO',
-      payload: {
-        id: 'mock-todo-1',
-      },
+    const action: TodoActions = {
+      type: TodoActionTypes.DELETE_TODO,
+      payload: 'mock-todo-1',
     };
 
     const expectedResult = {
@@ -114,9 +117,9 @@ describe('delete todo', () => {
   });
 
   test('it does not alter state on error', () => {
-    const action = {
-      payload: new Error('unit test'),
-      type: 'DELETE_TODO',
+    const action: TodoActions = {
+      type: TodoActionTypes.DELETE_TODO,
+      payload: undefined,
     };
 
     const result = todoReducer(initialState, action);
@@ -127,10 +130,11 @@ describe('delete todo', () => {
 
 describe('toggle completed state', () => {
   test("it should revert todo's completed state", () => {
-    const action = {
-      type: 'TOGGLE_COMPLETE',
+    const action: TodoActions = {
+      type: TodoActionTypes.TOGGLE_COMPLETE,
       payload: {
         id: 'mock-todo-1',
+        name: 'Mock Todo 1',
         completed: false,
       },
     };
@@ -166,8 +170,8 @@ describe('toggle completed state', () => {
 
   test('it does not alter state on error', () => {
     const action = {
-      payload: new Error('unit test'),
-      type: 'TOGGLE_COMPLETE',
+      payload: undefined,
+      type: TodoActionTypes.TOGGLE_COMPLETE,
     };
 
     const result = todoReducer(initialState, action);
@@ -177,7 +181,7 @@ describe('toggle completed state', () => {
 });
 
 describe('filter todos', () => {
-  const initialState = {
+  const initialState: ITodoState = {
     todos: [
       {
         id: 'mock-todo-1',
@@ -208,12 +212,12 @@ describe('filter todos', () => {
     ],
     uncompletedCount: 1,
     completedPercent: '50',
-    currentFilterKey: 'FILTER_ALL',
+    currentFilterKey: FilterActions.FILTER_ALL,
   };
 
   test('it should filter completed todos', () => {
     const action = {
-      type: 'FILTER_COMPLETED',
+      type: FilterActions.FILTER_COMPLETED,
     };
 
     const expectedResult = {
@@ -238,7 +242,7 @@ describe('filter todos', () => {
 
   test('it should filter uncompleted todos', () => {
     const action = {
-      type: 'FILTER_ONGOING',
+      type: FilterActions.FILTER_ONGOING,
     };
 
     const expectedResult = {

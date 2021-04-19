@@ -24,7 +24,10 @@ const initialModalState: IModalState = {
   },
 };
 
-const reducer = (state: IModalState, action: IModalAction) => {
+export const modalReducer = (
+  state: IModalState,
+  action: IModalAction,
+): IModalState => {
   switch (action.type) {
     case ModalActions.SHOW_MODAL: {
       const { key, props = {} } = action.payload;
@@ -80,7 +83,7 @@ const reducer = (state: IModalState, action: IModalAction) => {
 };
 
 const useModalReducer = (initialState = initialModalState): IModalReducer => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(modalReducer, initialState);
 
   const showModal = (key: ModalKeys, props?: Record<string, unknown>) => {
     dispatch({ type: ModalActions.SHOW_MODAL, payload: { key, props } });
