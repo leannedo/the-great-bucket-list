@@ -3,21 +3,32 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import FilterBar from '../index';
 import { TodoContext } from '../../../modules/todo/contexts/TodoContext';
 
+const mockedContext = {
+    todos: [],
+    filteredTodos: [],
+    uncompletedCount: 1,
+    completedPercent: '0',
+    fetchStatus: '',
+    addTodo: jest.fn(),
+    toggleCompleteTodo: jest.fn(),
+    deleteTodoItem: jest.fn(),
+    filterTodo: jest.fn(),
+}
+
 describe('<FilterBar />', () => {
-  const filterTodo = jest.fn();
-  const uncompletedCount = 1;
+    beforeEach(
+        () => {
+            render(
+                <TodoContext.Provider
+                    value={mockedContext}
+                >
+                    <FilterBar />
+                </TodoContext.Provider>,
+            );
+        }
+    )
 
   test('renders Filter Bar with mocked context', () => {
-    render(
-      <TodoContext.Provider
-        value={{
-          uncompletedCount,
-          filterTodo,
-        }}
-      >
-        <FilterBar />
-      </TodoContext.Provider>,
-    );
     expect(screen.getByText(/All/i)).toBeInTheDocument();
     expect(screen.getByText(/Completed/i)).toBeInTheDocument();
     expect(screen.getByText(/Ongoing/i)).toBeInTheDocument();
@@ -25,33 +36,13 @@ describe('<FilterBar />', () => {
   });
 
   test('trigger click callback on clicking filter keys', () => {
-    render(
-      <TodoContext.Provider
-        value={{
-          uncompletedCount,
-          filterTodo,
-        }}
-      >
-        <FilterBar />
-      </TodoContext.Provider>,
-    );
     fireEvent.click(screen.getByText(/Ongoing/i));
 
-    expect(filterTodo).toHaveBeenCalledTimes(1);
-    expect(filterTodo).toHaveBeenCalledWith('FILTER_ONGOING');
+    expect(mockedContext.filterTodo).toHaveBeenCalledTimes(1);
+    expect(mockedContext.filterTodo).toHaveBeenCalledWith('FILTER_ONGOING');
   });
 
   test('clicking filter keys will have class name active ', () => {
-    render(
-      <TodoContext.Provider
-        value={{
-          uncompletedCount,
-          filterTodo,
-        }}
-      >
-        <FilterBar />
-      </TodoContext.Provider>,
-    );
     fireEvent.click(screen.getByText(/Ongoing/i));
 
     expect(screen.getByText(/Ongoing/i)).toHaveClass('active');

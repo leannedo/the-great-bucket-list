@@ -3,20 +3,32 @@ import { render, screen } from '@testing-library/react';
 import ProgressBar from '../index';
 import { TodoContext } from '../../../modules/todo/contexts/TodoContext';
 
+const mockedContext = {
+  todos: [],
+  filteredTodos: [],
+  uncompletedCount: 1,
+  completedPercent: '70',
+  fetchStatus: '',
+  addTodo: jest.fn(),
+  toggleCompleteTodo: jest.fn(),
+  deleteTodoItem: jest.fn(),
+  filterTodo: jest.fn(),
+}
+
 describe('<ProgressBar />', () => {
-  const completedPercent = '70';
+  beforeEach(
+      () => {
+        render(
+            <TodoContext.Provider
+                value={mockedContext}
+            >
+              <ProgressBar />
+            </TodoContext.Provider>,
+        );
+      }
+  )
 
   test('renders completed percent correctly', () => {
-    render(
-      <TodoContext.Provider
-        value={{
-          completedPercent,
-        }}
-      >
-        <ProgressBar />
-      </TodoContext.Provider>,
-    );
-
     expect(screen.getByText(/70% completed/i)).toBeInTheDocument();
   });
 });

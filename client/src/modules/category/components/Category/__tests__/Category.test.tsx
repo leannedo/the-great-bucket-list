@@ -21,6 +21,5 @@ describe('<Category />', () => {
     fireEvent.click(screen.getByText('Cat 1'));
 
     expect(onClickCallback).toHaveBeenCalledTimes(1);
-    expect(onClickCallback).toHaveBeenCalledWith(category);
   });
 });
