@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-// import path from 'path';
+import path from 'path';
 import { server as apolloServer } from './graphql';
 import dotenv from 'dotenv';
 
@@ -14,12 +14,12 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-/*const publicPath = path.resolve(__dirname, '../../client/dist');
+const publicPath = path.resolve(__dirname, '../../client/dist');
 
 app.use(express.static(publicPath));
-app.get('*', (_req, res) => {
+app.get('/', (_req, res) => {
   res.sendFile(path.join(publicPath, 'index.html'));
-});*/
+});
 
 apolloServer.applyMiddleware({ app, path: '/graphql' });
 
